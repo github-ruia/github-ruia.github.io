@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>JAVA学习_day06 | ruia的个人博客</title>
+  <title>Hexo+Github静态博客搭建 | ruia的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="面向对象">
+  <meta name="description" content="搭建Hexo+github静态博客 首先要安装Git、Note.js、Python 下载地址：git Git网址：https:&#x2F;&#x2F;git-scm.com&#x2F; 默认会自动配置环境变量  检查是否安装成功：git -v Node.js网址:http:&#x2F;&#x2F;nodejs.cn&#x2F; 默认会自动配置环境变量  检查是否安装成功：在终端输入node -v  部署hexo环境 1234567891011121314n">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA学习_day06">
-<meta property="og:url" content="http://example.com/2023/03/28/JAVA_day06/index.html">
+<meta property="og:title" content="Hexo+Github静态博客搭建">
+<meta property="og:url" content="http://example.com/2023/03/28/Hexo-Github%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="ruia的个人博客">
-<meta property="og:description" content="面向对象">
+<meta property="og:description" content="搭建Hexo+github静态博客 首先要安装Git、Note.js、Python 下载地址：git Git网址：https:&#x2F;&#x2F;git-scm.com&#x2F; 默认会自动配置环境变量  检查是否安装成功：git -v Node.js网址:http:&#x2F;&#x2F;nodejs.cn&#x2F; 默认会自动配置环境变量  检查是否安装成功：在终端输入node -v  部署hexo环境 1234567891011121314n">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-28T05:45:43.000Z">
-<meta property="article:modified_time" content="2023-03-28T07:14:37.815Z">
+<meta property="article:published_time" content="2023-03-28T07:47:00.000Z">
+<meta property="article:modified_time" content="2023-03-28T09:29:57.078Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ruia的个人博客" type="application/atom+xml">
@@ -145,409 +145,94 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JAVA_day06" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-Hexo-Github静态博客搭建" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA学习_day06
+      Hexo+Github静态博客搭建
     </h1>
   
 
         
-        <a href="/2023/03/28/JAVA_day06/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:45:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+        <a href="/2023/03/28/Hexo-Github%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3><span id="more"></span>
+        <h3 id="搭建Hexo-github静态博客"><a href="#搭建Hexo-github静态博客" class="headerlink" title="搭建Hexo+github静态博客"></a>搭建Hexo+github静态博客</h3><ol>
+<li><p>首先要安装Git、Note.js、Python</p>
+<p>下载地址：git</p>
+<p>Git网址：<code>https://git-scm.com/</code> 默认会自动配置环境变量</p>
+<p> 检查是否安装成功：git -v</p>
+<p>Node.js网址:<code>http://nodejs.cn/</code> 默认会自动配置环境变量</p>
+<p> 检查是否安装成功：在终端输入node -v</p>
+</li>
+<li><p>部署hexo环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org	<span class="comment">#安装淘宝的cnpm管理器</span></span><br><span class="line">cnpm -v	<span class="comment">#查看cnpm版本，显示cnpm版本说明安装成功</span></span><br><span class="line"></span><br><span class="line">cnpm install -g hexo-cli	<span class="comment">#安装hexo框架，作用和 npm install hexo-cli -g 命令一样</span></span><br><span class="line">hexo -v	<span class="comment">#查看hexo版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#然后随便在什么地方创建一个文件夹，该文件夹是自己博客的载体，名字随意，我这里就命名为blog，进入blog目录中打开终端</span></span><br><span class="line"></span><br><span class="line">hexo init	<span class="comment">#生成博客所需的依赖文件的，cmd下载不行的话可以用Git Bash终端试试，但是Git Bash要cd到自己的博客目录里面</span></span><br><span class="line"><span class="comment">#cmd也是，否则会出现无法现在的情况，其中blog为自己博客</span></span><br><span class="line"></span><br><span class="line">hexo s	                      <span class="comment">#启动本地博客服务</span></span><br><span class="line"></span><br><span class="line">http://localhost:4000/	      <span class="comment">#本地访问的地址</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>github新建仓库</p>
+<p>打开<code>https://github.com/</code>，New repository 新建一个仓库</p>
+<p>输入自己的仓库名字，后面一定要加<code>.github.io</code>后缀，README初始化也要勾上。<strong>名称一定要和你的github名字完全一样，比如你github名字叫<code>abc</code>，那么仓库名字一定要是<code>abc.github.io</code>。</strong></p>
+<p>然后就创建完成了</p>
+</li>
+<li><p>连接Github与本地</p>
+<p>打开终端运行以下命令生成密钥SSH key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;自己博客的用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;自己的邮箱地址&quot;</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;自己的邮箱地址&quot;</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="面向过程-amp-面向对象"><a href="#面向过程-amp-面向对象" class="headerlink" title="面向过程&amp;面向对象"></a>面向过程&amp;面向对象</h4><ul>
-<li>面向过程思想（线性思维）<ul>
-<li>步骤清晰简单，第一步做什么，第二步做什么…</li>
-<li>面向过程适合处理一些较为简单的问题</li>
-</ul>
-</li>
-<li>面向对象思想<ul>
-<li>物以类聚，<strong>分类</strong>的思维模式，思考问题首先会解决问题需要哪些分类，然后对这些分类进行单独思考。最后，才对某个分类下的细节进行<strong>面向过程</strong>的思考。（<strong>方法+属性&#x3D;类</strong>）</li>
-<li>面向对象适合处理复杂的问题，适合处理需要多人协作的问题！</li>
-</ul>
-</li>
-<li><strong>对于描述复杂的事物，为了从宏观上把握、从整体上合理分析，我们需要使用面向对象的思路来分析整个系统。但是，具体到微观的操作，仍需要面向过程的思路去处理。</strong></li>
-</ul>
-<hr>
-<h4 id="什么是面向对象"><a href="#什么是面向对象" class="headerlink" title="什么是面向对象"></a>什么是面向对象</h4><ul>
-<li><p>面向对象编程（Object-Oriented Programming，OOP）</p>
-</li>
-<li><p>面向对象编程的本质就是：<strong>以类的方式组织代码，以对象的组织（封装）数据。</strong></p>
-</li>
-<li><p>抽象</p>
-</li>
-<li><p>三大特性：</p>
-<ul>
-<li><p><strong>封装</strong>：将数据包装起来，留个拉链供外部访问</p>
-</li>
-<li><p><strong>继承</strong>：子类继承父类</p>
-</li>
-<li><p><strong>多态</strong>：同一个事物变现出来的多种形态</p>
-</li>
-</ul>
-</li>
-<li><p>从认识论角度考虑是先有对象后有类。对象，是具体的事物。类，是抽象的，是对对象的抽象。</p>
-</li>
-<li><p>从代码运行角度考虑是先有类后有对象。类是对象的模板。</p>
-</li>
-</ul>
-<p>ps：我的理解：</p>
-<p>类：就像是房屋的设计图纸</p>
-<p>对象：根据图纸建造起来的房屋</p>
-<p>根据同一个设计图纸建造出你的房屋就是你的对象，我的房屋就是我的对象；我们的房屋内置环境可能并不相同，但抽<strong>像</strong>出来的房屋结构都是这个房屋的设计图，因为是按同个图纸建造的。</p>
-<hr>
-<h4 id="方法的调用"><a href="#方法的调用" class="headerlink" title="方法的调用"></a>方法的调用</h4><p>静态方法和非静态方法</p>
-<ul>
-<li><p>方法分为两种：静态方法和非静态方法</p>
-</li>
-<li><p>加static修饰符的就是静态方法，不加的就是非静态方法</p>
-</li>
-<li><p><strong>静态方法随着类的加载而创建，非静态随着对象的实例化而创建</strong></p>
-</li>
-<li><p>同一个类中加了static的方法可以直接访问，而不加static的就需要实例化这个类才能够访问</p>
-</li>
-<li><p>而中静态方法无法直接访问非静态方法，非静态方法可以直接访问静态方法</p>
-</li>
-<li><p>实例化类  &#x2F;&#x2F;new</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> 类名.方法名();  <span class="comment">//new了一个类 .调用了类中的一个方法</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Student</span>.say();</span><br><span class="line"></span><br><span class="line"><span class="comment">//而一般我们会写为：</span></span><br><span class="line">对象类型 对象名 = <span class="keyword">new</span> 对象值</span><br><span class="line"><span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">student.say();  <span class="comment">//创建完对象后再调用其中的方法</span></span><br></pre></td></tr></table></figure>
+<p>执行完成后在系统用户文件夹下会出现.ssh文件夹。</p>
+<p>打开github，在头像下面点击<code>settings</code>，再点击<code>SSH and GPG keys</code>，新建一个SSH，名字随意，将.ssh&#x2F;id_rsa.pub文件中的内容复制到文本框中点击保存。</p>
+<p>在Git Bash Here中输入<code>ssh -T git@github.com</code>，填写创建密钥时的密码最终出现你的用户名，那就成功了。</p>
+<p>打开然后打开自己博客根目录里的 _config.yml文件，滑到最下面，找到一个名为<strong>deploy</strong>的选项，修改为：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/xxx/xxx.github.io</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h4 id="类与对象的关系"><a href="#类与对象的关系" class="headerlink" title="类与对象的关系"></a>类与对象的关系</h4><p>类是一种抽象的数据类型，它是对某一类事物整体的描述&#x2F;定义，但是并不能代表某一个具体的事物。如：</p>
-<ul>
-<li>动物、植物、手机、电脑…</li>
-<li>person类、pet类、car类等，这些类都是用来描述&#x2F;定义某一类具体的事物应该具备的特点行为</li>
-</ul>
-<p>对象是抽象概念的具体实例：</p>
-<ul>
-<li><p>张三就是人的一个具体实例，张三家里的旺财就是狗的一个具体实例</p>
+<p>repository修改为你自己的github项目地址。</p>
 </li>
-<li><p>能够体现出特点，展现出功能的具体的实例，而不是一个抽象的概念。</p>
+<li><p>到这里就部署完成了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo cl		//清理hexo缓存的</span><br><span class="line">hexo g		//生成静态网页</span><br><span class="line">hexo s		//运行本地测试环境，默认4000端口</span><br><span class="line">hexo d		//上传到服务器</span><br><span class="line">组合使用：</span><br><span class="line">hexo cl &amp;&amp;hexo g &amp;&amp;hexo d</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>一个项目应该只存在一个main方法，后面就不要每个类中都写main了</p>
-</li>
-<li><p>一个类中只可能存在两个东西：<strong>属性、方法</strong></p>
-</li>
-<li><p>实例化</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//类：是抽象的，需要实例化</span></span><br><span class="line"><span class="keyword">new</span> <span class="title class_">Student</span>();  <span class="comment">//就是实例化对象</span></span><br><span class="line"><span class="comment">//实例化后会产生一个返回结果</span></span><br><span class="line"><span class="comment">//实例化后会返回一个自己的对象！</span></span><br><span class="line"><span class="comment">//student对象就是一个Student类的具体实例！</span></span><br><span class="line"><span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">对象类型   对象名    对象值（Student类的具体实例<span class="keyword">new</span>）</span><br><span class="line">（与八大基本类型一样<span class="type">int</span>,<span class="type">char</span>...）    </span><br><span class="line"><span class="comment">//Student()类的具体实例(new),返回给了名为student或其他名字也行，类型是Student</span></span><br></pre></td></tr></table></figure>
+<li><p>写文章</p>
+<p>在博客根目录下右键打开git bash，安装一个扩展<code>npm i hexo-deployer-git</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;模板&gt; &lt;文章名&gt;</span><br><span class="line">hexo new post <span class="string">&quot;article title&quot;</span>	<span class="comment">#新建一篇文章，文章路径:/source/_posts/，post可省略</span></span><br><span class="line">hexo new draft <span class="string">&quot;article title&quot;</span>	<span class="comment">#新建一篇草稿，文章路径:/source/_drafts/</span></span><br><span class="line">hexo new page <span class="string">&quot;article title&quot;</span>	<span class="comment">#新建页面（标签页，分类页等）,文章路径:/source/</span></span><br></pre></td></tr></table></figure>
 
-<hr>
-<h4 id="创建与初始化对象"><a href="#创建与初始化对象" class="headerlink" title="创建与初始化对象"></a>创建与初始化对象</h4><ul>
-<li>使用new关键字创建对象</li>
-<li>使用new关键字创建的时候，除了分配内存空间外，还会给创建好的对象进行默认的初始化以及对类中的构造器的调用</li>
-</ul>
-<h4 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h4><ul>
-<li><p>类中的构造器也称为构造方法，是在进行<strong>创建对象的时候必须要调用的</strong>。</p>
+<p>打开目录，可以发现下面多了一个文件夹和一个<code>.md</code>文件，一个用来存放你的图片等数据，另一个就是新建的文章了。</p>
+<p>生成的文章比普通<code>.md</code>文章多一个文章头，自己建的markdown文件需要加上这种文件头才能上传，不然会报错</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxx</span><br><span class="line">date: 2023-03-28 13:39:43</span><br><span class="line"><span class="section">tags:</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>一个类即使什么都不写，它也会存在一个方法，而这个方法就是一个构造器。并且<strong>构造器有以下两个特点</strong>：</p>
+<li><p>页面截断显示</p>
+<p>默认情况下网站显示一篇文章的所有内容，这并不太美观，我们可以在文章中加入<code>&lt;!--more--&gt;</code>截断显示内容</p>
+<p>yilia下的_config.yml中的excerpt_link可以更改截断按钮文字</p>
+</li>
+</ol>
+<h3 id="设置博客主题"><a href="#设置博客主题" class="headerlink" title="设置博客主题"></a>设置博客主题</h3><p>主题我选择yilia：<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">https://github.com/litten/hexo-theme-yilia</a></p>
 <ol>
-<li><strong>必须和类的名字相同</strong></li>
-<li><strong>必须没有返回类型，也不能写void</strong></li>
+<li><p>克隆到博客目录下的themes</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置</p>
+<p>修改博客目录下的<code>_config.yml</code>中<code>theme: yilia</code></p>
+<p>在末尾添加内容：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">    meta: false</span><br><span class="line">    pages: false</span><br><span class="line">    posts:</span><br><span class="line">      title: true</span><br><span class="line">      date: true</span><br><span class="line">      path: true</span><br><span class="line">      text: false</span><br><span class="line">      raw: false</span><br><span class="line">      content: false</span><br><span class="line">      slug: false</span><br><span class="line">      updated: false</span><br><span class="line">      comments: false</span><br><span class="line">      link: false</span><br><span class="line">      permalink: false</span><br><span class="line">      excerpt: false</span><br><span class="line">      categories: false</span><br><span class="line">      tags: true</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>更新主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/yilia</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置主题内容在博客目录下的themes&#x2F;yalia&#x2F;_config.yml中</p>
+<p>参考<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E6%9B%B4%E6%94%B9%E8%BE%BE%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9C%80%E6%B1%82">https://github.com/litten/hexo-theme-yilia中的内容进行更改达到自己的需求</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 文章太长，截断按钮文字</span><br><span class="line">excerpt_link: &#x27;展开全文&#x27;</span><br><span class="line"></span><br><span class="line"># 打赏type设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏</span><br><span class="line">reward_type: 0</span><br><span class="line"># 打赏wording</span><br><span class="line">reward_wording: &#x27;谢谢能得到你的喜欢&#x27;</span><br><span class="line"></span><br><span class="line">#网站图标</span><br><span class="line">favicon: /asset/img/兔逊.jpg</span><br><span class="line"></span><br><span class="line">#你的头像url</span><br><span class="line">avatar: /asset/img/兔逊.jpg</span><br><span class="line"></span><br><span class="line"># 智能菜单</span><br><span class="line"># 如不需要，将该对应项置为false</span><br><span class="line"># 比如</span><br><span class="line">#smart_menu:</span><br><span class="line">#  friends: false</span><br><span class="line">smart_menu:</span><br><span class="line">  innerArchive: &#x27;所有文章&#x27;</span><br><span class="line">  friends: &#x27;友链&#x27;</span><br><span class="line">  aboutme: &#x27;关于我&#x27;</span><br><span class="line">friends:</span><br><span class="line">  无: http://localhost:4000/</span><br><span class="line">aboutme: 希望能得到大家的喜欢，谢谢！</span><br></pre></td></tr></table></figure></li>
 </ol>
-<p><strong>&#x2F;&#x2F; 可以通过IDEA反编译class文件查看到</strong></p>
-</li>
-<li><p>我们也可以显示的定义构造器</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span>&#123;&#125;  <span class="comment">//这就是一个构造器</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>构造器一般用来初始化值，使用new关键字本质是在调用构造器</p>
-</li>
-<li><p>有参构造：一旦定义了有参构造，无参构造就必须显示定义</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="title function_">Person</span><span class="params">(String name)</span>&#123;&#125;</span><br><span class="line"><span class="comment">// 在类中一旦定义了带有参数的构造器，就覆盖了默认的无参构造器，程序在实例化时如果不带参数就会报错</span></span><br><span class="line"><span class="keyword">public</span> <span class="title function_">Person</span><span class="params">()</span>&#123;&#125;</span><br><span class="line"><span class="comment">//而同时写了有参构造和无参构造就会根据方法的重载来进行判断走哪一个方法</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>alt + insert快捷键，生成构造器</p>
-</li>
-</ul>
-<p>总结：</p>
-<ul>
-<li>构造器：<ol>
-<li>和类名相同</li>
-<li>没有返回值</li>
-</ol>
-</li>
-<li>作用：<ol>
-<li>new本质在调用构造方法</li>
-<li>初始化对象的值</li>
-</ol>
-</li>
-<li>注意点：<ol>
-<li>定义了有参构造之后，如果想使用无参构造，就必须显示的定义一个无参的构造</li>
-</ol>
-</li>
-<li>快捷键：Alt + Insert</li>
-<li>this. &#x2F;&#x2F;代表当前类</li>
-</ul>
-<hr>
-<h4 id="小结类与对象"><a href="#小结类与对象" class="headerlink" title="小结类与对象"></a>小结类与对象</h4><ol>
-<li><p>类与对象：</p>
-<p>类是一个模板，对象是一个具体的实例</p>
-</li>
-<li><p>方法：</p>
-<p>定义，调用。</p>
-</li>
-<li><p>对应的引用：</p>
-<ul>
-<li><p>除8大基本类型外其他都是引用类型</p>
-</li>
-<li><p>对象是通过引用来操作的：栈—&gt;堆</p>
-</li>
-</ul>
-</li>
-<li><p>属性：字段Field&#x2F;成员变量</p>
-<p>默认初始化：</p>
-<ul>
-<li>数字：0&#x2F;0.0</li>
-<li>char：u0000</li>
-<li>boolean：false</li>
-<li>引用：null</li>
-</ul>
-<p>修饰符  属性类型  属性名 &#x3D; 属性值！</p>
-</li>
-<li><p>对象的创建和使用</p>
-<ul>
-<li>必须使用new关键字创造对象，必须有构造器</li>
-<li>对象的属性和方法都是通过.调用。Person.name</li>
-</ul>
-</li>
-<li><p>类：</p>
-<p>静态的属性（属性）</p>
-<p>动态的行为（方法）</p>
-</li>
-</ol>
-<hr>
-<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><ul>
-<li><p>该露的露，该藏的藏</p>
-<p>我们程序设计要追求<strong>”高内聚，低耦合“</strong>，高内聚就是类的内部数据操作细节自己完成，不允许外部干涉；低耦合：仅暴露少量的方法给外部使用。</p>
-</li>
-<li><p>封装（数据的隐藏）</p>
-<p>通常，应禁止直接访问一个对象中的数据的实际表示（属性），而应该通过操作接口来访问（方法），这称为信息隐藏。</p>
-</li>
-<li><p>记住一句话：<strong>属性私有，get&#x2F;set</strong></p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义私有属性，私有属性无法再通过&quot;对象名.&quot;来访问     private:私有</span></span><br><span class="line"><span class="keyword">private</span> String name;</span><br><span class="line"><span class="keyword">private</span> <span class="type">int</span> id;</span><br><span class="line"><span class="keyword">private</span> <span class="type">char</span> sex;</span><br><span class="line"></span><br><span class="line"><span class="comment">//提供一些可以操作这个属性的方法。</span></span><br><span class="line"><span class="comment">//提供一些public的get、set方法</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> String <span class="title function_">getName</span><span class="params">()</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">this</span>.name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">setName</span><span class="params">(String name)</span>&#123;</span><br><span class="line">    <span class="built_in">this</span>.name = name;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//快捷键Alt + Insert 创建属性的get、set方法</span></span><br></pre></td></tr></table></figure>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://mao-design.gitee.io/2022/12/23/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">https://mao-design.gitee.io/2022/12/23/搭建个人博客/搭建个人博客/</a></p>
+<p><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">https://godweiyang.com/2018/04/13/hexo-blog/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">https://github.com/litten/hexo-theme-yilia</a></p>
 
-<hr>
-<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><ul>
-<li>继承的本质是对某一批类的抽象，从而实现堆现实世界更好的建模</li>
-<li>extends的意思是“扩展”。子类是父类的扩展。</li>
-<li>Java中类只能单继承，没有多继承（一个儿子只有一个父亲，而一个父亲可以有多个儿子）</li>
-<li>继承是类与类之间的一种关系。除此之外，类和类之间的关系还有依赖、组合、聚合等</li>
-<li>继承关系的两个类，一个为子类（派生类），一个为父类（基类）。子类继承父类，使用关键字extends来表示。</li>
-<li>子类和父类之间，从意义上讲应该具有“is a”的关系。</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//继承是类与类之间的关系  用extends实现Student继承Person中的属性与方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>修饰符分为四种：优先级从1-4</p>
-<ol>
-<li>public：公共的</li>
-<li>protected：受保护的</li>
-<li>default：默认的，不加就是它</li>
-<li>private：私有的</li>
-</ol>
-</li>
-<li><p>快捷键Ctrl + H打开程序的继承关系树</p>
-<p>在Java中，所有的类，都是默认直接或间接继承Object类</p>
-</li>
-</ul>
-<hr>
-<h4 id="super"><a href="#super" class="headerlink" title="super"></a>super</h4><ul>
-<li>super：在子类中调用父类方法时使用的关键字，与this类似</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Student</span> <span class="keyword">extends</span> <span class="title class_">Person</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="title function_">Student</span><span class="params">()</span> &#123;  <span class="comment">//无参构造函数，默认存在</span></span><br><span class="line">        <span class="built_in">super</span>(); <span class="comment">//隐藏的语句，必须在构造方法的第一个</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">test</span><span class="params">()</span>&#123;</span><br><span class="line">		<span class="built_in">super</span>.say();  <span class="comment">//调用Person类的sya()方法</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>super注意点：</p>
-<ol>
-<li>super调用父类的构造方法必须在构造方法的第一个语句（<strong>在子类的构造方法中第一个语句隐藏为super(); 所以在子类构造时会先进行父类的构造！</strong>）</li>
-<li>super只能出现在子类的方法或者构造方法中！</li>
-<li>super和this不能同时调用构造方法！因为它们都需要是构造方法的第一个语句。</li>
-</ol>
-</li>
-<li><p>与this的差别</p>
-<ol>
-<li><p>代表的对象不同：</p>
-<p>this：代表本身调用者这个对象</p>
-<p>super：代表父类对象的引用</p>
-</li>
-<li><p>前提：</p>
-<p>this：没有继承也可以使用</p>
-<p>super：只能在继承条件下才可以使用</p>
-</li>
-<li><p>构造方法：</p>
-<p>this：本类的构造</p>
-<p>super：父类的构造</p>
-</li>
-</ol>
-</li>
-</ul>
-<hr>
-<h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><ul>
-<li><p>重写都是方法的重写，和属性无关，重写就是对方法的一种覆盖，重新写</p>
-</li>
-<li><p>重写需要有继承关系，<strong>子类重写父类的方法</strong></p>
-</li>
-<li><p>重写的条件：   &#x2F;&#x2F;<strong>子类的方法与父类必须一致，方法体不同</strong></p>
-<ol>
-<li>方法名必须相同</li>
-<li>参数列表必须相同</li>
-<li>修饰符的范围可以扩大但不能缩小   &#x2F;&#x2F;public&gt;protected&gt;default&gt;private</li>
-<li>抛出的异常的范围可以被缩小但不能扩大   &#x2F;&#x2F;ClassNotFoundException –&gt; Exception(大);</li>
-</ol>
-</li>
-<li><p>静态的方法和非静态的方法区别很大，<strong>因为静态方法是类的方法，而非静态是对象的方法</strong>，因此只有非静态时才有重写</p>
-<p>静态方法：</p>
-<ul>
-<li>方法的调用只和左边，定义的数据类型有关</li>
-<li>有static时，b调用了B的方法，因为b是B类定义的</li>
-</ul>
-<p>非静态方法：</p>
-<ul>
-<li>即b是A new出来的对象，因此调用A的方法</li>
-<li>没有static时，b调用的是对象的方法，而b是用A类new的所以调用的是A的方法</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A类继承于B类</span><br><span class="line"></span><br><span class="line"><span class="type">A</span> <span class="variable">a</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();</span><br><span class="line">a.text();  <span class="comment">//输出A的结果</span></span><br><span class="line"></span><br><span class="line"><span class="type">B</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();</span><br><span class="line">b.test();   <span class="comment">//静态时输出类的方法，即B的结果</span></span><br><span class="line">			<span class="comment">//非静态时输出对象的方法，即A的结果</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>为什么需要重写：父类的功能，子类不一定需要，或者不一定满足</li>
-<li>快捷键：Alt+Insert  ：override；</li>
-</ul>
-<hr>
-<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><ul>
-<li><p>即同一方法可以根据发送对象的不同而采用多种不同的行为方式</p>
-</li>
-<li><p>一个对象的实际类型是确定的，但可以指向对象的引用类型有很多</p>
-</li>
-<li><p><strong>父类的引用指向子类对象</strong>   &#x2F;&#x2F;Father f1 &#x3D; new Son()</p>
-</li>
-<li><p>多态是方法的多态，属性没有多态</p>
-</li>
-<li><p>父类和子类存在联系，如果强制转换的类型之间没有任何联系就会报错（ClassCastException）！</p>
-</li>
-<li><p>多态存在的条件：</p>
-<ul>
-<li>继承关系</li>
-<li>方法需要重写   &#x2F;&#x2F;有些方法无法被重写：</li>
-</ul>
-</li>
-</ul>
-<p>​			1.<strong>被static修饰的方法：属于类，它不属于实例所以无法被重写</strong></p>
-<p>​				2.final：常量</p>
-<p>​				3.private：私有的，也无法被重写</p>
-<p>多态用于<strong>父类的引用类型指向子类，子类可以直接调用父类的方法，而与子类与父类重名的方法将进行重写，调用子类的方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//A类继承于B类</span></span><br><span class="line"><span class="type">B</span> <span class="variable">b</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">A</span>();</span><br><span class="line">b.test();</span><br><span class="line"><span class="comment">//如果子类与父类共同存在test方法则调用子类的test方法</span></span><br><span class="line"><span class="comment">//如果子类无而父类有则调用父类的方法</span></span><br><span class="line"><span class="comment">//如果父类无而子类有则无法直接调用需要进行类型强制转换</span></span><br></pre></td></tr></table></figure>
-
-
-
-<hr>
-<h4 id="instanceof和类型转换"><a href="#instanceof和类型转换" class="headerlink" title="instanceof和类型转换"></a>instanceof和类型转换</h4><p> instanceof：判断一个对象是什么类型~</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Object</span> <span class="variable">obj</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>();</span><br><span class="line">System.out.println(obj <span class="keyword">instanceof</span> Object);</span><br><span class="line">System.out.println(obj <span class="keyword">instanceof</span> String);</span><br><span class="line"><span class="literal">true</span></span><br><span class="line">编译报错</span><br></pre></td></tr></table></figure>
-
-<p>引用类型的类型转换看父子关系</p>
-<p>父类转换成子类强制转换</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Student</span> <span class="variable">student</span> <span class="operator">=</span> (Student)obj;</span><br><span class="line">((Student)obj).run();</span><br></pre></td></tr></table></figure>
-
-<p>子类转换成父类自动转换</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Person</span> <span class="variable">person</span> <span class="operator">=</span> student</span><br><span class="line"><span class="comment">//子类转换成父类可能会丢失子类身上的方法</span></span><br><span class="line"><span class="comment">//((Student)person).run();</span></span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>父类引用指向子类对象</li>
-<li>把子类转换成父类，向上转型</li>
-<li>把父类转换为子类，向下转型；强制转换，会丢失方法</li>
-<li>方便方法的调用，减少重复的代码</li>
-</ol>
-<hr>
-<h4 id="static关键字详解"><a href="#static关键字详解" class="headerlink" title="static关键字详解"></a>static关键字详解</h4><p>static可以加在属性或者方法之前</p>
-<p>加static就是静态属性或静态方法，反之就是非静态</p>
-<p>静态方法与类一起加载，如果想要很多类一起操作的话就用static修饰，调用时直接用类名.方法可以清晰的知道这是一个静态方法</p>
-<p><strong>代码块</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;匿名代码块&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">static</span> &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;静态代码块&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> Person&#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;构造方法&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">执行结果：</span><br><span class="line">静态代码块   <span class="comment">//静态代码块第一个执行，并且只执行一次，与类同时产生</span></span><br><span class="line">匿名代码块   <span class="comment">//匿名代码块第二个执行，可以用来赋初始值，与对象同时产生在构造方法之前</span></span><br><span class="line">构造方法</span><br></pre></td></tr></table></figure>
-
-
-
-<p>静态导入包</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//静态导入包，一般导入都是导入类，加static后能直接导入类中的方法，调用时不用再加类名，但一般不这么玩儿</span></span><br><span class="line"><span class="keyword">import</span> <span class="keyword">static</span> java.lang.Math.random;</span><br><span class="line">System.out.println(Math.random());</span><br><span class="line">System.out.println(random());</span><br></pre></td></tr></table></figure>
-
-
-
-<p>final：常量修饰符，被final修饰的类不能被继承，就没有子类了，final之后断子绝孙</p>
-<hr>
-<h4 id="抽象类"><a href="#抽象类" class="headerlink" title="抽象类"></a>抽象类</h4><p><strong>用abstract修饰的类就是抽象类</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//abstract 抽象类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">class</span> <span class="title class_">Action</span> &#123;</span><br><span class="line">    <span class="comment">//abstract 抽象方法，只有方法的名字，没有方法的实现</span></span><br><span class="line">    <span class="comment">//约束的框架，让别人来实现具体的方法实现，子类继承之后必须重写这个抽象方法</span></span><br><span class="line">    <span class="comment">//抽象类的所有方法继承了它的所有子类都必须要全部实现，除非子类也是一个抽象类，那么将交由子类的子类来实现</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">dosomething</span><span class="params">()</span>;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> Action,A</span><br><span class="line">A继承于Action，B继承于A</span><br><span class="line">B将继承Action的抽象类doSomething与A的抽象类some</span><br></pre></td></tr></table></figure>
-
-<ol>
-<li>不能new这个抽象类，只能靠子类去实现</li>
-<li>抽象类里面可以写普通方法</li>
-<li>抽象方法必须在抽象类中~</li>
-</ol>
-<p><strong>extends：单继承，存在局限性，所以一般很少用抽象类，而接口可以多继承所以使用接口</strong><br><strong>接口可以多继承</strong></p>
-<hr>
-<h4 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h4><p>普通类：只有具体实现</p>
-<p>抽象类：具体实现和规范（抽象方法）都有</p>
-<p>接口：只有规范！自己无法写方法，约束和实现分离</p>
-<ul>
-<li>接口就是规范，定义的是一组规则，体现现实世界中“如果你是…则必须能…”</li>
-<li><strong>接口的本质是契约</strong>，就像法律一样，制定好后大家去遵守</li>
-<li>是面向对象的精髓，是对对象的抽象，最能体现这一点的就是接口</li>
-<li>接口使用interface来定义</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//interface 定义接口关键字</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">UserService</span> &#123;</span><br><span class="line">    <span class="comment">//接口中定义属性是一个常量，默认加上public static final修饰,一般不会在接口中定义属性</span></span><br><span class="line">    <span class="type">int</span> <span class="variable">AGE</span> <span class="operator">=</span> <span class="number">99</span>;</span><br><span class="line">    <span class="comment">//接口中的定义都是抽象的，接口中的方法就算不写默认也是加上public abstract的</span></span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象类：extends，单继承</span></span><br><span class="line"><span class="comment">//类 可以实现接口，通过implements接口，接口之间用&#x27;，&#x27;隔开实现多继承</span></span><br><span class="line"><span class="comment">//实现接口的类，就需要重写接口中的方法</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UserServiceImpl</span> <span class="keyword">implements</span> <span class="title class_">UserService</span>,TimeService&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">timer</span><span class="params">()</span> &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>接口的作用</p>
-<ol>
-<li>约束</li>
-<li>定义一些方法，让不同的人实现</li>
-<li>所有方法都是public abstract</li>
-<li>所有属性都是public static final</li>
-<li>接口不能被实例化，接口中没有构造方法</li>
-<li>implements 可以实现多个接口</li>
-<li>必须要重写接口中的方法</li>
-</ol>
-<hr>
-<h4 id="内部类"><a href="#内部类" class="headerlink" title="内部类"></a>内部类</h4><ul>
-<li>内部类就是在一个类的内部再定义一个类。比如，A类中定义一个B类，那么B类对于A类来说就称为内部类，而A类相对于B类来说就是外部类。</li>
-</ul>
-<ol>
-<li>成员内部类</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//一个类中创建的另一个类就是</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Outer</span> &#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="type">int</span> id=<span class="number">10</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">out</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;这是一个外部类方法&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Inner</span>&#123;</span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">in</span><span class="params">()</span>&#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;这是一个内部类方法&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//获得外部类的私有属性</span></span><br><span class="line">        <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">getID</span><span class="params">()</span>&#123;</span><br><span class="line">            System.out.println(id);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//实例化内部类需要实例化外部类后通过外部类再实例化内部类</span></span><br><span class="line"><span class="type">Outer</span> <span class="variable">outer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Outer</span>();</span><br><span class="line">Outer.<span class="type">Inner</span> <span class="variable">inner</span> <span class="operator">=</span> outer.<span class="keyword">new</span> <span class="title class_">Inner</span>();</span><br><span class="line"><span class="comment">//内部类可以访问外部类的一些私有属性</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">A</span>&#123;&#125;</span><br><span class="line"><span class="comment">//public class A&#123;&#125; 报错</span></span><br><span class="line"><span class="comment">//在一个java类中可以有多个class类，但是只能有一个public class</span></span><br></pre></td></tr></table></figure>
-
-<ol start="2">
-<li>静态内部类</li>
-</ol>
-<p>​		静态内部类就是内部类前加上static修饰，暂时没有详讲</p>
-<ol start="3">
-<li>局部内部类</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Outer</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">method</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="keyword">class</span> <span class="title class_">Inner</span>&#123;</span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">in</span><span class="params">()</span>&#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在方法内部创建的类就是局部内部类</span></span><br></pre></td></tr></table></figure>
-
-<ol start="4">
-<li>匿名内部类</li>
-</ol>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Test</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//没有名字初始化，不用将实例保存到变量中</span></span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">Apple</span>().eat();</span><br><span class="line">        <span class="keyword">new</span> <span class="title class_">UserService</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span> &#123;</span><br><span class="line">                </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Apple</span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">eat</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.println(<span class="string">&quot;eat&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> <span class="title class_">UserService</span>&#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">hello</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
       
 
       
@@ -568,18 +253,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/03/28/JAVA_day07/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JAVA学习_day07
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/03/28/JAVA_day05/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JAVA学习_day05</div>
+    <a href="/2023/03/28/JAVA_day13/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JAVA学习_day13</div>
       <i class="icon-circle-right"></i>
     </a>
   

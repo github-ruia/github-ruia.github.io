@@ -6,17 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Hexo</title>
+  <title>ruia的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="ruia的个人博客">
 <meta property="og:url" content="http://example.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="ruia的个人博客">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
-    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="ruia的个人博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/asset/img/兔逊.jpg">
@@ -77,7 +76,7 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+					<a class="github" target="_blank" href="https://github.com/github-ruia/github-ruia.github.io" title="github"><i class="icon-github"></i></a>
 		        
 					<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 		        
@@ -114,7 +113,7 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+						<a class="github" target="_blank" href="https://github.com/github-ruia/github-ruia.github.io" title="github"><i class="icon-github"></i></a>
 			        
 						<a class="weixin" target="_blank" href="#" title="weixin"><i class="icon-weixin"></i></a>
 			        
@@ -143,6 +142,135 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Hexo-Github静态博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/28/Hexo-Github%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">Hexo+Github静态博客搭建</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/Hexo-Github%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+  	<time datetime="2023-03-28T07:47:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="搭建Hexo-github静态博客"><a href="#搭建Hexo-github静态博客" class="headerlink" title="搭建Hexo+github静态博客"></a>搭建Hexo+github静态博客</h3><ol>
+<li><p>首先要安装Git、Note.js、Python</p>
+<p>下载地址：git</p>
+<p>Git网址：<code>https://git-scm.com/</code> 默认会自动配置环境变量</p>
+<p> 检查是否安装成功：git -v</p>
+<p>Node.js网址:<code>http://nodejs.cn/</code> 默认会自动配置环境变量</p>
+<p> 检查是否安装成功：在终端输入node -v</p>
+</li>
+<li><p>部署hexo环境</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https://registry.npm.taobao.org	<span class="comment">#安装淘宝的cnpm管理器</span></span><br><span class="line">cnpm -v	<span class="comment">#查看cnpm版本，显示cnpm版本说明安装成功</span></span><br><span class="line"></span><br><span class="line">cnpm install -g hexo-cli	<span class="comment">#安装hexo框架，作用和 npm install hexo-cli -g 命令一样</span></span><br><span class="line">hexo -v	<span class="comment">#查看hexo版本</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#然后随便在什么地方创建一个文件夹，该文件夹是自己博客的载体，名字随意，我这里就命名为blog，进入blog目录中打开终端</span></span><br><span class="line"></span><br><span class="line">hexo init	<span class="comment">#生成博客所需的依赖文件的，cmd下载不行的话可以用Git Bash终端试试，但是Git Bash要cd到自己的博客目录里面</span></span><br><span class="line"><span class="comment">#cmd也是，否则会出现无法现在的情况，其中blog为自己博客</span></span><br><span class="line"></span><br><span class="line">hexo s	                      <span class="comment">#启动本地博客服务</span></span><br><span class="line"></span><br><span class="line">http://localhost:4000/	      <span class="comment">#本地访问的地址</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>github新建仓库</p>
+<p>打开<code>https://github.com/</code>，New repository 新建一个仓库</p>
+<p>输入自己的仓库名字，后面一定要加<code>.github.io</code>后缀，README初始化也要勾上。<strong>名称一定要和你的github名字完全一样，比如你github名字叫<code>abc</code>，那么仓库名字一定要是<code>abc.github.io</code>。</strong></p>
+<p>然后就创建完成了</p>
+</li>
+<li><p>连接Github与本地</p>
+<p>打开终端运行以下命令生成密钥SSH key：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">&quot;自己博客的用户名&quot;</span></span><br><span class="line">git config --global user.email <span class="string">&quot;自己的邮箱地址&quot;</span></span><br><span class="line">ssh-keygen -t rsa -C <span class="string">&quot;自己的邮箱地址&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>执行完成后在系统用户文件夹下会出现.ssh文件夹。</p>
+<p>打开github，在头像下面点击<code>settings</code>，再点击<code>SSH and GPG keys</code>，新建一个SSH，名字随意，将.ssh&#x2F;id_rsa.pub文件中的内容复制到文本框中点击保存。</p>
+<p>在Git Bash Here中输入<code>ssh -T git@github.com</code>，填写创建密钥时的密码最终出现你的用户名，那就成功了。</p>
+<p>打开然后打开自己博客根目录里的 _config.yml文件，滑到最下面，找到一个名为<strong>deploy</strong>的选项，修改为：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: https://github.com/xxx/xxx.github.io</span><br><span class="line">  branch: main</span><br></pre></td></tr></table></figure>
+
+<p>repository修改为你自己的github项目地址。</p>
+</li>
+<li><p>到这里就部署完成了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo cl		//清理hexo缓存的</span><br><span class="line">hexo g		//生成静态网页</span><br><span class="line">hexo s		//运行本地测试环境，默认4000端口</span><br><span class="line">hexo d		//上传到服务器</span><br><span class="line">组合使用：</span><br><span class="line">hexo cl &amp;&amp;hexo g &amp;&amp;hexo d</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>写文章</p>
+<p>在博客根目录下右键打开git bash，安装一个扩展<code>npm i hexo-deployer-git</code>。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">hexo new &lt;模板&gt; &lt;文章名&gt;</span><br><span class="line">hexo new post <span class="string">&quot;article title&quot;</span>	<span class="comment">#新建一篇文章，文章路径:/source/_posts/，post可省略</span></span><br><span class="line">hexo new draft <span class="string">&quot;article title&quot;</span>	<span class="comment">#新建一篇草稿，文章路径:/source/_drafts/</span></span><br><span class="line">hexo new page <span class="string">&quot;article title&quot;</span>	<span class="comment">#新建页面（标签页，分类页等）,文章路径:/source/</span></span><br></pre></td></tr></table></figure>
+
+<p>打开目录，可以发现下面多了一个文件夹和一个<code>.md</code>文件，一个用来存放你的图片等数据，另一个就是新建的文章了。</p>
+<p>生成的文章比普通<code>.md</code>文章多一个文章头，自己建的markdown文件需要加上这种文件头才能上传，不然会报错</p>
+<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxx</span><br><span class="line">date: 2023-03-28 13:39:43</span><br><span class="line"><span class="section">tags:</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面截断显示</p>
+<p>默认情况下网站显示一篇文章的所有内容，这并不太美观，我们可以在文章中加入<code>&lt;!--more--&gt;</code>截断显示内容</p>
+<p>yilia下的_config.yml中的excerpt_link可以更改截断按钮文字</p>
+</li>
+</ol>
+<h3 id="设置博客主题"><a href="#设置博客主题" class="headerlink" title="设置博客主题"></a>设置博客主题</h3><p>主题我选择yilia：<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">https://github.com/litten/hexo-theme-yilia</a></p>
+<ol>
+<li><p>克隆到博客目录下的themes</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置</p>
+<p>修改博客目录下的<code>_config.yml</code>中<code>theme: yilia</code></p>
+<p>在末尾添加内容：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">jsonContent:</span><br><span class="line">    meta: false</span><br><span class="line">    pages: false</span><br><span class="line">    posts:</span><br><span class="line">      title: true</span><br><span class="line">      date: true</span><br><span class="line">      path: true</span><br><span class="line">      text: false</span><br><span class="line">      raw: false</span><br><span class="line">      content: false</span><br><span class="line">      slug: false</span><br><span class="line">      updated: false</span><br><span class="line">      comments: false</span><br><span class="line">      link: false</span><br><span class="line">      permalink: false</span><br><span class="line">      excerpt: false</span><br><span class="line">      categories: false</span><br><span class="line">      tags: true</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>更新主题</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/yilia</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置主题内容在博客目录下的themes&#x2F;yalia&#x2F;_config.yml中</p>
+<p>参考<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E6%9B%B4%E6%94%B9%E8%BE%BE%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9C%80%E6%B1%82">https://github.com/litten/hexo-theme-yilia中的内容进行更改达到自己的需求</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># 文章太长，截断按钮文字</span><br><span class="line">excerpt_link: &#x27;展开全文&#x27;</span><br><span class="line"></span><br><span class="line"># 打赏type设定：0-关闭打赏； 1-文章对应的md文件里有reward:true属性，才有打赏； 2-所有文章均有打赏</span><br><span class="line">reward_type: 0</span><br><span class="line"># 打赏wording</span><br><span class="line">reward_wording: &#x27;谢谢能得到你的喜欢&#x27;</span><br><span class="line"></span><br><span class="line">#网站图标</span><br><span class="line">favicon: /asset/img/兔逊.jpg</span><br><span class="line"></span><br><span class="line">#你的头像url</span><br><span class="line">avatar: /asset/img/兔逊.jpg</span><br><span class="line"></span><br><span class="line"># 智能菜单</span><br><span class="line"># 如不需要，将该对应项置为false</span><br><span class="line"># 比如</span><br><span class="line">#smart_menu:</span><br><span class="line">#  friends: false</span><br><span class="line">smart_menu:</span><br><span class="line">  innerArchive: &#x27;所有文章&#x27;</span><br><span class="line">  friends: &#x27;友链&#x27;</span><br><span class="line">  aboutme: &#x27;关于我&#x27;</span><br><span class="line">friends:</span><br><span class="line">  无: http://localhost:4000/</span><br><span class="line">aboutme: 希望能得到大家的喜欢，谢谢！</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://mao-design.gitee.io/2022/12/23/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/%E6%90%AD%E5%BB%BA%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">https://mao-design.gitee.io/2022/12/23/搭建个人博客/搭建个人博客/</a></p>
+<p><a target="_blank" rel="noopener" href="https://godweiyang.com/2018/04/13/hexo-blog/">https://godweiyang.com/2018/04/13/hexo-blog/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">https://github.com/litten/hexo-theme-yilia</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/28/Hexo-Github%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-JAVA_day13" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -729,71 +857,6 @@
 
 
   
-    <article id="post-JAVA_day04" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/JAVA_day04/">JAVA学习_day04</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/JAVA_day04/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="Java方法"><a href="#Java方法" class="headerlink" title="Java方法"></a>Java方法</h3>
-        
-          <a class="article-more-a" href="/2023/03/28/JAVA_day04/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/JAVA_day04/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -808,7 +871,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2023 John Doe
+    		&copy; 2023 ruia的个人博客
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
