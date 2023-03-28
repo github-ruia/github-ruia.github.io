@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Hexo+Github静态博客搭建 | ruia的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="搭建Hexo+github静态博客 首先要安装Git、Note.js、Python 下载地址：git Git网址：https:&#x2F;&#x2F;git-scm.com&#x2F; 默认会自动配置环境变量  检查是否安装成功：git -v Node.js网址:http:&#x2F;&#x2F;nodejs.cn&#x2F; 默认会自动配置环境变量  检查是否安装成功：在终端输入node -v  部署hexo环境 1234567891011121314n">
+  <meta name="description" content="搭建Hexo+github静态博客">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Hexo+Github静态博客搭建">
 <meta property="og:url" content="http://example.com/2023/03/28/Hexo-Github%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/index.html">
 <meta property="og:site_name" content="ruia的个人博客">
-<meta property="og:description" content="搭建Hexo+github静态博客 首先要安装Git、Note.js、Python 下载地址：git Git网址：https:&#x2F;&#x2F;git-scm.com&#x2F; 默认会自动配置环境变量  检查是否安装成功：git -v Node.js网址:http:&#x2F;&#x2F;nodejs.cn&#x2F; 默认会自动配置环境变量  检查是否安装成功：在终端输入node -v  部署hexo环境 1234567891011121314n">
+<meta property="og:description" content="搭建Hexo+github静态博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-03-28T07:47:00.000Z">
-<meta property="article:modified_time" content="2023-03-28T09:29:57.078Z">
+<meta property="article:modified_time" content="2023-03-28T09:32:21.126Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ruia的个人博客" type="application/atom+xml">
@@ -165,7 +165,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="搭建Hexo-github静态博客"><a href="#搭建Hexo-github静态博客" class="headerlink" title="搭建Hexo+github静态博客"></a>搭建Hexo+github静态博客</h3><ol>
+        <h3 id="搭建Hexo-github静态博客"><a href="#搭建Hexo-github静态博客" class="headerlink" title="搭建Hexo+github静态博客"></a>搭建Hexo+github静态博客</h3><span id="more"></span>
+
+<ol>
 <li><p>首先要安装Git、Note.js、Python</p>
 <p>下载地址：git</p>
 <p>Git网址：<code>https://git-scm.com/</code> 默认会自动配置环境变量</p>
@@ -202,12 +204,7 @@
 
 <p>打开目录，可以发现下面多了一个文件夹和一个<code>.md</code>文件，一个用来存放你的图片等数据，另一个就是新建的文章了。</p>
 <p>生成的文章比普通<code>.md</code>文章多一个文章头，自己建的markdown文件需要加上这种文件头才能上传，不然会报错</p>
-<figure class="highlight md"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxx</span><br><span class="line">date: 2023-03-28 13:39:43</span><br><span class="line"><span class="section">tags:</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面截断显示</p>
-<p>默认情况下网站显示一篇文章的所有内容，这并不太美观，我们可以在文章中加入<code>&lt;!--more--&gt;</code>截断显示内容</p>
-<p>yilia下的_config.yml中的excerpt_link可以更改截断按钮文字</p>
-</li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: xxx</span><br><span class="line">date: 2023-03-28 13:39:43</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="设置博客主题"><a href="#设置博客主题" class="headerlink" title="设置博客主题"></a>设置博客主题</h3><p>主题我选择yilia：<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia">https://github.com/litten/hexo-theme-yilia</a></p>
 <ol>
@@ -223,6 +220,12 @@
 </li>
 <li><p>更新主题</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> themes/yilia</span><br><span class="line">git pull</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>页面截断显示</p>
+<p>默认情况下网站显示一篇文章的所有内容，这并不太美观，我们可以在文章中加入<code>&lt;!--more--&gt;</code>截断显示内容</p>
+<p>yilia下的_config.yml中的excerpt_link可以更改截断按钮文字</p>
 </li>
 <li><p>配置主题内容在博客目录下的themes&#x2F;yalia&#x2F;_config.yml中</p>
 <p>参考<a target="_blank" rel="noopener" href="https://github.com/litten/hexo-theme-yilia%E4%B8%AD%E7%9A%84%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%E6%9B%B4%E6%94%B9%E8%BE%BE%E5%88%B0%E8%87%AA%E5%B7%B1%E7%9A%84%E9%9C%80%E6%B1%82">https://github.com/litten/hexo-theme-yilia中的内容进行更改达到自己的需求</a></p>
