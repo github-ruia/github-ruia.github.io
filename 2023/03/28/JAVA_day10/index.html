@@ -6,13 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023/3 | Hexo</title>
+  <title>JAVA学习_day10 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/03/index.html">
+  <meta name="description" content="Java_IO流">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA学习_day10">
+<meta property="og:url" content="http://example.com/2023/03/28/JAVA_day10/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Java_IO流">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-28T05:50:43.000Z">
+<meta property="article:modified_time" content="2023-03-28T07:14:14.498Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
@@ -142,295 +146,484 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JAVA_day10" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day13/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:55:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day13/">JAVA学习_day13</a>
+    <h1 class="article-title" itemprop="name">
+      JAVA学习_day10
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day12/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:53:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day12/">JAVA学习_day12</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day11/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:51:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day11/">JAVA学习_day11</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day10/" class="archive-article-date">
+        
+        <a href="/2023/03/28/JAVA_day10/" class="archive-article-date">
   	<time datetime="2023-03-28T05:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day10/">JAVA学习_day10</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Java-IO流"><a href="#Java-IO流" class="headerlink" title="Java_IO流"></a>Java_IO流</h3><span id="more"></span>
 
-        <div class="article-info info-on-right">
-          
-          
+<p>小节目标：</p>
+<ul>
+<li><p>理解什么是IO流，IO流的分类有哪些，使用IO流能做什么？</p>
+<p>在Java中IO流是用来进行数据传输的一项技术。</p>
+</li>
+<li><p>能够正确使用字符&#x2F;字节缓冲流读写文件</p>
+</li>
+<li><p>能够正确处理IO流程序开发过程中的异常</p>
+</li>
+</ul>
+<p>小节内容：</p>
+<ol>
+<li><p>基本概念</p>
+<ul>
+<li>什么是IO流？</li>
+<li>IO流体系</li>
+<li>IO流操作的异常<ul>
+<li>什么是异常</li>
+<li>异常体系</li>
+<li>怎么处理异常</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>IO流的使用</p>
+<ul>
+<li>字符流</li>
+<li>字节流</li>
+</ul>
+<p>它们都是用来操作文件的，在读写文件的过程中难免会遇到异常，怎么处理异常呢？要么抛出异常、要么捕获异常</p>
+</li>
+</ol>
+<p>学习方法：</p>
+<ul>
+<li><p>根据API文档使用步骤查找并使用IO流体系中的类</p>
+<p>查找输入&#x2F;输出流类</p>
+<p>查看构造方法</p>
+<p><strong>创建输入&#x2F;输出流类对象</strong></p>
+<p><strong>处理异常</strong></p>
+<p><strong>读&#x2F;写操作</strong></p>
+<p><strong>关闭输入&#x2F;输出流</strong></p>
+</li>
+<li><p>代码知识</p>
+<p>记住IO流体系中输入输出流操作数据的特点</p>
+<p>用不同方式实现字节流、字符流读写文件（重点）</p>
+</li>
+</ul>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a>异常</h4><p>什么是异常？<br>    即非正常情况，通俗地说，异常就是程序出现的错误。<br>异常的分类(Throwable)</p>
+<ul>
+<li>异常(Exception)    &#x2F;&#x2F;可预料的<br>合理的应用程序可能需要捕获的异常<br>如:NullPointerException</li>
+<li>错误(Error)    &#x2F;&#x2F;不可预料的<br>合理的应用程序不应该试图捕获的问题<br>如:StackOverFlowError</li>
+</ul>
+<p>异常的处理方式：</p>
+<ol>
+<li>JVM默认的异常处理方式：在控制台打印错误信息，并终止程序</li>
+<li>开发中异常的处理方式：<ul>
+<li>try…catch(finally)  &#x2F;&#x2F;捕获，自己处理</li>
+<li>throws   &#x2F;&#x2F;抛出，交给调用者处理</li>
+</ul>
+</li>
+</ol>
+<p>try…catch格式：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span>&#123;</span><br><span class="line">  <span class="comment">//尝试执行的代码(可能出现问题的代码)</span></span><br><span class="line">&#125;<span class="keyword">catch</span>(Exception e)&#123;</span><br><span class="line">  <span class="comment">//出现问题后的解决方案</span></span><br><span class="line">&#125;<span class="keyword">finally</span>&#123;</span><br><span class="line">  <span class="comment">//写在这里的代码正常情况下一定会执行，一般用来释放资源的</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<p>特点：<br>  处理完异常之后，程序会继续执行.<br>执行流程：<br>    先执行try{}中的内容，执行完成后没有异常就跳转到finally语句中执行，如果出现异常则直接跳转执行catch(){}中的语句，执行完成后再执行finally中的内容。</p>
+<p>throws格式：<br>    public void xxx() throws Exception{}<br>    方案一：接着抛<br>          异常抛给调用者一直抛到main函数再往上会抛给JVM处理，就是在控制台打印错误信息，并终止程序。<br>    方案二：采用try…catch处理调用者</p>
+<hr>
+<h4 id="IO流概述"><a href="#IO流概述" class="headerlink" title="IO流概述"></a>IO流概述</h4><p>什么是IO流？<br>    IO，即输入(Input)输出(Output)，IO流指的是数据像连绵的流体一样进行传输。</p>
+<p>IO流能干什么？<br>    在本地磁盘和网络上操作数据。<br>IO流的分类：</p>
+<ul>
+<li><p>按数据流向分：</p>
+<ul>
+<li>输入流：读数据</li>
+<li>输出流：写数据</li>
+</ul>
+</li>
+<li><p>按操作方式分：</p>
+<ul>
+<li>字节流<br>InputStream：字节输入流的顶层抽象类<br>OutputStream：字节输出流的顶层抽象类</li>
+<li>字符流<br>Reader：字符输入流的顶层抽象类<br>Writer：字符输出流的顶层抽象类</li>
+</ul>
+</li>
+</ul>
+<p>IO流体系：</p>
+<ul>
+<li><p>字符流：按字符读写数据的IO流</p>
+<p>Reader(抽象类，需要使用子类)</p>
+<ul>
+<li>FileReader（普通的字符输入流）</li>
+<li>BufferedReader(高效的字符输入流，也叫缓冲字符输入流)</li>
+</ul>
+<p>Writer(抽象类，需要使用子类)</p>
+<ul>
+<li>FileWriter（普通的字符输出流）</li>
+<li>BufferedWriter（高效的字符输出流，也叫缓冲字符输出流）</li>
+</ul>
+</li>
+<li><p>字节流</p>
+<p>InputStream(抽象类，需要使用子类)</p>
+<ul>
+<li>FileInputStream（普通的字节输入流）</li>
+<li>BufferedInputStream（高效的字节输入流，也叫缓冲字节输入流）</li>
+</ul>
+<p>OutputStream(抽象类，需要使用子类)</p>
+<ul>
+<li>FileOutputStream（普通的字节输出流）</li>
+<li>BufferedOutputStream（高效的字节输出流，也叫缓冲字节输出流）</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="File类"><a href="#File类" class="headerlink" title="File类"></a>File类</h4><p>概念：<br>    文件，文件夹，一个File对象代表磁盘上的某个文件或文件夹<br>    就是用来操作路径的<br>构造方法：</p>
+<ul>
+<li><p>File(String pathname)</p>
+</li>
+<li><p>File(String parent,String child)</p>
+</li>
+<li><p>File(File parent,String child)</p>
+</li>
+</ul>
+<p>成员方法：（创建与判断）</p>
+<ul>
+<li>createNewFile()：创建文件</li>
+<li>mkdir()和mkdirs()：创建目录，mkdir只能单级创建</li>
+<li>isDirectory()：判断File对象是否为目录</li>
+<li>isFile()：判断File对象是否为文件</li>
+<li>exists()：判断File对象是否存在</li>
+</ul>
+<p>成员方法：（获取功能）</p>
+<ul>
+<li>File getAbsolutePath()：获取绝对路径</li>
+<li>String getPath()：获取文件的相对路径</li>
+<li>String getName()：获取文件名</li>
+<li>String[] list()：获取指定目录下所有文件(夹)名称数组</li>
+<li>listFiles()：获取指定目录下所有文件(夹)File数组</li>
+</ul>
+<p>list()方法获取的是String[]类型，listFiles获取的是File[]对象数组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.File;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;        </span><br><span class="line">		<span class="comment">//C:\Users\22477\IdeaProjects\com.ruia</span></span><br><span class="line">		<span class="comment">//file1使用String数据指向不存在的地址lib</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">file1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\Users\\22477\\IdeaProjects\\com.ruia\\lib&quot;</span>);</span><br><span class="line">		<span class="comment">//file2使用String,String指向文件夹下不存在的地址abc</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">file2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:\\Users\\22477\\IdeaProjects\\com.ruia&quot;</span>,<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">		<span class="comment">//file3使用file1,List&lt;String&gt;的格式指向lib下的123地址</span></span><br><span class="line">        List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">&quot;123&quot;</span>);list.add(<span class="string">&quot;234&quot;</span>);</span><br><span class="line">        <span class="type">File</span> <span class="variable">file3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(file1,list.get(<span class="number">0</span>));</span><br><span class="line">		<span class="comment">//以上类型都成功创建</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">		<span class="comment">//创建指定文件，如已存在则不进行创建返回值false；如果不存在则创建并返回true</span></span><br><span class="line">        file2.createNewFile();</span><br><span class="line">        file3.createNewFile();</span><br><span class="line">		</span><br><span class="line">		<span class="comment">//mkdir单级创建目录，mkdirs能够创建多级目录</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="string">&quot;a/b/c/d/e&quot;</span>;	<span class="comment">//定义一个多级目录的格式，a文件夹中包含b文件夹，b文件夹中包含c文件夹</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">file4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(file1, s);</span><br><span class="line">		<span class="comment">//file4.mkdir();如果进行多级目录的创建则返回false，目录不会进行创建</span></span><br><span class="line">        file4.mkdirs();</span><br><span class="line">		<span class="comment">//判断file4是否是目录、文件、存在</span></span><br><span class="line">        System.out.println(file4.isDirectory());	<span class="comment">//是否是目录，true</span></span><br><span class="line">        System.out.println(file4.isFile());			<span class="comment">//是否是文件，false</span></span><br><span class="line">        System.out.println(file4.exists());			<span class="comment">//是否存在，true</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">      <span class="comment">//创建一个File对象指向相对路径下的lib</span></span><br><span class="line"><span class="type">File</span> <span class="variable">file5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;lib&quot;</span>);</span><br><span class="line">      System.out.println(file5.getAbsoluteFile());<span class="comment">//打印绝对路径，C:\Users\22477\IdeaProjects\com.ruia\lib</span></span><br><span class="line">      System.out.println(file5.getPath());<span class="comment">//打印相对路径，lib</span></span><br><span class="line">      System.out.println(file5.getName());<span class="comment">//打印文件名，lib</span></span><br><span class="line">      String[] s1 = file5.list();<span class="comment">//list(返回的是一个String数组，直接打印会调用Object的toString方法打印地址值，所以需要循环打印每一个值)</span></span><br><span class="line">      <span class="keyword">for</span> (String ss : s1) &#123;</span><br><span class="line">          System.out.println(ss);</span><br><span class="line">      &#125;</span><br><span class="line">      File[] f = file5.listFiles();<span class="comment">//listFiles(返回的是一个Fileg数组，直接打印会调用Object的toString方法打印地址值，所以需要循环打印每一个值)</span></span><br><span class="line">      <span class="keyword">for</span> (File fi : f) &#123;</span><br><span class="line">          System.out.println(fi);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="字符流读文件"><a href="#字符流读文件" class="headerlink" title="字符流读文件"></a>字符流读文件</h4><p>字符流读写数据－按单个字符读取<br>创建字符流读文件对象：<br>    Reader reader ＝ new FileReader(“readme.txt”);<br>调用方法读取数据：<br>    int data ＝ reader.read();<br>    读取一个字符，返回该字符代表的整数(a返回97)，若达到流的末尾，返回-1<br>异常处理：<br>    throws IOException<br>关闭资源：<br>    reader.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//创建字符流读取文件对象</span></span><br><span class="line">        <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line">        <span class="comment">//定义一个len接收获取的字符</span></span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line">        <span class="comment">//循环读取文件的方法，将获取到的字符赋值给len</span></span><br><span class="line">        <span class="keyword">while</span>((len = reader.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">            System.out.println(len); <span class="comment">//打印结果</span></span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        reader.close();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>字符流读数据－按字符数组读取：<br>创建一个字符流读文件对象：<br>    Reader reader ＝ new FileReader(“readme.txt”);<br>调用方法读取数据：<br>    char[] chs &#x3D; new char[2048];<br>    int len &#x3D; r.read(chs);<br>    读取字符到数组中(数组大小代表一次可读的字符数),返回读取的字符数(返回值是读取的字符长度len，而读取到的字符直接存放到了字符数组中chs)，若达到流的末尾，返回-1。<br>异常处理：<br>    throws IOException<br>关闭资源：<br>    reader.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileReader;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Reader;    </span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//创建字符流读取文件对象</span></span><br><span class="line">        <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line">        <span class="comment">//定义chs代表获取字符的数据大小为3，定义len代表有效字符数</span></span><br><span class="line">        <span class="type">char</span>[] chs = <span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">3</span>];</span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line">        <span class="comment">//循环读取文件的方法，获取到的字符存入chs中，并返回获取字符的数量给len</span></span><br><span class="line">        <span class="keyword">while</span>((len = reader.read(chs)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">//定义一个String，输出有效字符数</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(chs,<span class="number">0</span>,len);</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br><span class="line">		<span class="comment">//释放资源</span></span><br><span class="line">        reader.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="字符流写文件"><a href="#字符流写文件" class="headerlink" title="字符流写文件"></a>字符流写文件</h4><p>字符串写数据－按单个字符写入<br>创建字符流写文件对象：<br>    Writer writer ＝ new FileWriter(“dest.txt”);  &#x2F;&#x2F;dest要写入的文件<br>调用方法写入数据：<br>    int x &#x3D; ‘中’  &#x2F;&#x2F;因为字符的底层是整数所以可以用int接收。<br>    writer.write(x);  &#x2F;&#x2F;写一个字符,写入时覆盖文本的内容<br>异常处理：<br>    throws IOException<br>关闭资源:<br>    writer.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//创建字符流写文件对象</span></span><br><span class="line">        <span class="type">Writer</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line">        <span class="comment">//定义一个要写入的字符,因为字符底层也是整数所以可以定义成int类型</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">ch</span> <span class="operator">=</span> <span class="string">&#x27;中&#x27;</span>;</span><br><span class="line">        <span class="comment">//写入字符</span></span><br><span class="line">        writer.write(ch);</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>字符流写数据－按字符数组写入<br>创建字符流写文件对象：<br>    Writer writer ＝ new FileWriter(“dest.txt”);<br>调用方法写入数据：<br>    char[] chs ＝ {‘J’,‘a’,‘v’,‘a’};<br>    writer.write(chs,起始下标,要操作的个数);<br>异常处理：<br>    throws IOException<br>关闭资源：<br>    writer.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//创建一个字符流写文件对象</span></span><br><span class="line">        <span class="type">Writer</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line">        <span class="comment">//定义要写入的字符数组</span></span><br><span class="line">        <span class="type">char</span>[] chs = &#123;<span class="string">&#x27; &#x27;</span>,<span class="string">&#x27;为&#x27;</span>,<span class="string">&#x27;中&#x27;</span>,<span class="string">&#x27;华&#x27;</span>,<span class="string">&#x27;之&#x27;</span>,<span class="string">&#x27;崛&#x27;</span>,<span class="string">&#x27;起&#x27;</span>,<span class="string">&#x27;而&#x27;</span>,<span class="string">&#x27;读&#x27;</span>,<span class="string">&#x27;书&#x27;</span>,<span class="string">&#x27;.&#x27;</span>&#125;;</span><br><span class="line">        <span class="comment">//写入从下标1开始的9个字符</span></span><br><span class="line">        writer.write(chs,<span class="number">1</span>,<span class="number">9</span>);</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>字符流写数据－按字符串写入<br>创建字符流写文件对象：<br>    Writer writer ＝ new FileWriter(“dest.txt”);<br>调用方法写入数据：<br>    writer.write(“学习Java”);<br>    写一个字符串<br>异常处理：<br>    throws IOException<br>关闭资源：<br>    writer.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.FileWriter;</span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"><span class="keyword">import</span> java.io.Writer;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//创建字符流写入对象</span></span><br><span class="line">        <span class="type">Writer</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line">        <span class="comment">//写入字符串</span></span><br><span class="line">        writer.write(<span class="string">&quot;为中华之崛起而读书！&quot;</span>);</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="字符流拷贝文件"><a href="#字符流拷贝文件" class="headerlink" title="字符流拷贝文件"></a>字符流拷贝文件</h4><p>字符流拷贝文件－按单个字符读写<br>创建字符流读文件对象：<br>    Reader reader ＝ new FileReader(“readme.txt”);<br>创建字符流写文件对象：<br>    Writer writer ＝ new FileWriter(“dest.txt”);<br>调用方法读取数据：<br>    int data ＝ reader.read();<br>调用方法写入数据：<br>    writer.write(data);<br>异常处理：<br>    throws IOException<br>关闭资源：<br>    reader.close();<br>    writer.close();</p>
+<p>六大基本步骤</p>
+<p>1.创建字符输入流对象，关联数据源文件<br>2.创建字符输出流对象，关联目的地文件<br>3.定义变量，记录读取到的内容<br>4.循环读取，只要条件满足就一直读，并将读取到的内容赋值给变量<br>5.将读取到的数据写到目的地文件中<br>6.释放资源</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line"><span class="comment">//        1.创建字符输入流对象，关联数据源文件</span></span><br><span class="line">        <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line"><span class="comment">//        2.创建字符输出流对象，关联目的地文件</span></span><br><span class="line">        <span class="type">Writer</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;lib/123&quot;</span>);</span><br><span class="line"><span class="comment">//        3.定义变量，记录读取到的内容</span></span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line"><span class="comment">//        4.循环读取，只要条件满足就一直读，并将读取到的内容赋值给变量</span></span><br><span class="line">        <span class="keyword">while</span>((len = reader.read())!= -<span class="number">1</span>)&#123;</span><br><span class="line"><span class="comment">//        5.将读取到的数据写到目的地文件中</span></span><br><span class="line">            writer.write(len);</span><br><span class="line">        &#125;</span><br><span class="line"><span class="comment">//        6.释放资源</span></span><br><span class="line">        reader.close();</span><br><span class="line">        writer.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>字符流拷贝文件－按字符数组读写</p>
+<p>创建字符流读文件对象：<br>    Reader reader ＝ new FileReader(“readme.txt”);<br>创建字符流写文件对象：<br>    Writer writer &#x3D; new FileWriter(dest.txt);<br>调用方法读取数据：<br>    char[] chs &#x3D; new char[2048]; &#x2F;&#x2F;最好使用1024的倍数<br>    int len &#x3D; reader.read(chs);<br>调用方法写入数据：<br>    writer.write(chs,0,len);<br>异常处理：<br>    throws IOException<br>释放资源：<br>    reader.close();<br>    writer.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">    <span class="comment">//1.创建字符输入流对象，关联数据源文件</span></span><br><span class="line">    <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line">    <span class="comment">//2.创建字符输出对象，关联目的地文件</span></span><br><span class="line">    <span class="type">Writer</span> <span class="variable">writer</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;lib/123&quot;</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//定义存放读取字符的数组</span></span><br><span class="line">    <span class="type">char</span>[] chs = <span class="keyword">new</span> <span class="title class_">char</span>[<span class="number">2048</span>];</span><br><span class="line">    <span class="comment">//定义len记录有效字符数量</span></span><br><span class="line">    <span class="type">int</span> len;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//循环获取字符流</span></span><br><span class="line">    <span class="keyword">while</span>((len = reader.read(chs)) != -<span class="number">1</span>)&#123;</span><br><span class="line">        <span class="comment">//转换成String类型，写入有效字符</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(chs,<span class="number">0</span>,len);</span><br><span class="line">        writer.write(s);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//释放资源</span></span><br><span class="line">    reader.close();</span><br><span class="line">    writer.close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="字符缓冲流拷贝文件-字符流只能拷贝纯文本文件的内容"><a href="#字符缓冲流拷贝文件-字符流只能拷贝纯文本文件的内容" class="headerlink" title="字符缓冲流拷贝文件(字符流只能拷贝纯文本文件的内容)"></a>字符缓冲流拷贝文件(字符流只能拷贝纯文本文件的内容)</h4><p>创建字符流读文件对象：<br>    BufferedReader br ＝ new BufferedReader(new FileReader(“readme.txt”));<br>创建字符流写文件对象：<br>    BufferedWriter bw &#x3D; new BufferedWriter(new FileWriter(“dest.txt”));<br>异常处理：<br>    throws IOException<br>使用while循环读写数据：<br>    int len；<br>    while（(len ＝ br.read() !&#x3D; -1）{</p>
+<p>​		bw.write(len);	}<br>关闭资源：<br>​	br.close();<br>​	bw.close();</p>
+<p>BufferedReader:字符缓冲输入流(也叫高效字符输入流)<br>构造方法：<br>    public BufferedReader(Reader reader);<br>    BufferedWriter:字符缓冲输出流(也叫高效字符输出流)<br>构造方法：<br>    public BufferedWriter(Writer writer);</p>
+<p>特点：<br>    字符缓冲流自带有缓冲区，大小为8192个字符，也就是16KB。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//创建BufferedReader对象，参数是一个Read对象</span></span><br><span class="line">        <span class="type">Reader</span> <span class="variable">reader</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;lib/1243&quot;</span>);</span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(reader);</span><br><span class="line">        <span class="comment">//简写</span></span><br><span class="line">        <span class="comment">//BufferedReader br = new BufferedReader(new FileReader(&quot;lib/1243&quot;));</span></span><br><span class="line">        <span class="comment">//创建BufferedWriter对象，参数是一个Writer对象</span></span><br><span class="line">        <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;lib/123&quot;</span>));</span><br><span class="line">        <span class="comment">//定义len接收字符</span></span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line">        <span class="comment">//循环获取字符流由len接收,read()一次获取一个字符</span></span><br><span class="line">        <span class="keyword">while</span>((len = br.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="comment">//写入字符流</span></span><br><span class="line">            bw.write(len);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        br.close();</span><br><span class="line">        bw.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>成员方法：</p>
+<p>BufferedReader:</p>
+<ul>
+<li><p>public String readLine();</p>
+<p>一次读取一行数据并返回读取到的内容，读不到就返回null。</p>
+</li>
+</ul>
+<p>BufferedWriter:</p>
+<ul>
+<li><p>public void newLine();</p>
+<p>根据操作系统给出对应的换行符(windows：\r\n，mac：\r，unix：\n)</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;    </span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="comment">//创建字符流输入输出对象</span></span><br><span class="line">        <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(<span class="keyword">new</span> <span class="title class_">FileReader</span>(<span class="string">&quot;lib/1243&quot;</span>));</span><br><span class="line">        <span class="type">BufferedWriter</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedWriter</span>(<span class="keyword">new</span> <span class="title class_">FileWriter</span>(<span class="string">&quot;lib/123&quot;</span>));</span><br><span class="line">        <span class="comment">//定义一个str接收读取到的字符</span></span><br><span class="line">        String str;</span><br><span class="line">        <span class="comment">//循环一行一行获取字符，末尾返回null</span></span><br><span class="line">        <span class="keyword">while</span> ((str = br.readLine()) != <span class="literal">null</span>)&#123;</span><br><span class="line">            <span class="comment">//写入读取到的数据，不会进行换行需要自己添加换行符</span></span><br><span class="line">            bw.write(str);</span><br><span class="line">            <span class="comment">//newLine()表示根据操作系统的不同写入的一个换行符</span></span><br><span class="line">            bw.newLine();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//释放资源</span></span><br><span class="line">        br.close();</span><br><span class="line">        bw.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="字节流读写文件"><a href="#字节流读写文件" class="headerlink" title="字节流读写文件"></a>字节流读写文件</h4><p>字节流拷贝文件－按字节读取<br>创建字节流读文件对象：<br>    InputStream is &#x3D; new FileInputStream(“readme.jpg”);<br>创建字节流写文件对象：<br>    OutputStream os &#x3D; new FileOutputStream(“dest.jpg”);<br>异常处理：<br>    throws IOException<br>使用while循环读写数据：<br>    while((len &#x3D; is.read()) !&#x3D; -1){<br>      os.write(len);<br>    }<br>释放资源：<br>    is.close();<br>    os.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line">		<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;C:\\Users\\22477\\Desktop\\images\\111_09.gif&quot;</span>);</span><br><span class="line">        <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:/Users/22477/IdeaProjects/com.ruia/lib/111.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line">        <span class="keyword">while</span>(( len = is.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">            os.write(len);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        is.close();</span><br><span class="line">        os.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p>字节流拷贝文件－按字节数组读写<br>创建字节流读文件对象：<br>    InputStream is &#x3D; new FileInputStream(“readme.jpg”);<br>创建字节流写文件对象：<br>    OutputStream os &#x3D; new FileOutputStream(“dest.jpg”);<br>异常处理：<br>    throws IOException<br>使用while循环读写数据：<br>    while((len &#x3D; is.read(chs)) !&#x3D; -1){<br>      os.write(chs,0,len);<br>    }<br>释放资源：<br>    is.close();<br>    os.close();</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">InputStream</span> <span class="variable">is</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;C:\\Users\\22477\\Desktop\\images\\111_06.gif&quot;</span>);</span><br><span class="line">        <span class="type">OutputStream</span> <span class="variable">os</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:/Users/22477/IdeaProjects/com.ruia/lib/11.jpg&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="type">byte</span>[] io = <span class="keyword">new</span> <span class="title class_">byte</span>[<span class="number">1024</span>];</span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>((len = is.read(io)) != -<span class="number">1</span>)&#123;</span><br><span class="line">            os.write(io,<span class="number">0</span>,len);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(io);</span><br><span class="line">        is.close();</span><br><span class="line">        os.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="字节缓冲流拷贝文件"><a href="#字节缓冲流拷贝文件" class="headerlink" title="字节缓冲流拷贝文件"></a>字节缓冲流拷贝文件</h4><p>创建字节流读文件对象：<br>    BufferedInputStream bis &#x3D; new BufferedInputStream(new FileInputStream(“readme.jpg”));<br>创建字节流写文件对象：<br>    BufferedOutputStream bos &#x3D; new BufferedOutStream(new FileOutputStream(“dest.jpg”));<br>异常处理：<br>    throws IOException<br>使用while循环读写数据：<br>    while((len &#x3D; bis.read()) !&#x3D; -1){<br>        bos.write(len);<br>    }</p>
+<p>BufferedInputStream：字节缓冲输入流(也叫高效字节输入流)，用来读取数据的。<br>构造方法：<br>    public BufferedInputSteam(InputStream is);<br>成员方法：<br>    public int read();一次读取一个字节，并返回读取到的内容，读取不到返回-1</p>
+<p>BufferedoutputStream：字节缓冲输出流(也叫高效字节输出流)，用来写数据的。<br>构造方法：<br>    public BufferedoutputSteam(OutputStream os);<br>成员方法：<br>    public void write();一次写入一个字节</p>
+<p>特点：<br>    字节缓冲流有自己的缓冲区，大小为8192个字节，也就是8KB</p>
+<p>拷贝纯文本文件使用字符流，拷贝其他(如:图片、音频、视频等)使用字节流。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">BufferedInputStream</span> <span class="variable">bis</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(<span class="string">&quot;C:\\Users\\22477\\Desktop\\images\\111_11.gif&quot;</span>));</span><br><span class="line">        <span class="type">BufferedOutputStream</span> <span class="variable">bos</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:/Users/22477/IdeaProjects/com.ruia/lib/22.jpg&quot;</span>));</span><br><span class="line">        <span class="type">int</span> len;</span><br><span class="line">        <span class="keyword">while</span>((len = bis.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">            bos.write(len);</span><br><span class="line">        &#125;</span><br><span class="line">        bis.close();</span><br><span class="line">        bos.close();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="案例：上传图片"><a href="#案例：上传图片" class="headerlink" title="案例：上传图片"></a>案例：上传图片</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.BufferedRW;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">UpTupian</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        <span class="type">UpTupian</span> <span class="variable">ut</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">UpTupian</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//获取上传图片的地址，确保是一个正常地址</span></span><br><span class="line">        <span class="comment">//判断上传的图片是否存在、是否合法</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">path</span> <span class="operator">=</span> ut.getPath();</span><br><span class="line">        <span class="comment">//判断文件是否已存在</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> ut.isExists(path);</span><br><span class="line">        <span class="comment">//如果文件已存在则提示重新上传，如果不存在则拷贝上传</span></span><br><span class="line">        <span class="keyword">if</span> (flag)</span><br><span class="line">            System.out.println(<span class="string">&quot;图片已存在，请重新上传新图片！&quot;</span>);</span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//拷贝图片上传到C:/Users/22477/IdeaProjects/com.ruia/lib/u/</span></span><br><span class="line">            ut.uploadTp(path);</span><br><span class="line">            System.out.println(<span class="string">&quot;上传成功！&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//获取上传图片的地址，确保是一个正常地址，(判断上传的图片是否存在、是否合法)</span></span><br><span class="line">    <span class="keyword">public</span> File <span class="title function_">getPath</span><span class="params">()</span>&#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;请输入上传图片的地址(只能上传.jpg/.png)：&quot;</span>);</span><br><span class="line">        <span class="keyword">while</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">            <span class="comment">//创建扫描器对象接收用户输入的地址</span></span><br><span class="line">            <span class="type">Scanner</span> <span class="variable">sc</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> sc.nextLine();</span><br><span class="line">            <span class="comment">//判断后缀是否是.jpg/.png</span></span><br><span class="line">            <span class="keyword">if</span> (!str.endsWith(<span class="string">&quot;.jpg&quot;</span>) &amp;&amp; !str.endsWith(<span class="string">&quot;.png&quot;</span>))&#123;</span><br><span class="line">                System.out.print(<span class="string">&quot;只能上传.jpg/.png格式的图片，请重新上传：&quot;</span>);</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">			<span class="comment">//判断地址是否正确(判断是否存在这个路径)，判断是否是文件(目录也可以使用x.jpg的格式所以要判断它不是目录)</span></span><br><span class="line">            <span class="type">File</span> <span class="variable">file</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(str);</span><br><span class="line">            <span class="keyword">if</span> (file.exists() &amp;&amp; file.isFile())&#123;</span><br><span class="line">                <span class="keyword">return</span> file;</span><br><span class="line">            &#125;<span class="keyword">else</span> System.out.print(<span class="string">&quot;请上传一个正确的文件：&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断文件是否已存在</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">isExists</span><span class="params">(File path)</span>&#123;</span><br><span class="line">        <span class="comment">//创建目的地路径的对象获取目录下的所有文件名称组成集合遍历</span></span><br><span class="line">        <span class="type">File</span> <span class="variable">dest</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">File</span>(<span class="string">&quot;C:/Users/22477/IdeaProjects/com.ruia/lib/u&quot;</span>);</span><br><span class="line">        String[] exists = dest.list();</span><br><span class="line">        <span class="comment">//获取用户传入的文件名</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">name</span> <span class="operator">=</span> path.getName();</span><br><span class="line">        <span class="comment">//判断文件名是否与目录中的文件重名，重名则视为已存在</span></span><br><span class="line">        <span class="keyword">for</span> (String s : exists) &#123;</span><br><span class="line">            <span class="keyword">if</span> (name.equals(s))&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//拷贝图片上传到C:/Users/22477/IdeaProjects/com.ruia/lib/u/</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">uploadTp</span><span class="params">(File path)</span> <span class="keyword">throws</span> IOException &#123;</span><br><span class="line">        	<span class="comment">//创建输入输出流对象，分别传入拷贝文件的地址与目的地地址(上传目录+文件名)</span></span><br><span class="line">            <span class="type">BufferedInputStream</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedInputStream</span>(<span class="keyword">new</span> <span class="title class_">FileInputStream</span>(path));</span><br><span class="line">            <span class="type">BufferedOutputStream</span> <span class="variable">bw</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedOutputStream</span>(<span class="keyword">new</span> <span class="title class_">FileOutputStream</span>(<span class="string">&quot;C:/Users/22477/IdeaProjects/com.ruia/lib/u/&quot;</span> + path.getName()));</span><br><span class="line">            <span class="comment">//定义len接收获取到的字节流</span></span><br><span class="line">        	<span class="type">int</span> len;</span><br><span class="line">            <span class="keyword">while</span>((len = br.read()) != -<span class="number">1</span>)&#123;</span><br><span class="line">                <span class="comment">//写入字节流</span></span><br><span class="line">                bw.write(len);</span><br><span class="line">            &#125;</span><br><span class="line">        	<span class="comment">//释放资源</span></span><br><span class="line">            br.close();</span><br><span class="line">            bw.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="IO流补充"><a href="#IO流补充" class="headerlink" title="IO流补充"></a>IO流补充</h3><h4 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h4><p>1、什么是IO流<br>    存储和读取数据的解决方案<br>    I：Input o：Output<br>    流：像水流一样传输数据<br>2、IO流的作用<br>    用于读写数据（本地文件、网络）<br>3、IO流按照流向可以分类哪两种流？<br>    输出流：程序 –&gt; 文件<br>    输入流：文件 –&gt; 程序<br>4、IO流按照操作文件的类型可以分类为哪两种流<br>    字节流：可以操作所有类型的文件<br>    字符流：只能操作纯文本文件<br>5、什么是纯文本文件<br>    用windows系统自带的记事本打开并能读懂的文件<br>    txt文件、md文件、xml文件、lrc文件等</p>
+<h4 id="二、FileOutStream书写细节"><a href="#二、FileOutStream书写细节" class="headerlink" title="二、FileOutStream书写细节"></a>二、FileOutStream书写细节</h4><p>1、创建字节输出流对象<br>    细节1：参数是字符串表示的路径或者File对象都是可以的，<strong>最终都会转成File类型进行构造</strong><br>    细节2：如果文件不存在会创建一个新文件，但是要保证父级目录是存在的<br>    细节3：如果文件已存在，则会<strong>清空</strong>文件内容<br>2、写数据<br>    write方法的参数是整数，但是实际上写到本地文件中的是整数在ASCII上对应的字符<br>3、释放资源<br>    每次使用完流之后都要释放资源</p>
+<h4 id="三、FileOutputStream写数据的三种方式"><a href="#三、FileOutputStream写数据的三种方式" class="headerlink" title="三、FileOutputStream写数据的三种方式"></a>三、FileOutputStream写数据的三种方式</h4><p>1、void write(int b) &#x2F;&#x2F;一次写一个字节数据<br>2、void write(byte[] b) &#x2F;&#x2F;一次写一个字节数组的数据<br>3、void write(byte[] b) &#x2F;&#x2F;一次写一个字节数组的部分数据，off起始索引，len写入多少数据的个数</p>
+<h4 id="四、换行写和续写"><a href="#四、换行写和续写" class="headerlink" title="四、换行写和续写"></a>四、换行写和续写</h4><p>1、换行写<br>    windows：\r\n<br>    linux：\n<br>    mac：\r<br>    细节：在windows操作系统中，java对回车换行进行了优化<br>               虽然完整的是\r\n，但是我们写其中一个\r或者\n<br>               java也可以实现换行，因为java在底层会补全<br> 建议：不要省略尽量还是写全</p>
+<p> 2、续写（追加）<br>     如果不想覆盖原文件，在文件末尾追加，只要打开续写开关即可<br>     开关位置：创建对象的第二个参数<br>     默认false：表示关闭续写，此时创建对象就会清空文件<br>     手动传递true：表示打开续写，此时创建对象不会清空文件</p>
+<h4 id="五、总结"><a href="#五、总结" class="headerlink" title="五、总结"></a>五、总结</h4><p>1、FileOutputStream的作用<br>    可以把程序中的数据写到本地文件中，是字节流的基本功<br>2、书写步骤<br>    创建对象、写出数据、释放资源<br>3、散步操作的细节<br>    创建对象：文件存在、文件不存在、追加写入<br>    写出数据：写出整数、写出字节数组、换行写<br> 释放资源：关闭通道</p>
+<h4 id="六、FileInputStream书写细节"><a href="#六、FileInputStream书写细节" class="headerlink" title="六、FileInputStream书写细节"></a>六、FileInputStream书写细节</h4><p>1、创建字节输入流对象<br>    细节1：如果文件不存在，就直接报错<br>2、读取数据<br>    细节1：一次读取一个字节，读出来的是数据在ASCII码上对应的数字<br>    细节2：读到文件末尾了，read方法返回-1<br>3、释放资源<br>    每次使用完流之后都要释放资源</p>
+<h4 id="七、捕获异常的处理方式优化"><a href="#七、捕获异常的处理方式优化" class="headerlink" title="七、捕获异常的处理方式优化"></a>七、捕获异常的处理方式优化</h4><p>1、在JDK7后Java推出了AutoCloseable接口，凡是实现这个接口的在特定情况下可以自动释放资源<br>    基本写法：try{}finally{} &#x2F;&#x2F;手动释放资源<br>    JDK7方案：try(创建流对象1;创建流对象2){} &#x2F;&#x2F;资源用完最终自动释放,只有实现了AutoCloseable接口的类，才能在小括号中创建对象<br>    JDK9方案：创建流对象1；创建流对象2；try(流1;流2){} &#x2F;&#x2F;资源用完最终自动释放</p>
+<h4 id="八、字符集详解"><a href="#八、字符集详解" class="headerlink" title="八、字符集详解"></a>八、字符集详解</h4><p>1、在计算机中，任意数据都是以二进制的形式进行存储的<br>2、<strong>计算机中最小的存储单元是一个字节，一个字节&#x3D;8bit（比特位）</strong><br>3、<strong>ASCII字符集中，一个英文占一个字节，不能存储中文</strong><br>4、简体中文版windows，默认使用GBK字符集（中华人民共和国国家标准 扩展）<br>5、GBK字符集完全兼容ASCII字符集<br>        一个英文占1个字节，二进制第一位是0<br>        一个中文占2个字节，二进制高位字节的第一位是1</p>
+<p>ASCII编码规则：因为ASCII码表0-127，不够8位，所以编码时前面补0补齐8位<br>ASCII解码规则：直接转成十进制</p>
+<p>GBK汉字存储规则：1、汉字两个字节存储<br>                                   2、高位字节二进制一定以1开头，转成十进制之后是一个负数（跟英文做区分，英文编码后首位一定是0）<br>GBK英文存储规则：英文一个字节存储，兼容ASCII，二进制前面补0<br>GBK汉字编码规则：不需要变动<br>GBK汉字解码规则：因为编码时没有变动所以解码也不需要变直接转成十进制</p>
+<h4 id="九、Unicode字符集"><a href="#九、Unicode字符集" class="headerlink" title="九、Unicode字符集"></a>九、Unicode字符集</h4><p>1、<strong>UTF-8编码规则：用1~4个字节保存</strong><br>    <strong>按地区分类使用几个字节：ASCII用一个字节、简体中文用3个字节</strong><br>2、UTF-8编码方式：<br> 一个字节：0xxxxxxx<br> 两个字节：110xxxxx 10xxxxxx<br> 三个字节：1110xxxx 10xxxxxx 10xxxxxx<br> 四个字节：11110xxx 10xxxxxx 10xxxxxx 10xxxxxx<br>3、编码方式：汉 -查询unicode-&gt; 27721 -转成二进制-&gt;01101100 01001001 -UTF-8编码-&gt; 11100110 10110001 10001001<br>4、<strong>UTF-8不是字符集，它是Unicode字符集的一种编码方式</strong><br>5、Unicode字符集的UTF-8编码格式：<br>    一个英文占一个字节，二进制第一位是0，转成十进制是正数<br>    一个中文占三个字节，二进制第一位是1，第一个字节转成十进制是负数</p>
+<h4 id="十、为什么会有乱码"><a href="#十、为什么会有乱码" class="headerlink" title="十、为什么会有乱码"></a>十、为什么会有乱码</h4><p>1、读取数据时未读完整个汉字</p>
+<p>​	不要用字节流读取文本文件：字节流一次读取一个字节而中文根据不同的编码方式占据2~3个字节读取不全所以乱码</p>
+<p>2、编码和解码时的方式不统一</p>
+<p>​	编码解码时使用同一个码表，同一个编码方式：不同码表的编码解码和字节都不相同错误使用就会造成乱码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.charSet;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.UnsupportedEncodingException;</span><br><span class="line"><span class="keyword">import</span> java.lang.reflect.Array;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="comment">//编码和解码</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">CharSetDemo01</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> UnsupportedEncodingException &#123;</span><br><span class="line">        <span class="comment">//编码</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> <span class="string">&quot;java学习中IO流&quot;</span>;</span><br><span class="line">        <span class="comment">//默认编码，Intellij默认使用utf-8编码</span></span><br><span class="line">        <span class="type">byte</span>[] utf = str.getBytes();</span><br><span class="line">        System.out.println(Arrays.toString(utf));</span><br><span class="line">        <span class="comment">//指定编码格式GBK</span></span><br><span class="line">        <span class="type">byte</span>[] gbk = str.getBytes(<span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">        System.out.println(Arrays.toString(gbk));</span><br><span class="line"></span><br><span class="line">        <span class="comment">//解码</span></span><br><span class="line">        <span class="comment">//使用String构造方法实现解码，不指定解码方式默认Intellij的utf-8格式</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(utf);</span><br><span class="line">        System.out.println(s1);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">        如果编码和解码使用的方式不同就会出现乱码</span></span><br><span class="line"><span class="comment">        英文还是正常输出因为UTF-8和GBK的英文都是一个字节格式是相同的</span></span><br><span class="line"><span class="comment">        String s2 = new String(gbk,&quot;utf-8&quot;);</span></span><br><span class="line"><span class="comment">        System.out.println(s2);</span></span><br><span class="line"><span class="comment">        */</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//指定编码格式GBK</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">String</span>(gbk,<span class="string">&quot;GBK&quot;</span>);</span><br><span class="line">        System.out.println(s2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h4 id="十一、字符输入流"><a href="#十一、字符输入流" class="headerlink" title="十一、字符输入流"></a>十一、字符输入流</h4><ol>
+<li><strong>字符流的底层就是字节流。字符流 &#x3D; 字节流 + 字符集</strong></li>
+<li>特点：<ul>
+<li>输入流：一次读一个字节，遇到中文时一次读多个字节，读取几个跟字符集有关</li>
+<li>输出流：底层会把数据按照指定的编码方式进行编码，变成字节再写到文件中</li>
+</ul>
+</li>
+<li>使用场景：对于纯文本文件进行读写操作</li>
+</ol>
+<p>细节1：FileReader.read()按字节进行读取，遇到中文，一次读多个字节，读取后解码，返回一个十进制整数，如果要输出对应的字母或中文则将整数强转成char类型。</p>
+<p>细节2：读到文件末尾后read方法返回-1，因为底层依旧是按字节流读取的</p>
+<p>细节3：read()方法的有参和无参返回有所不同</p>
+<ul>
+<li><p>无参read()：读取数据、解码成十进制输出，如果想要得到原来的字符需要在程序中强制类型转换</p>
+</li>
+<li><p>有参read(chars)：无参read()+强制类型转换，不用我们强转输出的就是字符</p>
+</li>
+</ul>
+<h4 id="十二、字符输出流"><a href="#十二、字符输出流" class="headerlink" title="十二、字符输出流"></a>十二、字符输出流</h4><ol>
+<li>与字节输出流基本相同，成员方法write()新增可以以字符串作为参数write(String str,int off,ing len)</li>
+<li>输出字符时会先根据字符集进行编码，把编码之后的数据写到文件中</li>
+</ol>
+<h4 id="十三、字符输入流的底层原理"><a href="#十三、字符输入流的底层原理" class="headerlink" title="十三、字符输入流的底层原理"></a>十三、字符输入流的底层原理</h4><ol>
+<li>字符流创建对象关联目标文件，并会在内存中创建了一个长度为8192个字节的字节数组缓冲区</li>
+<li>每次读取先判断缓冲区中是否有数据可以被读取</li>
+<li>如果缓冲区没有数据就从文件中读取数据到缓冲区，尽可能的装满缓冲区，再从缓冲区读取</li>
+<li>缓冲区和文件中都读完没有数据了就返回-1</li>
+<li><strong>字节流对象的底层没有缓冲区</strong></li>
+<li>如果缓冲区剩余2字节，而下一个数据是一个中文占3字节，缓冲区存放这2字节不会直接输出，再次读取时将这两字节加到新一轮缓冲区头部</li>
+<li>如果当前读取到文件没有关闭，程序又创建了一个字符输出流的对象导致文件被清空了，那么在次读取就只能读缓冲区的内容了，缓冲区读完后再找文件中的数据返回-1,就算读取前输入流向里面输入了其他数据也不行,如果中文未读完则输出乱码。</li>
+</ol>
+<h4 id="十四、字符输出流的底层原理"><a href="#十四、字符输出流的底层原理" class="headerlink" title="十四、字符输出流的底层原理"></a>十四、字符输出流的底层原理</h4><ol>
+<li>字符流创建对象关联目标文件，并在内存中创建了一个长度为8192个字节的字节数组缓冲区</li>
+<li><strong>字节流没有缓冲区直接编码写到目的地，字符流有缓冲区，文件全都写到缓冲区中，达到指定条件才会将数据写到目的地</strong></li>
+<li>从缓冲区写到目的地分为三种情况：<ul>
+<li>缓冲区装满了：自动保存到目的地</li>
+<li>手动刷新：flush()，刷新之后还能继续往文件中写数据</li>
+<li>释放资源：close()，断开通道，无法再往文件中写数据</li>
+</ul>
+</li>
+</ol>
+<h4 id="十五、字节缓冲流的读写原理"><a href="#十五、字节缓冲流的读写原理" class="headerlink" title="十五、字节缓冲流的读写原理"></a>十五、字节缓冲流的读写原理</h4><ol>
+<li>字节缓冲流实际进行读写的还是基本流，只是在内存中创建了一个默认为8192字节的缓冲区</li>
+<li>字节缓冲输入流和字节缓冲输出流的缓冲区不是同一个，数据的拷贝实际就是通过中间变量在两个缓冲区之间运输数据</li>
+<li>因为有缓冲区一次读写8192个字节，数据传输在内存中进行，减少了与硬盘之间的读写，所以大大提升了读写效率</li>
+<li>硬盘数据源 -基本流-&gt; 内存读缓冲区 –&gt; int b –&gt; 内存写缓冲区 -基本流-&gt; 硬盘目的地</li>
+</ol>
+<h4 id="十六、字符缓冲流"><a href="#十六、字符缓冲流" class="headerlink" title="十六、字符缓冲流"></a>十六、字符缓冲流</h4><ol>
+<li>字符缓冲流对于读写效率的提升并不大，因为字符基本流就带有缓冲区，但是缓冲流中带有的两个方法很重要</li>
+<li>字符缓冲流的缓冲区大小是8192个<strong>字符</strong>，一个字符占2字节，所以字节缓冲流的缓冲区为8k，而字符缓冲流的缓冲区大小是16k</li>
+<li>字符缓冲流特有方法：<ul>
+<li>public String readLine()：读取一行数据，如果没有数据可读，则返回null（输入流）</li>
+<li>public void newLine()：跨平台的换行，根据系统不同自动选择对应的换行（输出流）</li>
+</ul>
+</li>
+</ol>
+<h4 id="十七、四种拷贝方式效率对比"><a href="#十七、四种拷贝方式效率对比" class="headerlink" title="十七、四种拷贝方式效率对比"></a>十七、四种拷贝方式效率对比</h4><p>推荐使用：</p>
+<ol>
+<li><p>字节缓冲流一次读写一个数组</p>
+<p>字节流基本流一次读写一个数组</p>
+<p>这两种拷贝方式的用时差距不是很大</p>
+</li>
+<li><p>字节缓冲流一次读写一个字节，反而不如基本流一次读写一个数组的效率高</p>
+</li>
+<li><p>字节流基本流一次读写一个字节，需要效率的地方不推荐使用</p>
+</li>
+</ol>
+<h4 id="十八、IO流原则"><a href="#十八、IO流原则" class="headerlink" title="十八、IO流原则"></a>十八、IO流原则</h4><ol>
+<li>随用随创建，不用时关闭</li>
+<li>尽量不要读取和写入的对象紧贴着创建</li>
+<li>因为如果读取和写入时同一个文件时，输出流对象关联文件时就会将文件清空</li>
+<li>这将导致读取到的数据为空</li>
+</ol>
+<h4 id="十九、转换流"><a href="#十九、转换流" class="headerlink" title="十九、转换流"></a>十九、转换流</h4><ol>
+<li>转换流分为：<ul>
+<li>字符转换输入流：InputStreamReader</li>
+<li>字符转换输出流：OutputStreamWriter</li>
+</ul>
+</li>
+<li>转换流的作用：<ul>
+<li>指定字符集读写数据(JDK11后被淘汰)，现在可以直接在基本流创建时选择参数Charset.forName对应的编码方式就行</li>
+<li>字节流想要使用字符流中的方法，与缓冲流创建方式一样套在基本流的外面</li>
+</ul>
+</li>
+</ol>
+<h4 id="二十、序列化流"><a href="#二十、序列化流" class="headerlink" title="二十、序列化流"></a>二十、序列化流</h4><ol>
+<li>又叫对象操作输出流，可以把 Java中的对象写到本地文件中，写出的数据我们是看不懂的</li>
+<li>构造方法：public ObjectOutputStream(OutputStream out)  ：把基本流包装成高级流</li>
+<li>成员方法：public final void writeObject(Object obj)  ：把对象序列化(写出)到文件中</li>
+<li>注意点：使用对象输出流将对象保存到文件时会出现NotSerializableException异常</li>
+<li>解决方案：需要让 JavaBean类实现Serializable接口</li>
+<li>Serializable接口里面没有抽象方法，是一个标记型接口</li>
+<li>一旦实现这个接口，就表示当前类可以被序列化，反之没有这个标记就不能序列化</li>
+</ol>
+<h4 id="二十一、反序列化流"><a href="#二十一、反序列化流" class="headerlink" title="二十一、反序列化流"></a>二十一、反序列化流</h4><ol>
+<li>又叫对象操作输入流，可以把序列化到本地文件中的对象读取到程序中来</li>
+<li>构造方法：public ObjectIutputStream(IutputStream in)  ：把基本流包装成高级流</li>
+<li>成员方法：public Object readObject()  ：把序列化到本地文件中的对象读取到程序中来</li>
+</ol>
+<h4 id="二十二、序列化与反序列化流的细节汇总"><a href="#二十二、序列化与反序列化流的细节汇总" class="headerlink" title="二十二、序列化与反序列化流的细节汇总"></a>二十二、序列化与反序列化流的细节汇总</h4><ol>
+<li>使用序列化流将对象写到文件时，需要让 JavaBean类实现Serializable接口。否则会出现NotSerializableException异常</li>
+<li>序列化流写到文件中的数据是不能更改的，一旦修改就无法再读回来</li>
+<li>序列化对象后修改 JavaBean类，再次反序列化会出现问题，InvalidClassException异常</li>
+<li>实现Serializable接口的类会根据类中的所有内容进行计算得到一个long类型的序列号，更改了类的结构计算出的序列号就会发生变化</li>
+<li>解决方案：给 JavaBean类添加serialVersionUID（序列号&#x2F;版本号），固定类的序列号</li>
+<li>如果一个对象中某个成员变量的值不想序列化，则给成员变量加transient(瞬态)关键字，该关键字标记的成员变量不参与序列化过程</li>
+</ol>
+<h4 id="二十三、打印流"><a href="#二十三、打印流" class="headerlink" title="二十三、打印流"></a>二十三、打印流</h4><ol>
+<li>打印流一般是指：PrintStream、PrintWriter两个类</li>
+<li>打印流只操作文件目的地，不操作数据源（只有输出流没有输入流）</li>
+<li><strong>特有的写出方法</strong>可以实现数据的原样输出 如：97 -&gt; 97</li>
+<li><strong>特有的写出方法</strong>可以实现自动刷新自动换行</li>
+</ol>
+<h4 id="二十四、字节打印流"><a href="#二十四、字节打印流" class="headerlink" title="二十四、字节打印流"></a>二十四、字节打印流</h4><ol>
+<li>构造方法：public PrintStream(OutputStream&#x2F;File&#x2F;String，可选参数)，最后都是转成字节流进行构造<ul>
+<li>Charset charset ：指定字符编码</li>
+<li>boolean autoFlash ：自动刷新（字节流底层没有缓冲区，开不开自动刷新都一样）</li>
+</ul>
+</li>
+<li>成员方法：<ul>
+<li>public void write(int b) ：常规方法，规则跟基本流一样，将指定的字节写出</li>
+<li>public void println(Xxx xxx) ：特有方法，打印任意数据，自动刷新，自动换行</li>
+<li>public void print(Xxx xxx) ：特有方法，打印任意数据，自动刷新</li>
+<li>public void printf(String format,Object… args) ：特有方法，带有占位符的打印语句，不换行</li>
+<li>以上三种特有方法可以实现数据的原样输出，不会出现97 -&gt; a 的情况</li>
+</ul>
+</li>
+</ol>
+<h4 id="二十五、字符打印流"><a href="#二十五、字符打印流" class="headerlink" title="二十五、字符打印流"></a>二十五、字符打印流</h4><ol>
+<li>构造方法：public PrintStream(Write&#x2F;OutputStream&#x2F;File&#x2F;String，可选参数)<ul>
+<li>Charset charset ：指定字符编码</li>
+<li>boolean autoFlash ：自动刷新（需要手动开启，字符流如果不开自动刷新，数据会写入到缓冲器满足条件后才写入到目的地）</li>
+</ul>
+</li>
+<li>成员方法：<ul>
+<li>public void write(int b) ：常规方法，规则跟基本流一样， 将指定的字节或者字符串写出</li>
+<li>public void println(Xxx xxx) ：特有方法，打印任意类型的数据并且换行</li>
+<li>public void print(Xxx xxx) ：特有方法，打印任意类型的数据不换行</li>
+<li>public void printf(String format,Object… args) ：特有方法，带有占位符的打印语句，不换行</li>
+</ul>
+</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">System.out.println();	<span class="comment">//解析</span></span><br><span class="line"><span class="comment">//System类中有个静态的属性out，out的数据类型是PrintStream，也就是打印流对象</span></span><br><span class="line"><span class="comment">//此对象不需要我们自己创建是由虚拟机启动后自动创建的</span></span><br><span class="line"><span class="comment">//打印流默认指向控制台。</span></span><br><span class="line"><span class="comment">//特殊的打印流，系统中的标准输出流。是不能关闭，在系统中是唯一的。关闭后只能重启虚拟机才能再次开启</span></span><br><span class="line"><span class="type">PrintStream</span> <span class="variable">ps</span> <span class="operator">=</span> System.out;</span><br><span class="line"><span class="comment">//调用打印流的方法println()，写出数据，自动刷新，自动换行</span></span><br><span class="line">ps.println(<span class="string">&quot;Hello World&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day09/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:49:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/03/28/JAVA_day11/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JAVA学习_day11
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/28/JAVA_day09/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JAVA学习_day09</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day09/">JAVA学习_day09</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day08/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:47:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day08/">JAVA学习_day08</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day07/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:46:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day07/">JAVA学习_day07</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day06/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:45:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day06/">JAVA学习_day06</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day05/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day05/">JAVA学习_day05</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day04/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day04/">JAVA学习_day04</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2023/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/03/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -454,8 +647,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

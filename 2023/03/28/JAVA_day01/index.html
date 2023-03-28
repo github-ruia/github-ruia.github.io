@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Archives: 2023/3 | Hexo</title>
+  <title>JAVA学习_day01 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://example.com/archives/2023/03/index.html">
+  <meta name="description" content="前置知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA学习_day01">
+<meta property="og:url" content="http://example.com/2023/03/28/JAVA_day01/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前置知识">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/">
+<meta property="article:published_time" content="2023-03-28T05:39:43.000Z">
+<meta property="article:modified_time" content="2023-03-28T07:15:09.690Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -142,295 +148,199 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-JAVA_day01" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JAVA学习_day01
+    </h1>
+  
+
+        
+        <a href="/2023/03/28/JAVA_day01/" class="archive-article-date">
+  	<time datetime="2023-03-28T05:39:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="前置知识"><a href="#前置知识" class="headerlink" title="前置知识"></a>前置知识</h3><span id="more"></span>
+
+<h4 id="为什么写博客？"><a href="#为什么写博客？" class="headerlink" title="为什么写博客？"></a>为什么写博客？</h4><ul>
+<li>需要有总结和思考</li>
+<li>提升文笔组织能力</li>
+<li>提升学习总结能力</li>
+<li>提升逻辑思维能力</li>
+</ul>
+<hr>
+<h4 id="typora基础使用"><a href="#typora基础使用" class="headerlink" title="typora基础使用"></a>typora基础使用</h4><p>#+空格、标题</p>
+<p>》引用</p>
+<p>***+enter、分割线</p>
+<p><img src="/" alt="图片名">、插入图片</p>
+<p><a href="">超链接</a>、插入超链接</p>
+<p>1.+空格、有序列表</p>
+<p>-+空格、无序列表</p>
+<p>表格建议用右键插入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">```xxx+enter、插入xxx的代码</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="JAVA特性和优势"><a href="#JAVA特性和优势" class="headerlink" title="JAVA特性和优势"></a>JAVA特性和优势</h4><ul>
+<li>简单性。。。</li>
+<li>面向对象</li>
+<li>可移植性，跨平台性</li>
+<li>高性能，运行效率</li>
+<li>分布式</li>
+<li>动态性，本身不具备，靠反射机制来完成</li>
+<li>多线程</li>
+<li>安全性</li>
+<li>健壮性</li>
+</ul>
+<hr>
+<h4 id="JDK、JRE、JVM"><a href="#JDK、JRE、JVM" class="headerlink" title="JDK、JRE、JVM"></a>JDK、JRE、JVM</h4><ol>
+<li><p>jdk：java开发者工具，在jre的基础上扩充一些开发者工具</p>
+<p>java&#x2F;javac，编译运行程序</p>
+<p>javadoc，可以把Java的一些东西生成一篇文档</p>
+<p>jar，打包成应用</p>
+</li>
+<li><p>jre：Java运行时环境</p>
+<p>包含JVM和一些包，java运行时的环境</p>
+</li>
+<li><p>jvm：java虚拟机</p>
+<p>通过这个虚拟机摒弃了一些底层操作系统的差别，实现了一次编译到处运行</p>
+</li>
+</ol>
+<hr>
+<h4 id="卸载JDK"><a href="#卸载JDK" class="headerlink" title="卸载JDK"></a>卸载JDK</h4><ol>
+<li>删除java的安装目录，可在环境变量中的JAVA_HOME查看</li>
+<li>删除环境变量中的JAVA_HOME</li>
+<li>删除path下关于java的目录</li>
+<li>java -version验证是否删除</li>
+</ol>
+<hr>
+<h4 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h4><ol>
+<li><p>百度搜索下载</p>
+</li>
+<li><p>双击安装</p>
+</li>
+<li><p>配置环境变量</p>
+<p>添加变量名JAVA_HOME：变量值为安装路径</p>
+</li>
+<li><p>配置path变量</p>
+<p>新建%JAVA_HOME%\bin</p>
+<p>新建%JAVA_HOME%\jre\bin</p>
+</li>
+<li><p>java -version 验证是否安装成功</p>
+</li>
+</ol>
+<hr>
+<h4 id="java文件夹下的各文件夹功能"><a href="#java文件夹下的各文件夹功能" class="headerlink" title="java文件夹下的各文件夹功能"></a>java文件夹下的各文件夹功能</h4><ol>
+<li>bin：存放可执行程序</li>
+<li>include：因为头文件是用C语言编写的启动时需要引入一些C语言的头文件，这个目录就存放了这些头文件</li>
+<li>jre：存放java的运行环境</li>
+<li>lib：存放java的库文件</li>
+<li>src压缩包：里面存放了很多java类</li>
+</ol>
+<hr>
+<h4 id="第一个JAVA程序编写"><a href="#第一个JAVA程序编写" class="headerlink" title="第一个JAVA程序编写"></a>第一个JAVA程序编写</h4><ol>
+<li><strong>JAVA头文件，java大小写敏感</strong></li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">hello</span>&#123;  <span class="comment">//类</span></span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span>&#123;  <span class="comment">//main方法</span></span><br><span class="line">		</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li><p>编译java文件，会生成class文件</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">javac hello.java</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行class文件</p>
+<figure class="highlight dos"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java hello</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可能遇到的问题</p>
+<ul>
+<li>每个单词的大小写</li>
+<li>尽量使用英文</li>
+<li>文件名和类名必须保证一致</li>
+<li>符号是否使用了中文的符号</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="java程序运行机制"><a href="#java程序运行机制" class="headerlink" title="java程序运行机制"></a>java程序运行机制</h4><ol>
+<li><p>编译型</p>
+<p>一次性将原程序翻译成计算机能看懂的语言运行</p>
+</li>
+<li><p>解释型</p>
+<p>走一步执行一步，一步步将程序运行起来，大致流程如下：</p>
+<p>源文件(<em>.java)–&gt;java编译器–&gt;字节码文件(</em>.class)–&gt;类装载器(jvm虚拟机)–&gt;字节码校验器(验证代码的正确性)–&gt;解释器,将文件解释给操作系统</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day13/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:55:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day13/">JAVA学习_day13</a>
-    </h1>
-  
+      
 
-        <div class="article-info info-on-right">
-          
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day12/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:53:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2023/03/28/JAVA_day02/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JAVA学习_day02
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2023/03/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day12/">JAVA学习_day12</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day11/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:51:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day11/">JAVA学习_day11</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day10/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:50:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day10/">JAVA学习_day10</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day09/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:49:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day09/">JAVA学习_day09</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day08/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:47:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day08/">JAVA学习_day08</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day07/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:46:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day07/">JAVA学习_day07</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day06/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:45:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day06/">JAVA学习_day06</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day05/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day05/">JAVA学习_day05</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2023/03/28/JAVA_day04/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:42:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2023/03/28/JAVA_day04/">JAVA学习_day04</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2023/03/page/2/">2</a><a class="extend next" rel="next" href="/archives/2023/03/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -454,8 +364,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

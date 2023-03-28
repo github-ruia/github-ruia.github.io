@@ -6,22 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>testt | Hexo</title>
+  <title>JAVA学习_day09 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="testt">
-<meta property="og:url" content="http://example.com/2023/03/27/testt/index.html">
+  <meta name="description" content="Java_集合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA学习_day09">
+<meta property="og:url" content="http://example.com/2023/03/28/JAVA_day09/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Java_集合">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-27T08:40:26.000Z">
-<meta property="article:modified_time" content="2023-03-27T08:40:26.441Z">
+<meta property="article:published_time" content="2023-03-28T05:49:43.000Z">
+<meta property="article:modified_time" content="2023-03-28T07:14:20.182Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/asset/img/兔逊.jpg">
   
   <link rel="stylesheet" type="text/css" href="/./main.0cf68a.css">
   <style type="text/css">
@@ -45,7 +47,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="" class="js-avatar">
+			<img src="/asset/img/兔逊.jpg" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/"></a></h1>
@@ -99,7 +101,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="" class="js-avatar">
+				<img src="/asset/img/兔逊.jpg" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author"></h1>
@@ -144,27 +146,218 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-testt" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-JAVA_day09" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      testt
+      JAVA学习_day09
     </h1>
   
 
         
-        <a href="/2023/03/27/testt/" class="archive-article-date">
-  	<time datetime="2023-03-27T08:40:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-27</time>
+        <a href="/2023/03/28/JAVA_day09/" class="archive-article-date">
+  	<time datetime="2023-03-28T05:49:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h3 id="Java-集合"><a href="#Java-集合" class="headerlink" title="Java_集合"></a>Java_集合</h3><span id="more"></span>
+
+<p>小节目标：</p>
+<ul>
+<li><p>理解什么是集合，使用集合能做什么？</p>
+<p>在Java中集合是用来存储多个数据的容器</p>
+</li>
+<li><p>能够描述出Java集合框架的常用接口及各自的特点</p>
+</li>
+<li><p>能够查找并使用API中的集合类</p>
+</li>
+</ul>
+<p>小节内容：</p>
+<ol>
+<li><p>基本概念</p>
+<ul>
+<li>什么是集合</li>
+<li>为什么学习集合</li>
+<li>集合的分类和特点</li>
+</ul>
+</li>
+<li><p>集合的使用</p>
+<ul>
+<li>List集合</li>
+<li>Set集合</li>
+<li>Map集合</li>
+</ul>
+<p>List和Set属于单列集合，Map属于双列集合，在使用集合的时候大多数情况下都要结合&lt;泛型&gt;</p>
+<p>在实际开发中List和Set集合的使用非常广泛，Collections工具类是专门用来操作这两类集合的。</p>
+<p>其实学习集合就是学习它们的遍历方式，大体分为三类：普通for循环、增强for循环、迭代器。</p>
+</li>
+<li><p>学习方法</p>
+<ul>
+<li><p>根据API文档使用步骤查找集合类：</p>
+<p>查找集合类</p>
+<p>查看该集合所属接口名</p>
+<p>查看构造方法</p>
+<p><strong>创建集合对象</strong></p>
+<p><strong>创建元素对象</strong></p>
+<p><strong>将元素添加到集合中</strong></p>
+<p><strong>遍历集合</strong></p>
+</li>
+<li><p>代码知识：多练习，多操作</p>
+<p>记住集合体系中各接口集合的特点</p>
+<p>练习集合的基本操作（四个步骤）</p>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="集合简介"><a href="#集合简介" class="headerlink" title="集合简介"></a>集合简介</h4><ol>
+<li><p>什么是集合？</p>
+<p>简称集，是用来存储多个元素的容器</p>
+</li>
+<li><p>集合与数组的区别</p>
+<ul>
+<li><p>元素类型</p>
+<p>集合：只能存储引用类型（存储基本类型时会自动装箱）</p>
+<p>数组：能够存储基本类型和引用类型</p>
+</li>
+<li><p>元素个数</p>
+<p>集合：不固定，可任意扩容</p>
+<p>数组：固定，不可改变容量</p>
+</li>
+<li><p>集合的好处</p>
+<p>不受容器大小限制，可以随时添加、删除元素</p>
+<p>提供了大量操作元素的方法（判断、获取等）</p>
+</li>
+</ul>
+</li>
+<li><p>Java的集合体系：</p>
+<ul>
+<li><p>单列集合(顶层是Collection接口)</p>
+<p>List：(接口类型)</p>
+<p>​		ArrayList(最常用的List子类对象)</p>
+<p>Set：(接口类型)</p>
+<p>​		HashSet(是Set接口中最常用的子类)</p>
+</li>
+<li><p>双列集合(顶层是Map:key,value接口)</p>
+<p>​		HashMap(是Map接口中最常用的子类)</p>
+</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h4 id="List集合的特点和应用"><a href="#List集合的特点和应用" class="headerlink" title="List集合的特点和应用"></a>List集合的特点和应用</h4><ul>
+<li><p>List集合的特点</p>
+<p>可重复、有序（存取顺序相同）</p>
+</li>
+<li><p>应用</p>
+<p>List集合是接口，所以必须通过创建它的子类对象来完成接口的实例化</p>
+<p>List list &#x3D; new ArrayList(); &#x2F;&#x2F;创建集合对象</p>
+<p>向集合中添加元素：public boolean add(E e) &#x2F;&#x2F;E是泛型的意思</p>
+<p>根据索引获取对应下标的元素：public E get(int index)</p>
+<p>获取集合中元素的个数：public int size()</p>
+<p>遍历集合的方式：for循环</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line">		<span class="comment">//创建一个List集合对象</span></span><br><span class="line">        <span class="type">List</span> <span class="variable">l1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">        <span class="comment">//创建Student元素对象</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;小明&quot;</span>, <span class="number">6</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;小红&quot;</span>, <span class="number">5</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;小黑&quot;</span>, <span class="number">8</span>);</span><br><span class="line">        <span class="comment">//将Student对象作为元素添加到集合中</span></span><br><span class="line">        l1.add(s1);</span><br><span class="line">        l1.add(s2);</span><br><span class="line">        l1.add(s3);</span><br><span class="line">        l1.add(<span class="number">123</span>);</span><br><span class="line">        l1.add(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        l1.add(s1);</span><br><span class="line">        System.out.println(l1);</span><br><span class="line">        <span class="comment">//获取指定索引的值</span></span><br><span class="line">        System.out.println(l1.get(<span class="number">1</span>));</span><br><span class="line">        <span class="comment">//获取集合中元素的个数</span></span><br><span class="line">        System.out.println(<span class="string">&quot;集合中共有&quot;</span>+l1.size()+<span class="string">&quot;个元素&quot;</span>);</span><br><span class="line">        <span class="comment">//遍历集合</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; l1.size(); i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;集合中第&quot;</span>+i+<span class="string">&quot;个元素的值为：&quot;</span>+ l1.get(i));</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="增强for循环"><a href="#增强for循环" class="headerlink" title="增强for循环"></a>增强for循环</h4><p>为什么需要增强for循环？<br>    简化数组和集合的遍历</p>
+<ul>
+<li>增强for循环的格式：<br>for(数据类型 变量名 : 数组或者集合对象){<br>      &#x2F;&#x2F;循环体，变量即元素<br>}</li>
+</ul>
+<p>快捷方式：iter＋回车</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;        </span><br><span class="line">		<span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line"></span><br><span class="line">        list.add(<span class="number">10</span>);</span><br><span class="line">        list.add(<span class="number">15</span>);</span><br><span class="line">        list.add(<span class="number">20</span>);</span><br><span class="line">        list.add(<span class="number">21</span>);</span><br><span class="line">        list.add(<span class="number">19</span>);</span><br><span class="line">        <span class="comment">//list.iter</span></span><br><span class="line">        <span class="keyword">for</span> (Object obj : list) &#123;</span><br><span class="line">            System.out.println(obj);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注意：增强for的底层依赖就是迭代器（Iterator）<br>大白话解释：增强for就是迭代器的简写形式</p>
+<hr>
+<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a>迭代器</h4><p>为什么需要迭代器？<br>    对过程的重复，称为迭代。<br>    迭代器是遍历Collection集合的通用方式，可以在对集合遍历的同时进行添加、删除等操作。<br>迭代器的常用方法：</p>
+<ul>
+<li><p>E next():</p>
+<p>返回迭代的下一个元素对象</p>
+</li>
+<li><p>boolean hasNext():</p>
+<p>如果仍有元素可以迭代，则返回true</p>
+</li>
+</ul>
+<p>使用步骤：<br>1.根据集合对象获取其对应的迭代器对象<br>Iterator it ＝ list.iterator();<br>2.判断迭代器中是否有元素<br>while(it.hasNext()){<br>3.如果有就获取元素<br>Object obj &#x3D; it.next();<br>}<br>注意：列表迭代器是List体系独有的遍历方式，可以在对集合遍历的同时进行添加，删除等操作。但是必须通过调用列表迭代器的方式来实现。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Iterator;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.ListIterator;	</span><br><span class="line">		<span class="comment">//创建集合对象</span></span><br><span class="line">		<span class="type">List</span> <span class="variable">list</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">        <span class="comment">//添加元素到集合中</span></span><br><span class="line">		list.add(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;123&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;321&quot;</span>);</span><br><span class="line">        <span class="comment">//创建迭代器对象</span></span><br><span class="line">		<span class="type">Iterator</span> <span class="variable">it</span> <span class="operator">=</span> list.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;	<span class="comment">//判断迭代器中存在元素开始循环</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> (String) it.next();	<span class="comment">//将Object类型转成String类型</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;123&quot;</span>.equals(s))    <span class="comment">//一般变量与常量比较时会把常量写在前面，这样写可以规避空指针异常</span></span><br><span class="line">                list.add(<span class="string">&quot;java&quot;</span>);    <span class="comment">//报错ConcurrentModidicationException，并发修改异常</span></span><br><span class="line">            System.out.println(s);  <span class="comment">//abc、123、321</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;------------------------------&quot;</span>);</span><br><span class="line">        <span class="comment">//判断如果取出的值是&quot;123&quot;则在集合中添加元素“java”</span></span><br><span class="line">        <span class="type">ListIterator</span> <span class="variable">lit</span> <span class="operator">=</span> list.listIterator();	<span class="comment">//创建列表迭代器对象</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(lit.hasNext())&#123;<span class="comment">//判断迭代器中存在元素开始循环</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> (String) lit.next();<span class="comment">//将Object类型转成String类型</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;123&quot;</span>.equals(s))    <span class="comment">//一般变量与常量比较时会把常量写在前面，这样写可以规避空指针异常</span></span><br><span class="line">                lit.add(<span class="string">&quot;java&quot;</span>);    <span class="comment">//迭代时元素是三个并不会直接追加，还是迭代三次</span></span><br><span class="line">            System.out.println(s);  <span class="comment">//abc、123、321</span></span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(list);<span class="comment">//abc、123、java、321</span></span><br></pre></td></tr></table></figure>
+
+<p>总结：普通的迭代器在遍历集合的同时不可以进行添加或删除元素，否则会报并发修改异常(ConcurrentModidicationException)。<br> 列表迭代器在遍历集合的同时可以修改集合中的元素(添加、删除等)，必须使用列表迭代器的方法</p>
+<hr>
+<h4 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h4><p>什么是泛型？<br>    即泛指任意类型，又叫参数化类型(ParameterizedType)对具体类型的使用起到辅助作用，类似于方法的参数<br>    泛型的本质是参数化类型，也就是所操作的数据类型被指定为一个参数。泛型提供了编译时类型安全监测机制，比杂乱使用Obiect变量然后再强制类型转换的代码更具有安全性和可读性。<br>集合类泛型的解释：<br>    表示该集合中存放指定类型的元素<br>演示：(给List集合加上泛型String)<br>    List<String> list &#x3D; new ArrayList&lt;&gt;();<br>泛型的好处：<br>    类型安全<br>    避免了类型转换<br>总结：<br>    泛型一般只和集合类相结合使用<br>    泛型是JDK5的新特性，但是从JDK7开始，后面的泛型就可以不用写具体的数据类型了(菱形泛型).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line">		List&lt;String&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(<span class="string">&quot;a&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;b&quot;</span>);</span><br><span class="line">        list.add(<span class="string">&quot;c&quot;</span>);<span class="comment">//集合中只能添加String类型</span></span><br><span class="line">        <span class="keyword">for</span> (String s : list) &#123;</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Collections工具类"><a href="#Collections工具类" class="headerlink" title="Collections工具类"></a>Collections工具类</h4><p>Collections简介：<br>    针对集合进行操作的工具类。<br>成员方法：</p>
+<ul>
+<li><p>sort(List<T>)<br>根据元素的自然顺序，将指定列表按升序排序</p>
+</li>
+<li><p>max(Collection<T>)<br>返回集合中的最大元素</p>
+</li>
+<li><p>reverse(List<T>)<br>反转List集合</p>
+</li>
+<li><p>shuffle(List<T>)<br>使用默认的随机源随机置换指定的列表（洗牌）</p>
+</li>
+</ul>
+<p>方法的组合使用有时候能达到一个意想不到的效果：如sort()+reverse()就等于降序排列</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Collections;</span><br><span class="line"><span class="keyword">import</span> java.util.List;        </span><br><span class="line">		List&lt;Integer&gt; list = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        list.add(<span class="number">5</span>);</span><br><span class="line">        list.add(<span class="number">1</span>);</span><br><span class="line">        list.add(<span class="number">6</span>);</span><br><span class="line">        list.add(<span class="number">4</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//按升序排序集合</span></span><br><span class="line">        <span class="comment">//Collections.sort(list); //1,4,5,6</span></span><br><span class="line">        <span class="comment">//返回集合中最大的元素</span></span><br><span class="line">        <span class="comment">//System.out.println(Collections.max(list));</span></span><br><span class="line">        <span class="comment">//System.out.println(Collections.min(list));返回集合中最小元素</span></span><br><span class="line">        <span class="comment">//反转集合</span></span><br><span class="line">        <span class="comment">//Collections.reverse(list);</span></span><br><span class="line">        <span class="comment">//随机打乱元素的顺序</span></span><br><span class="line">        <span class="comment">//Collections.shuffle(list);</span></span><br><span class="line">        System.out.println(list);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Set集合的特点和应用"><a href="#Set集合的特点和应用" class="headerlink" title="Set集合的特点和应用"></a>Set集合的特点和应用</h4><p>简介：</p>
+<p>​	Set属于单列集合也就是Collection体系</p>
+<p>特点：</p>
+<p>​	不可重复（元素具有唯一性），无序（元素的存取顺序是不固定的）</p>
+<p>应用：</p>
+<p>​	因为Set是接口类型所以使用必须创建它的子类对象</p>
+<p>​	Set<T> set &#x3D; new HashSet&lt;&gt;();</p>
+<p>注意：</p>
+<p>​	<strong>Set集合保证元素的唯一性依赖：equals()和hashCode()两个方法。</strong></p>
+<p>需求：向Set集合中添加5个元素，并遍历打印</p>
+<p>​	向集合中添加元素：add()</p>
+<p>​	遍历打印集合：迭代器</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//        1.创建集合对象</span></span><br><span class="line">        Set&lt;Student&gt; set = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line"><span class="comment">//        2.创建元素对象</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;a&quot;</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s2</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;b&quot;</span>,<span class="number">2</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s3</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;c&quot;</span>,<span class="number">3</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s4</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;a&quot;</span>,<span class="number">1</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">s5</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;b&quot;</span>,<span class="number">2</span>);</span><br><span class="line"><span class="comment">//        3.将元素对象添加到集合对象中</span></span><br><span class="line">        set.add(s1);</span><br><span class="line">        set.add(s2);</span><br><span class="line">        set.add(s3);</span><br><span class="line">        set.add(s4);</span><br><span class="line">        set.add(s5);</span><br><span class="line"><span class="comment">//        4.遍历打印集合对象</span></span><br><span class="line">        System.out.println(set);</span><br><span class="line">        <span class="comment">/*</span></span><br><span class="line"><span class="comment">            此时打印的Set集合中元素还是5个，不是说元素具有唯一性吗？为什么Set集合不会自动”去重“吗？</span></span><br><span class="line"><span class="comment">            因为Set集合保证元素唯一性依赖：equals()和hashCode();这两个方法</span></span><br><span class="line"><span class="comment">            而我们并没有在Student类中重写这两个方法，默认调用的是Object类中的方法</span></span><br><span class="line"><span class="comment">            Object类中equals()判断的是地址值是否相同,hashCode()也是根据地址值进行的计算，所以s4和s1的地址值肯定不同。</span></span><br><span class="line"><span class="comment">            所以我们需要去Student类中重写equals()和hashCode()方法</span></span><br><span class="line"><span class="comment">            重写后再打印集合中的元素就剩三个了</span></span><br><span class="line"><span class="comment">         */</span></span><br><span class="line">        System.out.println(<span class="string">&quot;--------------------------------------&quot;</span>);</span><br><span class="line">        System.out.println(<span class="string">&quot;通过增强for循环打印集合：&quot;</span>);</span><br><span class="line">        <span class="keyword">for</span> (Student student : set) &#123;</span><br><span class="line">            System.out.println(student);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;通过迭代器打印集合：&quot;</span>);</span><br><span class="line">        Iterator&lt;Student&gt; it = set.iterator();</span><br><span class="line">        <span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">s</span> <span class="operator">=</span> it.next();</span><br><span class="line">            System.out.println(s);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="Map集合的特点和应用"><a href="#Map集合的特点和应用" class="headerlink" title="Map集合的特点和应用"></a>Map集合的特点和应用</h4><p>特点：</p>
+<p>​	双列集合，元素由键值对(Entry)组成</p>
+<p>​			key–value</p>
+<p>​	key不可重复(具有唯一性)，value可以重复</p>
+<p>应用：</p>
+<p>​	因为Map是接口类型所以使用必须创建它的子类对象</p>
+<p>​	Map&lt;T1,T2&gt; map &#x3D; new hashMap&lt;&gt;();</p>
+<p>​	因为Map是双列集合所以泛型必须写两个，其中T1是键的类型,T2是值的类型</p>
+<p>成员方法：</p>
+<ul>
+<li>V put(K key,V value):</li>
+</ul>
+<p>​		添加元素(键值对的形式)，元素第一次添加，返回值null。重复(键相同)添加会用新值覆盖旧值，并返回旧值。</p>
+<ul>
+<li><p>V get(Object key)：</p>
+<p>根据键获取其对应的值</p>
+</li>
+<li><p>Set<K> keySet()：</p>
+<p>获取所有键的集合，因为Map集合的键具有唯一性所以返回值也是具有唯一性的Set集合</p>
+</li>
+</ul>
+<p>需求：向Map集合中添加三个元素，并遍历打印</p>
+<p>​	向Map集合中添加元素：put()</p>
+<p>​	遍历Map集合：(双列集合是不能直接遍历的，需要先转换成一个单列集合才能遍历)</p>
+<p>​			1.获取所有键的集合	–&gt;	获取所有的key：keySet()</p>
+<p>​			2.遍历所有的键,获取到每一个键	–&gt;	遍历keySet的方法：迭代器iterator()，增强for</p>
+<p>​			3.根据键,获取指定的值	–&gt;	遍历keySet，通过key获取value：get()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.HashSet;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Set;        </span><br><span class="line">		<span class="comment">//创建Map集合对象</span></span><br><span class="line">        Map&lt;Integer,Student&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//new三个Student对象</span></span><br><span class="line">        <span class="type">Student</span> <span class="variable">xiaoming</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;xiaoming&quot;</span>, <span class="number">8</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">xiaohong</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;xiaohong&quot;</span>, <span class="number">6</span>);</span><br><span class="line">        <span class="type">Student</span> <span class="variable">xiaohuang</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Student</span>(<span class="string">&quot;xiaohuang&quot;</span>, <span class="number">10</span>);</span><br><span class="line">        <span class="comment">//向Map集合中添加元素，键具有唯一性，如果键重复那么新值覆盖旧值，put方法返回值将为旧值，不重复则为null</span></span><br><span class="line">        map.put(<span class="number">1</span>,xiaoming);</span><br><span class="line">        map.put(<span class="number">2</span>,xiaohong);</span><br><span class="line">        map.put(<span class="number">3</span>,xiaohuang);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//双列集合无法直接遍历，需要获取键组成一个新的单列集合</span></span><br><span class="line">        Set&lt;Integer&gt; keys = <span class="keyword">new</span> <span class="title class_">HashSet</span>&lt;&gt;();</span><br><span class="line">        keys = map.keySet();</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//循环遍历出Map中的每一个值</span></span><br><span class="line">        <span class="keyword">for</span> (Integer key : keys) &#123;</span><br><span class="line">            <span class="type">Student</span> <span class="variable">s1</span> <span class="operator">=</span> map.get(key);</span><br><span class="line">            System.out.println(s1);</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="案例：模拟斗地主发牌"><a href="#案例：模拟斗地主发牌" class="headerlink" title="案例：模拟斗地主发牌"></a>案例：模拟斗地主发牌</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> cn.itcast.Map;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Case02</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//创建一个双列集合pokers用来存放扑克牌</span></span><br><span class="line">        Map&lt;Integer,String&gt; pokers = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//创建一个List集合存放扑克牌的编号</span></span><br><span class="line">        List&lt;Integer&gt; numbers = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//创建两个字符串数组表示扑克的点数和花色</span></span><br><span class="line">        String[] colors = &#123;<span class="string">&quot;♥&quot;</span>,<span class="string">&quot;♠&quot;</span>,<span class="string">&quot;♦&quot;</span>,<span class="string">&quot;♣&quot;</span>&#125;;</span><br><span class="line">        String[] nums = &#123;<span class="string">&quot;3&quot;</span>,<span class="string">&quot;4&quot;</span>,<span class="string">&quot;5&quot;</span>,<span class="string">&quot;6&quot;</span>,<span class="string">&quot;7&quot;</span>,<span class="string">&quot;8&quot;</span>,<span class="string">&quot;9&quot;</span>,<span class="string">&quot;10&quot;</span>,<span class="string">&quot;J&quot;</span>,<span class="string">&quot;Q&quot;</span>,<span class="string">&quot;K&quot;</span>,<span class="string">&quot;A&quot;</span>,<span class="string">&quot;2&quot;</span>&#125;;</span><br><span class="line">        <span class="type">int</span> <span class="variable">num</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//将创建的扑克牌添加进牌堆</span></span><br><span class="line">        <span class="keyword">for</span> (String n : nums) &#123;</span><br><span class="line">            <span class="keyword">for</span> (String c : colors) &#123;</span><br><span class="line">                <span class="type">String</span> <span class="variable">pok</span> <span class="operator">=</span> n + c;</span><br><span class="line">                numbers.add(num);</span><br><span class="line">                pokers.put(num, pok);</span><br><span class="line">                num++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//添加大小王进牌堆</span></span><br><span class="line">        numbers.add(num);</span><br><span class="line">        pokers.put(num++,<span class="string">&quot;小王&quot;</span>);</span><br><span class="line">        numbers.add(num);</span><br><span class="line">        pokers.put(num,<span class="string">&quot;大王&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//System.out.println(&quot;全部牌：&quot;+pokers);</span></span><br><span class="line">        <span class="comment">//System.out.println(&quot;全部编号：&quot;+numbers);</span></span><br><span class="line">        <span class="comment">//洗牌</span></span><br><span class="line">        Collections.shuffle(numbers);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//发牌</span></span><br><span class="line">        <span class="comment">//创建四个集合代表三个玩家和底牌</span></span><br><span class="line">        List&lt;Integer&gt; xhz = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; xjj = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; ylz = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        List&lt;Integer&gt; dp = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">		</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span> ;i &lt; numbers.size() ; i ++)&#123;</span><br><span class="line">            <span class="type">Integer</span> <span class="variable">pokn</span> <span class="operator">=</span> numbers.get(i);</span><br><span class="line">        	<span class="keyword">if</span>(i + <span class="number">3</span> &gt;= numbers.size())&#123;</span><br><span class="line">            	dp.add(pokn);</span><br><span class="line">        	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(i % <span class="number">3</span> == <span class="number">0</span>)&#123;</span><br><span class="line">            	xhz.add(pokn);</span><br><span class="line">        	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(i % <span class="number">3</span> == <span class="number">1</span>)&#123;</span><br><span class="line">                xjj.add(pokn);</span><br><span class="line">        	&#125;<span class="keyword">else</span> <span class="keyword">if</span>(i % <span class="number">3</span> == <span class="number">2</span>)&#123;</span><br><span class="line">                ylz.add(pokn);</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">            <span class="comment">//System.out.println(&quot;xhz：&quot;+xhz);</span></span><br><span class="line">            <span class="comment">//System.out.println(&quot;xjj：&quot;+xjj);</span></span><br><span class="line">            <span class="comment">//System.out.println(&quot;ylz：&quot;+ylz);</span></span><br><span class="line">            <span class="comment">//System.out.println(&quot;dp：&quot;+dp);</span></span><br><span class="line">            System.out.println(<span class="string">&quot;xhz的牌为：&quot;</span> + printPoker(xhz,pokers));</span><br><span class="line">            System.out.println(<span class="string">&quot;xjj的牌为：&quot;</span> + printPoker(xjj,pokers));</span><br><span class="line">            System.out.println(<span class="string">&quot;ylz的牌为：&quot;</span> + printPoker(ylz,pokers));</span><br><span class="line">            System.out.println(<span class="string">&quot;底牌为：&quot;</span> + printPoker(dp,pokers));</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> String <span class="title function_">printPoker</span><span class="params">(List&lt;Integer&gt; poknum,Map&lt;Integer,String&gt; pokers)</span>&#123;</span><br><span class="line">        <span class="comment">//对每个人的手牌排序（理牌）</span></span><br><span class="line">        Collections.sort(poknum);</span><br><span class="line">        <span class="comment">//实例化一个StringBuilder对象存放结果</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">sb</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line">        <span class="keyword">for</span> (Integer num : poknum)&#123;</span><br><span class="line">            <span class="type">String</span> <span class="variable">s</span> <span class="operator">=</span> pokers.get(num);</span><br><span class="line">            sb.append(s + <span class="string">&quot;  &quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> sb.toString();</span><br><span class="line">        <span class="keyword">return</span> result.trim();	<span class="comment">//为了美观前面拼接了空格所以这里删除首尾空格</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
       
 
       
@@ -185,9 +378,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2023/03/28/JAVA_day10/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          JAVA学习_day10
+        
+      </div>
+    </a>
   
-    <a href="/2023/03/21/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
+  
+    <a href="/2023/03/28/JAVA_day08/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">JAVA学习_day08</div>
       <i class="icon-circle-right"></i>
     </a>
   
